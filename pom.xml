@@ -434,6 +434,7 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>testing</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
@@ -447,6 +448,12 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-all</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-testing</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
