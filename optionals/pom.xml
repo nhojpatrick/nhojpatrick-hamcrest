@@ -10,7 +10,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-hamcrest-all</artifactId>
+	<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
 	<!--packaging / -->
 	<packaging>jar</packaging>
 	<!--name / -->
@@ -37,22 +37,18 @@
 
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+			<artifactId>nhojpatrick-hamcrest-testing</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -62,6 +58,6 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.all</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.optionals</project.Automatic-Module-Name>
 	</properties>
 </project>

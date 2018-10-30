@@ -437,6 +437,7 @@
 		<module>collections</module>
 		<module>datetime</module>
 		<module>lang</module>
+		<module>optionals</module>
 		<module>testing</module>
 	</modules>
 	<!--repositories / -->
@@ -469,6 +470,12 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
