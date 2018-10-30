@@ -435,6 +435,7 @@
 	<modules>
 		<module>all</module>
 		<module>collections</module>
+		<module>datetime</module>
 		<module>testing</module>
 	</modules>
 	<!--repositories / -->
@@ -455,6 +456,12 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
