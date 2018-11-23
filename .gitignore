@@ -1,6 +1,16 @@
-*.iml
+# ignore file
+
+#eclipse
 .classpath
-.idea/
 .project
 .settings/
+
+# intellij
+*.iml
+.idea/
+
+# mac
+.DS_Store
+
+# maven
 target/
