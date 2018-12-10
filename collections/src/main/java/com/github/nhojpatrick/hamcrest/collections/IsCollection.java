@@ -6,6 +6,8 @@ import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.AnyOf;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -18,23 +20,30 @@ import static org.hamcrest.core.IsNull.nullValue;
 public class IsCollection<T extends Collection>
         extends TypeSafeMatcher<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsCollection.class);
+
     @Factory
     public static <T extends Collection> Matcher<T> collectionWithSize(final long size) {
+        LOGGER.debug("IsCollection#collectionWithSize((long) {})", size);
         return collectionWithSize(Long.valueOf(size).intValue());
     }
 
     @Factory
     public static <T extends Collection> Matcher<T> collectionWithSize(final int size) {
+        LOGGER.debug("IsCollection#collectionWithSize((int) {})", size);
         return new IsCollection<>(size);
     }
 
     @Factory
     public static <T extends Collection> Matcher<T> emptyCollection() {
+        LOGGER.debug("IsCollection#emptyCollection()");
         return new IsCollection<>(EMPTY);
     }
 
     @Factory
     public static <T extends Collection> Matcher<T> nullOrEmptyCollection() {
+
+        LOGGER.debug("IsCollection#nullOrEmptyCollection()");
 
         final AnyOf nullOrEmptyCollection = anyOf(
                 nullValue(),

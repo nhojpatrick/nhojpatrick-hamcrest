@@ -4,6 +4,8 @@ import com.github.nhojpatrick.hamcrest.optionals.internal.IsOptionalFlag;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -15,15 +17,20 @@ import static com.github.nhojpatrick.hamcrest.optionals.internal.IsOptionalFlag.
 public class IsOptional<T extends Optional<?>>
         extends TypeSafeMatcher<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsOptional.class);
+
     public static <T> Matcher<T> optionalContains(final Object expected) {
+        LOGGER.debug("IsOptional#optionalContains((Object) {})", expected);
         return new IsOptional(expected);
     }
 
     public static <T> Matcher<T> optionalIsEmpty() {
+        LOGGER.debug("IsOptional#optionalIsEmpty()");
         return new IsOptional(EMPTY);
     }
 
     public static <T> Matcher<T> optionalIsPresent() {
+        LOGGER.debug("IsOptional#optionalIsPresent()");
         return new IsOptional(PRESENT);
     }
 

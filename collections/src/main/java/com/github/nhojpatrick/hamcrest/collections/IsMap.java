@@ -6,6 +6,8 @@ import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.AnyOf;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Objects;
@@ -18,23 +20,30 @@ import static org.hamcrest.core.IsNull.nullValue;
 public class IsMap<T extends Map>
         extends TypeSafeMatcher<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsMap.class);
+
     @Factory
     public static <T extends Map> Matcher<T> mapWithSize(final long size) {
+        LOGGER.debug("IsMap#mapWithSize((long) {})", size);
         return mapWithSize(Long.valueOf(size).intValue());
     }
 
     @Factory
     public static <T extends Map> Matcher<T> mapWithSize(final int size) {
+        LOGGER.debug("IsMap#mapWithSize((int) {})", size);
         return new IsMap<>(size);
     }
 
     @Factory
     public static <T extends Map> Matcher<T> emptyMap() {
+        LOGGER.debug("IsMap#emptyMap()");
         return new IsMap<>(EMPTY);
     }
 
     @Factory
     public static <T extends Map> Matcher<T> nullOrEmptyMap() {
+
+        LOGGER.debug("IsMap#nullOrEmptyMap()");
 
         final AnyOf<T> nullOrEmptyCollection = anyOf(
                 nullValue(),

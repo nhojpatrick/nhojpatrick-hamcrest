@@ -3,21 +3,28 @@ package com.github.nhojpatrick.hamcrest.lang;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
 public class IsThrowable<T extends Throwable>
         extends TypeSafeMatcher<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsThrowable.class);
+
     public static <T> Matcher<T> throwable(final Class<?> clazz) {
+        LOGGER.debug("IsThrowable#throwable((Class<?>) {})", clazz);
         return new IsThrowable(clazz);
     }
 
     public static <T> Matcher<T> throwable(final String message) {
+        LOGGER.debug("IsThrowable#throwable((String) {})", message);
         return new IsThrowable(message);
     }
 
     public static <T> Matcher<T> throwable(final Class clazz, final String message) {
+        LOGGER.debug("IsThrowable#throwable((Class<?>) {}, (String) {})", clazz, message);
         return new IsThrowable(clazz, message);
     }
 

@@ -3,13 +3,18 @@ package com.github.nhojpatrick.hamcrest.lang;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
 public class IsHashCode<T extends Object>
         extends TypeSafeMatcher<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsHashCode.class);
+
     public static <T> Matcher<T> hashCodeGenerated(final int expected) {
+        LOGGER.debug("IsHashCode#hashCodeGenerated((int) {})", expected);
         return new IsHashCode(expected);
     }
 
