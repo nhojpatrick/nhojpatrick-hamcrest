@@ -9,8 +9,13 @@
 *.iml
 .idea/
 
-# mac
-.DS_Store
-
 # maven
 target/
+
+# MacOS
+._*
+.DS_Store
+
+# Windows
+[Dd]esktop.ini
+Thumbs.db
