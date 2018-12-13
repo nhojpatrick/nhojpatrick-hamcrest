@@ -3,7 +3,6 @@ package com.github.nhojpatrick.hamcrest.datetime;
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalDate;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDate;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
 
@@ -14,12 +13,10 @@ import static org.hamcrest.core.CombinableMatcher.both;
 
 public class IsBetweenDate {
 
-    @Factory
     public static <T> Matcher<T> betweenLocalDate(final LocalDate after, final LocalDate before) {
         return betweenLocalDate(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> betweenLocalDate(final LocalDate after, final CompareType afterCompareType, final LocalDate before, final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenLocalDate = both(

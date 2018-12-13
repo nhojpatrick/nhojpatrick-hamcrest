@@ -7,7 +7,6 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterZonedDateT
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeZonedDateTime;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
 
@@ -20,12 +19,10 @@ import static org.hamcrest.core.CombinableMatcher.both;
 
 public class IsBetweenDateTime {
 
-    @Factory
     public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after, final ChronoLocalDateTime before) {
         return betweenLocalDateTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after, final CompareType afterCompareType, final ChronoLocalDateTime before, final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenLocalDateTime = both(
@@ -54,12 +51,10 @@ public class IsBetweenDateTime {
         return betweenLocalDateTime;
     }
 
-    @Factory
     public static <T> Matcher<T> betweenOffsetDateTime(final OffsetDateTime after, final OffsetDateTime before) {
         return betweenOffsetDateTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> betweenOffsetDateTime(final OffsetDateTime after, final CompareType afterCompareType, final OffsetDateTime before, final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenOffsetDateTime = both(
@@ -88,12 +83,10 @@ public class IsBetweenDateTime {
         return betweenOffsetDateTime;
     }
 
-    @Factory
     public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after, final ChronoZonedDateTime before) {
         return betweenZonedDateTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after, final CompareType afterCompareType, final ChronoZonedDateTime before, final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenZonedDateTime = both(

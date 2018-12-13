@@ -5,7 +5,6 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.after.AbstractIsAfter;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterOffsetDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterZonedDateTime;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 
 import java.time.OffsetDateTime;
@@ -17,32 +16,26 @@ import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSI
 public abstract class IsAfterDateTime<T>
         extends AbstractIsAfter<T> {
 
-    @Factory
     public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after) {
         return afterLocalDateTime(after, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after, final CompareType compareType) {
         return new IsAfterLocalDateTime(after, compareType);
     }
 
-    @Factory
     public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after) {
         return afterOffsetDateTime(after, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after, final CompareType compareType) {
         return new IsAfterOffsetDateTime(after, compareType);
     }
 
-    @Factory
     public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after) {
         return afterZonedDateTime(after, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after, final CompareType compareType) {
         return new IsAfterZonedDateTime(after, compareType);
     }

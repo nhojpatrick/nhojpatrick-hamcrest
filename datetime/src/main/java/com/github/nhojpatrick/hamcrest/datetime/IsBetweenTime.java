@@ -5,7 +5,6 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterOffsetTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetTime;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
 
@@ -17,12 +16,10 @@ import static org.hamcrest.core.CombinableMatcher.both;
 
 public class IsBetweenTime {
 
-    @Factory
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after, final LocalTime before) {
         return betweenLocalTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after, final CompareType afterCompareType, final LocalTime before, final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenLocalTime = both(
@@ -51,12 +48,10 @@ public class IsBetweenTime {
         return betweenLocalTime;
     }
 
-    @Factory
     public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after, final OffsetTime before) {
         return betweenOffsetTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    @Factory
     public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after, final CompareType afterCompareType, final OffsetTime before, final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenOffsetTime = both(

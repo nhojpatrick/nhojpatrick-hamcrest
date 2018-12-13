@@ -2,7 +2,6 @@ package com.github.nhojpatrick.hamcrest.collections;
 
 import com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag;
 import org.hamcrest.Description;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.AnyOf;
@@ -22,25 +21,21 @@ public class IsMap<T extends Map>
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsMap.class);
 
-    @Factory
     public static <T extends Map> Matcher<T> mapWithSize(final long size) {
         LOGGER.debug("IsMap#mapWithSize((long) {})", size);
         return mapWithSize(Long.valueOf(size).intValue());
     }
 
-    @Factory
     public static <T extends Map> Matcher<T> mapWithSize(final int size) {
         LOGGER.debug("IsMap#mapWithSize((int) {})", size);
         return new IsMap<>(size);
     }
 
-    @Factory
     public static <T extends Map> Matcher<T> emptyMap() {
         LOGGER.debug("IsMap#emptyMap()");
         return new IsMap<>(EMPTY);
     }
 
-    @Factory
     public static <T extends Map> Matcher<T> nullOrEmptyMap() {
 
         LOGGER.debug("IsMap#nullOrEmptyMap()");
