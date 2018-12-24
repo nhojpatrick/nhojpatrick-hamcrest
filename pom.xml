@@ -467,18 +467,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.junit.platform</groupId>
-				<artifactId>junit-platform-engine</artifactId>
-				<version>${version.latest.junit.platform}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.junit.platform</groupId>
-				<artifactId>junit-platform-launcher</artifactId>
-				<version>${version.latest.junit.platform}</version>
-			</dependency>
-
-			<dependency>
 				<groupId>org.junit.vintage</groupId>
 				<artifactId>junit-vintage-engine</artifactId>
 				<version>${version.latest.junit.vintage}</version>
@@ -520,9 +508,9 @@
 		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
 		<!-- -->
 		<version.latest.hamcrest>2.1</version.latest.hamcrest>
-		<version.latest.junit.jupiter>5.3.2</version.latest.junit.jupiter>
-		<version.latest.junit.platform>1.3.2</version.latest.junit.platform>
-		<version.latest.junit.vintage>5.3.2</version.latest.junit.vintage>
+		<version.latest.junit>5.4.0-M1</version.latest.junit>
+		<version.latest.junit.jupiter>${version.latest.junit}</version.latest.junit.jupiter>
+		<version.latest.junit.vintage>${version.latest.junit}</version.latest.junit.vintage>
 		<version.latest.org.slf4j>1.7.25</version.latest.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
