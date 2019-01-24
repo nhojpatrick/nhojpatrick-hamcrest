@@ -508,7 +508,7 @@
 		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
 		<!-- -->
 		<version.latest.hamcrest>2.1</version.latest.hamcrest>
-		<version.latest.junit>5.4.0-M1</version.latest.junit>
+		<version.latest.junit>5.4.0-RC1</version.latest.junit>
 		<version.latest.junit.jupiter>${version.latest.junit}</version.latest.junit.jupiter>
 		<version.latest.junit.vintage>${version.latest.junit}</version.latest.junit.vintage>
 		<version.latest.org.slf4j>1.7.25</version.latest.org.slf4j>
