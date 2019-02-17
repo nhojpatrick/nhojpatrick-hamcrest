@@ -511,7 +511,7 @@
 		<version.latest.junit>5.4.0</version.latest.junit>
 		<version.latest.junit.jupiter>${version.latest.junit}</version.latest.junit.jupiter>
 		<version.latest.junit.vintage>${version.latest.junit}</version.latest.junit.vintage>
-		<version.latest.org.slf4j>1.7.25</version.latest.org.slf4j>
+		<version.latest.org.slf4j>1.7.26</version.latest.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 	</properties>
