@@ -7,6 +7,8 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalTim
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetTime;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
 import java.time.OffsetTime;
@@ -16,11 +18,15 @@ import static org.hamcrest.core.CombinableMatcher.both;
 
 public class IsBetweenTime {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsBetweenTime.class);
+
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after, final LocalTime before) {
+        LOGGER.debug("IsBetweenTime#betweenLocalTime((LocalTime) {}, (LocalTime) {})", after, before);
         return betweenLocalTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after, final CompareType afterCompareType, final LocalTime before, final CompareType beforeCompareType) {
+        LOGGER.debug("IsBetweenTime#betweenLocalTime((LocalTime) {}, (CompareType) {}, (LocalTime) {}, (CompareType) {})", after, afterCompareType, before, beforeCompareType);
 
         final CombinableMatcher betweenLocalTime = both(
                 new IsAfterLocalTime(after, afterCompareType)
@@ -49,10 +55,12 @@ public class IsBetweenTime {
     }
 
     public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after, final OffsetTime before) {
+        LOGGER.debug("IsBetweenTime#betweenOffsetTime((OffsetTime) {}, (OffsetTime) {})", after, before);
         return betweenOffsetTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after, final CompareType afterCompareType, final OffsetTime before, final CompareType beforeCompareType) {
+        LOGGER.debug("IsBetweenTime#betweenOffsetTime((OffsetTime) {}, (CompareType) {}, (OffsetTime) {}, (CompareType) {})", after, afterCompareType, before, beforeCompareType);
 
         final CombinableMatcher betweenOffsetTime = both(
                 new IsAfterOffsetTime(after, afterCompareType)

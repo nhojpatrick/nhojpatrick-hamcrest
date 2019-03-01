@@ -6,6 +6,6 @@ public enum RoundingType {
 
     NONE,
 
-    UP;
+    UP
 
 }

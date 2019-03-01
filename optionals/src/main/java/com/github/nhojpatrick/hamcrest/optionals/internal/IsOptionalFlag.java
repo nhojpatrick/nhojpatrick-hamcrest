@@ -6,6 +6,6 @@ public enum IsOptionalFlag {
 
     EMPTY,
 
-    PRESENT;
+    PRESENT
 
 }

@@ -4,6 +4,6 @@ public enum CompareType {
 
     EXCLUSIVE,
 
-    INCLUSIVE;
+    INCLUSIVE
 
 }

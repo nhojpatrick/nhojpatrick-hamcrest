@@ -5,6 +5,8 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.after.AbstractIsAfter;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterOffsetTime;
 import org.hamcrest.Matcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
 import java.time.OffsetTime;
@@ -14,19 +16,25 @@ import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSI
 public abstract class IsAfterTime<T>
         extends AbstractIsAfter<T> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterTime.class);
+
     public static <T> Matcher<T> afterLocalTime(final LocalTime after) {
+        LOGGER.debug("IsAfterTime#afterLocalTime((LocalTime) {})", after);
         return afterLocalTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterLocalTime(final LocalTime after, final CompareType compareType) {
+        LOGGER.debug("IsAfterTime#afterLocalTime((LocalTime) {}, (CompareType) {})", after, compareType);
         return new IsAfterLocalTime(after, compareType);
     }
 
     public static <T> Matcher<T> afterOffsetTime(final OffsetTime after) {
+        LOGGER.debug("IsAfterTime#afterOffsetTime((OffsetTime) {})", after);
         return afterOffsetTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterOffsetTime(final OffsetTime after, final CompareType compareType) {
+        LOGGER.debug("IsAfterTime#afterOffsetTime((OffsetTime) {}, (CompareType) {})", after, compareType);
         return new IsAfterOffsetTime(after, compareType);
     }
 

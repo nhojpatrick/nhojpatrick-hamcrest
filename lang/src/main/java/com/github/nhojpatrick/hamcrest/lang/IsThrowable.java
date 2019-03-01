@@ -92,12 +92,13 @@ public class IsThrowable<T extends Throwable>
     @Override
     protected boolean matchesSafely(final T item) {
 
-        if (clazz.isPresent()) {
-            this.validClazz = clazz.get().isInstance(item);
+        if (this.clazz.isPresent()) {
+            this.validClazz = this.clazz.get()
+                    .isInstance(item);
         }
 
         if (item != null
-                && message.isPresent()) {
+                && this.message.isPresent()) {
             final String itemMessage = item.getMessage();
             this.validMessage = this.message.get()
                     .equals(itemMessage);

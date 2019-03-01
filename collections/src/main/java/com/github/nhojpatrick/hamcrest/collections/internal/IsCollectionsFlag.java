@@ -4,6 +4,6 @@ public enum IsCollectionsFlag {
 
     CONTAINS,
 
-    EMPTY;
+    EMPTY
 
 }
