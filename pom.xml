@@ -445,43 +445,43 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.8.1</version>
+				<version>${version.org.apache.commons.lang3}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest</artifactId>
-				<version>${version.latest.hamcrest}</version>
+				<version>${version.org.hamcrest}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
-				<version>${version.latest.junit.jupiter}</version>
+				<version>${version.org.junit.jupiter}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-engine</artifactId>
-				<version>${version.latest.junit.jupiter}</version>
+				<version>${version.org.junit.jupiter}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.junit.vintage</groupId>
 				<artifactId>junit-vintage-engine</artifactId>
-				<version>${version.latest.junit.vintage}</version>
+				<version>${version.org.junit.vintage}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>${version.latest.org.slf4j}</version>
+				<version>${version.org.slf4j}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-log4j12</artifactId>
-				<version>${version.latest.org.slf4j}</version>
+				<version>${version.org.slf4j}</version>
 			</dependency>
 
 		</dependencies>
@@ -507,11 +507,11 @@
 		<project.custom.failsafe.argLine.jpms></project.custom.failsafe.argLine.jpms>
 		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
 		<!-- -->
-		<version.latest.hamcrest>2.1</version.latest.hamcrest>
-		<version.latest.junit>5.4.0</version.latest.junit>
-		<version.latest.junit.jupiter>${version.latest.junit}</version.latest.junit.jupiter>
-		<version.latest.junit.vintage>${version.latest.junit}</version.latest.junit.vintage>
-		<version.latest.org.slf4j>1.7.26</version.latest.org.slf4j>
+		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
+		<version.org.hamcrest>2.1</version.org.hamcrest>
+		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
+		<version.org.junit.vintage>5.5.1</version.org.junit.vintage>
+		<version.org.slf4j>1.7.26</version.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 	</properties>
