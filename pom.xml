@@ -387,6 +387,33 @@
 				<project.custom.surefire.argLine.jpms>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.custom.surefire.argLine.jpms>
 			</properties>
 		</profile>
+		<profile>
+			<id>versions</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>versions_display-dependency-updates</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>display-dependency-updates</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>versions_display-plugin-updates</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>display-plugin-updates</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 	<!--modules / -->
 	<modules>
