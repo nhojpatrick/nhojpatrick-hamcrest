@@ -65,7 +65,7 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.22.1</version>
 					<configuration>
-						<argLine>${project.custom.failsafe.argLine.jpms}</argLine>
+						<argLine>${project.failsafe.argLine.jpms}</argLine>
 					</configuration>
 				</plugin>
 
@@ -123,7 +123,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
 					<configuration>
-						<argLine>${project.custom.surefire.argLine.jpms}</argLine>
+						<argLine>${project.surefire.argLine.jpms}</argLine>
 					</configuration>
 				</plugin>
 
@@ -383,13 +383,8 @@
 			<properties>
 				<project.custom.java.version>9</project.custom.java.version>
 				<maven.compiler.release>9</maven.compiler.release>
-				<project.custom.failsafe.argLine.jpms>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.custom.failsafe.argLine.jpms>
-				<project.custom.surefire.argLine.jpms>
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
-					--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-					--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED
-				</project.custom.surefire.argLine.jpms>
+				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
+				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
 		</profile>
 		<profile>
@@ -536,8 +531,19 @@
 		<downloadJavadocs>true</downloadJavadocs>
 		<generateBackupPoms>false</generateBackupPoms>
 		<!-- Surefire/Failsafe jpms override(s) -->
-		<project.custom.failsafe.argLine.jpms></project.custom.failsafe.argLine.jpms>
-		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
+		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
+		<project.failsafe.argLine.jpms.global>
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+		</project.failsafe.argLine.jpms.global>
+		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
+		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
+		<project.surefire.argLine.jpms.global>
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
+			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
+			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED
+		</project.surefire.argLine.jpms.global>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
