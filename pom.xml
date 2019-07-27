@@ -384,7 +384,12 @@
 				<project.custom.java.version>9</project.custom.java.version>
 				<maven.compiler.release>9</maven.compiler.release>
 				<project.custom.failsafe.argLine.jpms>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.custom.failsafe.argLine.jpms>
-				<project.custom.surefire.argLine.jpms>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.custom.surefire.argLine.jpms>
+				<project.custom.surefire.argLine.jpms>
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
+					--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
+					--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED
+				</project.custom.surefire.argLine.jpms>
 			</properties>
 		</profile>
 		<profile>
