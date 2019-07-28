@@ -66,6 +66,9 @@
 					<version>2.22.1</version>
 					<configuration>
 						<argLine>${project.failsafe.argLine.jpms}</argLine>
+						<includes>
+							<include>**/*IT.java</include>
+						</includes>
 					</configuration>
 				</plugin>
 
@@ -124,6 +127,9 @@
 					<version>2.22.1</version>
 					<configuration>
 						<argLine>${project.surefire.argLine.jpms}</argLine>
+						<excludes>
+							<exclude>**/*IT.java</exclude>
+						</excludes>
 					</configuration>
 				</plugin>
 
