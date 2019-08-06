@@ -30,6 +30,31 @@
 			<plugins>
 
 				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>3.1.12.2</version>
+<!--					<configuration>-->
+<!--						<plugins>-->
+<!--							<plugin>-->
+<!--								<groupId>com.h3xstream.findsecbugs</groupId>-->
+<!--								<artifactId>findsecbugs-plugin</artifactId>-->
+<!--								<version>1.9.0</version>-->
+<!--							</plugin>-->
+<!--							<plugin>-->
+<!--								<groupId>com.mebigfatguy.fb-contrib</groupId>-->
+<!--								<artifactId>fb-contrib</artifactId>-->
+<!--								<version>7.4.6</version>-->
+<!--							</plugin>-->
+<!--							<plugin>-->
+<!--								<groupId>jp.skypencil.findbugs.slf4j</groupId>-->
+<!--								<artifactId>bug-pattern</artifactId>-->
+<!--								<version>1.5.0</version>-->
+<!--							</plugin>-->
+<!--						</plugins>-->
+<!--					</configuration>-->
+				</plugin>
+
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
@@ -177,41 +202,6 @@
 					</configuration>
 				</plugin>
 
-				<!--<plugin>-->
-					<!--<groupId>com.github.spotbugs</groupId>-->
-					<!--<artifactId>spotbugs-maven-plugin</artifactId>-->
-					<!--<version>3.1.9</version>-->
-					<!--<configuration>-->
-						<!--<debug>true</debug>-->
-						<!--<effort>Max</effort>-->
-						<!--<threshold>Low</threshold>-->
-						<!--<failOnError>true</failOnError>-->
-						<!--&lt;!&ndash;<excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>&ndash;&gt;-->
-						<!--&lt;!&ndash;<excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>&ndash;&gt;-->
-						<!--&lt;!&ndash;<includeFilterFile>spotbugs-include.xml</includeFilterFile>&ndash;&gt;-->
-						<!--&lt;!&ndash;<includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>&ndash;&gt;-->
-						<!--<plugins>-->
-							<!--<plugin>-->
-								<!--<groupId>com.h3xstream.findsecbugs</groupId>-->
-								<!--<artifactId>findsecbugs-plugin</artifactId>-->
-								<!--<version>1.8.0</version>-->
-							<!--</plugin>-->
-							<!--<plugin>-->
-								<!--<groupId>com.mebigfatguy.fb-contrib</groupId>-->
-								<!--<artifactId>fb-contrib</artifactId>-->
-								<!--<version>7.4.3</version>-->
-							<!--</plugin>-->
-						<!--</plugins>-->
-					<!--</configuration>-->
-					<!--<dependencies>-->
-						<!--<dependency>-->
-							<!--<groupId>com.github.spotbugs</groupId>-->
-							<!--<artifactId>spotbugs</artifactId>-->
-							<!--<version>3.1.9</version>-->
-						<!--</dependency>-->
-					<!--</dependencies>-->
-				<!--</plugin>-->
-
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
@@ -341,19 +331,6 @@
 				</executions>
 			</plugin>
 
-			<!--<plugin>-->
-				<!--<groupId>com.github.spotbugs</groupId>-->
-				<!--<artifactId>spotbugs-maven-plugin</artifactId>-->
-				<!--&lt;!&ndash;<executions>&ndash;&gt;-->
-					<!--&lt;!&ndash;<execution>&ndash;&gt;-->
-						<!--&lt;!&ndash;<phase>verify</phase>&ndash;&gt;-->
-						<!--&lt;!&ndash;<goals>&ndash;&gt;-->
-							<!--&lt;!&ndash;<goal>check</goal>&ndash;&gt;-->
-						<!--&lt;!&ndash;</goals>&ndash;&gt;-->
-					<!--&lt;!&ndash;</execution>&ndash;&gt;-->
-				<!--&lt;!&ndash;</executions>&ndash;&gt;-->
-			<!--</plugin>-->
-
 		</plugins>
 	</build>
 	<!--profiles / -->
@@ -392,6 +369,26 @@
 				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
 				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
+		</profile>
+		<profile>
+			<id>qa_spotbugs</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.spotbugs</groupId>
+						<artifactId>spotbugs-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>spotbugs-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>versions</id>
@@ -476,6 +473,18 @@
 			</dependency>
 
 			<dependency>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs</artifactId>
+				<version>${version.org.spotbugs}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-annotations</artifactId>
+				<version>${version.org.spotbugs}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${version.org.apache.commons.lang3}</version>
@@ -553,6 +562,7 @@
 		<!-- -->
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
+		<version.org.spotbugs>3.1.12</version.org.spotbugs>
 		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.5.1</version.org.junit.vintage>
 		<version.org.slf4j>1.7.27</version.org.slf4j>

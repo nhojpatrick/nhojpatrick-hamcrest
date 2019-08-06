@@ -78,5 +78,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.collections</project.Automatic-Module-Name>
+		<spotbugs.maxAllowedViolations>8</spotbugs.maxAllowedViolations>
 	</properties>
 </project>
