@@ -268,14 +268,13 @@
 		<profile>
 			<id>jpms</id>
 			<activation>
-				<jdk>[9,)</jdk>
+				<jdk>[11,)</jdk>
 			</activation>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
-						<version>3.0.0</version>
 						<executions>
 							<execution>
 								<id>add-source-Java_Platform_Module_System</id>
@@ -294,8 +293,8 @@
 				</plugins>
 			</build>
 			<properties>
-				<project.custom.java.version>9</project.custom.java.version>
-				<maven.compiler.release>9</maven.compiler.release>
+				<project.custom.java.version>11</project.custom.java.version>
+				<maven.compiler.release>11</maven.compiler.release>
 				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
 				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
