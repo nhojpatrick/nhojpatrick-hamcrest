@@ -391,17 +391,13 @@
 						<artifactId>versions-maven-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>versions_display-dependency-updates</id>
+								<id>versions-check</id>
 								<phase>validate</phase>
 								<goals>
 									<goal>display-dependency-updates</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>versions_display-plugin-updates</id>
-								<phase>validate</phase>
-								<goals>
+									<goal>display-parent-updates</goal>
 									<goal>display-plugin-updates</goal>
+									<goal>display-property-updates</goal>
 								</goals>
 							</execution>
 						</executions>
