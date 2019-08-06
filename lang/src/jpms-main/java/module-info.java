@@ -1,5 +1,5 @@
 module com.github.nhojpatrick.hamcrest.lang {
     exports com.github.nhojpatrick.hamcrest.lang;
-    requires slf4j.api; // FIXME filename-based automodules detected
+    requires org.slf4j;
     requires transitive org.hamcrest;
 }
