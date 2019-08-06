@@ -64,5 +64,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.all</project.Automatic-Module-Name>
+		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>
