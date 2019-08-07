@@ -79,6 +79,7 @@
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.collections</project.Automatic-Module-Name>
 		<checkstyle.maxAllowedViolations>74</checkstyle.maxAllowedViolations>
+		<pmd.maxAllowedViolations>1</pmd.maxAllowedViolations>
 		<spotbugs.maxAllowedViolations>8</spotbugs.maxAllowedViolations>
 	</properties>
 </project>

@@ -136,6 +136,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.12.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>2.9</version>
 				</plugin>
@@ -389,6 +394,27 @@
 			</build>
 		</profile>
 		<profile>
+			<id>qa_pmd</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-pmd-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pmd-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+									<goal>cpd-check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>qa_spotbugs</id>
 			<build>
 				<plugins>
@@ -611,6 +637,7 @@
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>54%</jacoco.bundle.line.coveredratio>
 		<jacoco.bundle.class.missedcount>15</jacoco.bundle.class.missedcount>
+		<pmd.maxAllowedViolations>0</pmd.maxAllowedViolations>
 		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
 		<!-- sortpom -->
 		<sort.createBackupFile>false</sort.createBackupFile>
