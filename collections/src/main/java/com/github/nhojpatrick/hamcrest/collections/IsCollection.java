@@ -67,7 +67,7 @@ public class IsCollection<T extends Collection>
     protected boolean matchesSafely(final T item) {
         return super.matchesSafely(item,
                 Objects.isNull(item) ? null : item.size(),
-                Objects.isNull(item) ? null : item.isEmpty()
+                Objects.nonNull(item) && item.isEmpty()
         );
     }
 
