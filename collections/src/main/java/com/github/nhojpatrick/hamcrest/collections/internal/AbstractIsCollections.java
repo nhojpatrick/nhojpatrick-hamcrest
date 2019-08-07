@@ -3,7 +3,6 @@ package com.github.nhojpatrick.hamcrest.collections.internal;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-import java.util.Collection;
 import java.util.Objects;
 
 public abstract class AbstractIsCollections<T>
