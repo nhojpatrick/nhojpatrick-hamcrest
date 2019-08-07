@@ -14,18 +14,6 @@ public abstract class AbstractIsCollections<T>
     private final IsCollectionsFlag flag;
     private final String type;
 
-//    private AbstractIsCollections(final IsCollectionsFlag flag) {
-//        this(flag, null);
-//    }
-
-//    private AbstractIsCollections(final Integer size) {
-//        this(CONTAINS, size);
-//    }
-
-    protected AbstractIsCollections(final IsCollectionsFlag flag, final Integer size) {
-        this(Collection.class.getName(), flag, size);
-    }
-
     protected AbstractIsCollections(final String type, final IsCollectionsFlag flag, final Integer size) {
         this.expectedSize = size;
         this.flag = flag;

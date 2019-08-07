@@ -662,8 +662,8 @@
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
-		<jacoco.bundle.line.coveredratio>54%</jacoco.bundle.line.coveredratio>
-		<jacoco.bundle.class.missedcount>15</jacoco.bundle.class.missedcount>
+		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
+		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
 		<pmd.maxAllowedViolations>0</pmd.maxAllowedViolations>
 		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
 		<!-- sortpom -->
