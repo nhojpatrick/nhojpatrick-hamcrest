@@ -1,9 +1,8 @@
 package com.github.nhojpatrick.hamcrest.collections;
 
+import com.github.nhojpatrick.hamcrest.collections.internal.AbstractIsCollections;
 import com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag;
-import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.AnyOf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,7 @@ import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.IsNull.nullValue;
 
 public class IsMap<T extends Map>
-        extends TypeSafeMatcher<T> {
+        extends AbstractIsCollections<T> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsMap.class);
 
@@ -48,11 +47,6 @@ public class IsMap<T extends Map>
         return nullOrEmptyCollection;
     }
 
-    private Integer actualSize;
-    private final Integer expectedSize;
-    private final IsCollectionsFlag flag;
-    private final String type;
-
     private IsMap(final IsCollectionsFlag flag) {
         this(flag, null);
     }
@@ -66,63 +60,15 @@ public class IsMap<T extends Map>
     }
 
     protected IsMap(final String type, final IsCollectionsFlag flag, final Integer size) {
-        this.expectedSize = size;
-        this.flag = flag;
-        this.type = type;
-    }
-
-    @Override
-    public void describeMismatchSafely(final T item, final Description description) {
-
-        description.appendText("was ");
-        description.appendText(this.type);
-        description.appendText(" size ");
-        description.appendValue(this.actualSize);
-        description.appendText(" ");
-        description.appendValue(item);
-    }
-
-    @Override
-    public void describeTo(final Description description) {
-
-        switch (this.flag) {
-            case EMPTY:
-                description.appendText("empty ");
-                description.appendText(this.type);
-                break;
-
-            case CONTAINS:
-            default:
-                description.appendText(this.type);
-                description.appendText(" size ");
-                description.appendValue(this.expectedSize);
-                break;
-        }
+        super(type, flag, size);
     }
 
     @Override
     protected boolean matchesSafely(final T item) {
-
-        if (item != null) {
-            this.actualSize = item.size();
-        }
-
-        final boolean isNull = Objects.isNull(item);
-
-        final boolean isEmpty = Objects.nonNull(item)
-                && item.isEmpty();
-
-        final boolean isEmptyOrNull = isNull
-                || isEmpty;
-
-        switch (this.flag) {
-            case EMPTY:
-                return isEmpty;
-
-            case CONTAINS:
-            default:
-                return this.expectedSize.equals(this.actualSize);
-        }
+        return super.matchesSafely(item,
+                Objects.isNull(item) ? null : item.size(),
+                Objects.isNull(item) ? null : item.isEmpty()
+        );
     }
 
 }
