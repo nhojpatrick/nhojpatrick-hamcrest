@@ -77,5 +77,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.testing</project.Automatic-Module-Name>
+		<checkstyle.maxAllowedViolations>12</checkstyle.maxAllowedViolations>
 	</properties>
 </project>

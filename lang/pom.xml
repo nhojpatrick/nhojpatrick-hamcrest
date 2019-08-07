@@ -78,5 +78,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.lang</project.Automatic-Module-Name>
+		<checkstyle.maxAllowedViolations>42</checkstyle.maxAllowedViolations>
 	</properties>
 </project>

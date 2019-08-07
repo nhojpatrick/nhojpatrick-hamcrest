@@ -71,6 +71,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
 				</plugin>
@@ -295,6 +300,33 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>qa_checkstyle</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>checkstyle-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>com.puppycrawl.tools</groupId>
+								<artifactId>checkstyle</artifactId>
+								<version>${version.com.puppycrawl.tools.checkstyle}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>qa_jacoco</id>
 			<build>
 				<plugins>
@@ -498,6 +530,11 @@
 				<version>${version.org.spotbugs}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.puppycrawl.tools</groupId>
+				<artifactId>checkstyle</artifactId>
+				<version>${version.com.puppycrawl.tools.checkstyle}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${version.org.apache.commons.lang3}</version>
@@ -562,6 +599,7 @@
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
+		<version.com.puppycrawl.tools.checkstyle>8.23</version.com.puppycrawl.tools.checkstyle>
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
 		<version.org.spotbugs>3.1.12</version.org.spotbugs>
@@ -570,6 +608,7 @@
 		<version.org.slf4j>1.7.27</version.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
+		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>54%</jacoco.bundle.line.coveredratio>
 		<jacoco.bundle.class.missedcount>15</jacoco.bundle.class.missedcount>
 		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
