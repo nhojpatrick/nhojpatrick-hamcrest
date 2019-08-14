@@ -637,7 +637,7 @@
 		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
-		<!-- maven plugins user properties -->
+		<!-- maven user properties -->
 		<downloadSources>true</downloadSources>
 		<downloadJavadocs>true</downloadJavadocs>
 		<generateBackupPoms>false</generateBackupPoms>
@@ -660,6 +660,7 @@
 		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.5.1</version.org.junit.vintage>
 		<version.org.slf4j>1.7.28</version.org.slf4j>
+		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
 		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
