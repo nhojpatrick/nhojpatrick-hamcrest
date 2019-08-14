@@ -660,8 +660,6 @@
 		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.5.1</version.org.junit.vintage>
 		<version.org.slf4j>1.7.28</version.org.slf4j>
-		<!-- -->
-		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
 		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
@@ -673,5 +671,7 @@
 		<sort.sortDependencies>groupId,artifactId,version,scope</sort.sortDependencies>
 		<sort.sortModules>true</sort.sortModules>
 		<sort.sortOrderFile>com/github/nhojpatrick/sortpom/sortorderfile/nhojpatrick.xml</sort.sortOrderFile>
+		<!-- JPMS -->
+		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 	</properties>
 </project>
