@@ -659,7 +659,7 @@
 		<version.org.spotbugs>3.1.12</version.org.spotbugs>
 		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.5.1</version.org.junit.vintage>
-		<version.org.slf4j>1.7.27</version.org.slf4j>
+		<version.org.slf4j>1.7.28</version.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
