@@ -57,7 +57,7 @@
 						<dependency>
 							<groupId>com.github.nhojpatrick.sortpom</groupId>
 							<artifactId>nhojpatrick-sortpom-sortorderfile</artifactId>
-							<version>1</version>
+							<version>1.0</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -237,7 +237,7 @@
 						<dependency>
 							<groupId>com.github.nhojpatrick.versions</groupId>
 							<artifactId>nhojpatrick-versions-ruleset</artifactId>
-							<version>1</version>
+							<version>1.0</version>
 						</dependency>
 					</dependencies>
 					<configuration>
