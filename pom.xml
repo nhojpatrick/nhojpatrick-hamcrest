@@ -310,14 +310,14 @@
 						<artifactId>build-helper-maven-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>add-source-Java_Platform_Module_System</id>
+								<id>add-source-java11</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>add-source</goal>
 								</goals>
 								<configuration>
 									<sources>
-										<source>${project.basedir}/src/jpms-main/java</source>
+										<source>${project.basedir}/src/main/java11</source>
 									</sources>
 								</configuration>
 							</execution>
