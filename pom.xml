@@ -110,14 +110,34 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-					<configuration>
-						<compilerArgs>
-							<arg>-parameters</arg>
-							<!--<arg>-verbose</arg>-->
-							<arg>-Xlint:unchecked</arg>
-						</compilerArgs>
-					</configuration>
+					<version>3.8.1</version>
+					<!--					<configuration>-->
+					<!--						<compilerArgs>-->
+					<!--							<arg>-parameters</arg>-->
+					<!--<arg>-verbose</arg>-->
+					<!--							<arg>-Xlint:unchecked</arg>-->
+					<!--						</compilerArgs>-->
+					<!--					</configuration>-->
+					<executions>
+						<execution>
+							<id>java11</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<configuration>
+								<release>11</release>
+								<jdkToolchain>
+									<version>11</version>
+								</jdkToolchain>
+								<compileSourceRoots>
+									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
+									<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
+								</compileSourceRoots>
+								<multiReleaseOutput>true</multiReleaseOutput>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -158,14 +178,31 @@
 						<archive>
 							<manifestEntries>
 								<Automatic-Module-Name>${project.Automatic-Module-Name}</Automatic-Module-Name>
+								<Multi-Release>true</Multi-Release>
 							</manifestEntries>
 						</archive>
+						<excludes>
+							<exclude>**/ModuleInfoHack.class</exclude>
+						</excludes>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>3.1.1</version>
+					<configuration>
+						<source>1.8</source>
+						<!--						<excludes>-->
+						<!--							<exclude>**/module-info.java</exclude>-->
+						<!--							<fileExclude>**/module-info.java</fileExclude>-->
+						<!--							<sourceFileExclude>**/module-info.java</sourceFileExclude>-->
+						<!--						</excludes>-->
+						<!--						<sourceFileExcludes>-->
+						<!--							<exclude>**/module-info.java</exclude>-->
+						<!--							<fileExclude>**/module-info.java</fileExclude>-->
+						<!--							<sourceFileExclude>**/module-info.java</sourceFileExclude>-->
+						<!--						</sourceFileExcludes>-->
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -196,6 +233,26 @@
 						<excludes>
 							<exclude>**/*IT.java</exclude>
 						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>1.1</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>toolchain</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<toolchains>
+							<jdk>
+								<version>${base.java.version}</version>
+								<vendor>${toolchain.vendor}</vendor>
+							</jdk>
+						</toolchains>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -339,7 +396,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>jpms</id>
+			<id>java11</id>
 			<activation>
 				<jdk>[11,)</jdk>
 			</activation>
@@ -366,8 +423,9 @@
 				</plugins>
 			</build>
 			<properties>
-				<project.custom.java.version>11</project.custom.java.version>
+				<base.java.version>11</base.java.version>
 				<maven.compiler.release>11</maven.compiler.release>
+				<project.custom.java.version>11</project.custom.java.version>
 				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
 				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
@@ -806,5 +864,7 @@
 		<sort.sortProperties>false</sort.sortProperties>
 		<!-- JPMS -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
+		<toolchain.vendor>openjdk</toolchain.vendor>
+		<base.java.version>1.8</base.java.version>
 	</properties>
 </project>
