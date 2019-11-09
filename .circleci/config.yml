@@ -16,6 +16,11 @@ commands:
             - ~/.m2/repository
             - ~/.m2/wrapper
       - run: ./mvnw clean install -DskipTests
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
       - run: ./mvnw test
 
 jobs:
