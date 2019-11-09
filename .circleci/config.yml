@@ -1,0 +1,53 @@
+version: 2.1
+
+commands:
+  std_mvnw:
+    description: "Standard mvnw steps"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw dependency:go-offline
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+      - run: ./mvnw clean install -DskipTests
+      - run: ./mvnw test
+
+jobs:
+  jdk8:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - std_mvnw
+
+  jdk11:
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+    steps:
+      - std_mvnw
+
+  jdk13:
+    docker:
+      - image: circleci/openjdk:13-jdk-buster
+    steps:
+      - std_mvnw
+
+  jdk14:
+    docker:
+      - image: circleci/openjdk:14-jdk-buster
+    steps:
+      - std_mvnw
+
+workflows:
+  version: 2
+  build_all:
+    jobs:
+      - jdk8
+      - jdk11
+      - jdk13
+      - jdk14
