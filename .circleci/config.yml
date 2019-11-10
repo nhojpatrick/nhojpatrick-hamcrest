@@ -1,6 +1,45 @@
 version: 2.1
 
 commands:
+  install_openjdk_11:
+    description: "Install OpenJdk 11"
+    steps:
+      - run: wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz -O ~/openjdk-11.tar.gz
+      - run: tar xvf ~/openjdk-11.tar.gz -C ~/
+      - run: ls -l ~
+      - run: ls -l ~/jdk-11.0.2
+      - run: sudo mv ~/jdk-11.0.2 /usr/local/openjdk-11
+      - run: ls -l /usr/local/
+      - run: mkdir ~/.m2
+      - run: |
+          cat > ~/.m2/toolchains.xml \<< EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <toolchains xmlns="http://maven.apache.org/TOOLCHAINS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/TOOLCHAINS/1.1.0 http://maven.apache.org/xsd/toolchains-1.1.0.xsd">
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>1.8</version>
+                <vendor>openjdk</vendor>
+                <id>openjdk-1.8</id>
+              </provides>
+              <configuration>
+                <jdkHome>/usr/local/openjdk-8</jdkHome>
+              </configuration>
+            </toolchain>
+            <toolchain>
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>11</version>
+                <vendor>openjdk</vendor>
+                <id>openjdk-11</id>
+              </provides>
+              <configuration>
+                <jdkHome>/usr/local/openjdk-11</jdkHome>
+              </configuration>
+            </toolchain>
+          EOF
+
   std_mvnw:
     description: "Standard mvnw steps"
     steps:
@@ -28,6 +67,7 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
+      - install_openjdk_11
       - std_mvnw
 
   jdk11:
