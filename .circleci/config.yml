@@ -38,6 +38,7 @@ commands:
                 <jdkHome>/usr/local/openjdk-11</jdkHome>
               </configuration>
             </toolchain>
+          </toolchains>
           EOF
 
   std_mvnw:
