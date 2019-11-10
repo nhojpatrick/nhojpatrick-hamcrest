@@ -24,7 +24,6 @@ commands:
               </configuration>
             </toolchain>
             <toolchain>
-            <toolchain>
               <type>jdk</type>
               <provides>
                 <version>11</version>
