@@ -6,10 +6,7 @@ commands:
     steps:
       - run: wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz -O ~/openjdk-11.tar.gz
       - run: tar xvf ~/openjdk-11.tar.gz -C ~/
-      - run: ls -l ~
-      - run: ls -l ~/jdk-11.0.2
       - run: sudo mv ~/jdk-11.0.2 /usr/local/openjdk-11
-      - run: ls -l /usr/local/
       - run: mkdir ~/.m2
       - run: |
           cat > ~/.m2/toolchains.xml \<< EOF
@@ -40,6 +37,8 @@ commands:
             </toolchain>
           </toolchains>
           EOF
+      - run: ls -l ~/.m2/toolchains.xml
+      - run: cat ~/.m2/toolchains.xml
 
   std_mvnw:
     description: "Standard mvnw steps"
