@@ -843,8 +843,8 @@
 		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
 		<version.org.spotbugs>3.1.12</version.org.spotbugs>
-		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
-		<version.org.junit.vintage>5.5.1</version.org.junit.vintage>
+		<version.org.junit.jupiter>5.5.2</version.org.junit.jupiter>
+		<version.org.junit.vintage>5.5.2</version.org.junit.vintage>
 		<version.org.slf4j>1.7.28</version.org.slf4j>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
