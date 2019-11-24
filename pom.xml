@@ -842,10 +842,10 @@
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
 		<version.org.hamcrest>2.2</version.org.hamcrest>
-		<version.org.spotbugs>3.1.12</version.org.spotbugs>
 		<version.org.junit.jupiter>5.5.2</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.5.2</version.org.junit.vintage>
 		<version.org.slf4j>1.7.29</version.org.slf4j>
+		<version.org.spotbugs>3.1.12</version.org.spotbugs>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
