@@ -35,27 +35,22 @@
 	<!--pluginRepositories / -->
 	<!--dependencies / -->
 	<dependencies>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
 		</dependency>
-
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->
