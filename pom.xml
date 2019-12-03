@@ -834,7 +834,7 @@
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
 		<version.com.puppycrawl.tools.checkstyle>8.23</version.com.puppycrawl.tools.checkstyle>
-		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
+		<version.org.apache.commons.lang3>[3,3.999.999)</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2,2.999.999)</version.org.hamcrest>
 		<version.org.junit.jupiter>[5.5.0,5.5.999)</version.org.junit.jupiter>
