@@ -19,22 +19,22 @@ public abstract class IsAfterTime<T>
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterTime.class);
 
     public static <T> Matcher<T> afterLocalTime(final LocalTime after) {
-        LOGGER.debug("IsAfterTime#afterLocalTime((LocalTime) {})", after);
+        LOGGER.debug("IsAfterTime#afterLocalTime((After) {})", after);
         return afterLocalTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterLocalTime(final LocalTime after, final CompareType compareType) {
-        LOGGER.debug("IsAfterTime#afterLocalTime((LocalTime) {}, (CompareType) {})", after, compareType);
+        LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterLocalTime(after, compareType);
     }
 
     public static <T> Matcher<T> afterOffsetTime(final OffsetTime after) {
-        LOGGER.debug("IsAfterTime#afterOffsetTime((OffsetTime) {})", after);
+        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {})", after);
         return afterOffsetTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterOffsetTime(final OffsetTime after, final CompareType compareType) {
-        LOGGER.debug("IsAfterTime#afterOffsetTime((OffsetTime) {}, (CompareType) {})", after, compareType);
+        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterOffsetTime(after, compareType);
     }
 

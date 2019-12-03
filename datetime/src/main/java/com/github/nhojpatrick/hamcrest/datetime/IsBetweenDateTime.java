@@ -23,13 +23,19 @@ public class IsBetweenDateTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBetweenDateTime.class);
 
-    public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after, final ChronoLocalDateTime before) {
-        LOGGER.debug("IsBetweenDateTime#betweenLocalDateTime((ChronoLocalDateTime) {}, (ChronoLocalDateTime) {})", after, before);
+    public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after,
+                                                      final ChronoLocalDateTime before) {
+        LOGGER.debug("IsBetweenDateTime#betweenLocalDateTime((After) {}, (Before) {})", after, before);
         return betweenLocalDateTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after, final CompareType afterCompareType, final ChronoLocalDateTime before, final CompareType beforeCompareType) {
-        LOGGER.debug("IsBetweenDateTime#betweenLocalDateTime((ChronoLocalDateTime) {}, (CompareType) {}, (ChronoLocalDateTime) {}, (CompareType) {})", after, afterCompareType, before, beforeCompareType);
+    public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after,
+                                                      final CompareType afterCompareType,
+                                                      final ChronoLocalDateTime before,
+                                                      final CompareType beforeCompareType) {
+        LOGGER.debug(
+                "IsBetweenDateTime#betweenLocalDateTime((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
+                after, afterCompareType, before, beforeCompareType);
 
         final CombinableMatcher betweenLocalDateTime = both(
                 new IsAfterLocalDateTime(after, afterCompareType)
@@ -58,12 +64,17 @@ public class IsBetweenDateTime {
     }
 
     public static <T> Matcher<T> betweenOffsetDateTime(final OffsetDateTime after, final OffsetDateTime before) {
-        LOGGER.debug("IsBetweenDateTime#betweenOffsetDateTime((OffsetDateTime) {}, (OffsetDateTime) {})", after, before);
+        LOGGER.debug("IsBetweenDateTime#betweenOffsetDateTime((After) {}, (Before) {})", after, before);
         return betweenOffsetDateTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> betweenOffsetDateTime(final OffsetDateTime after, final CompareType afterCompareType, final OffsetDateTime before, final CompareType beforeCompareType) {
-        LOGGER.debug("IsBetweenDateTime#betweenOffsetDateTime((OffsetDateTime) {}, (CompareType) {}, (OffsetDateTime) {}, (CompareType) {})", after, afterCompareType, before, beforeCompareType);
+    public static <T> Matcher<T> betweenOffsetDateTime(final OffsetDateTime after,
+                                                       final CompareType afterCompareType,
+                                                       final OffsetDateTime before,
+                                                       final CompareType beforeCompareType) {
+        LOGGER.debug(
+                "IsBetweenDateTime#betweenOffsetDateTime((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
+                after, afterCompareType, before, beforeCompareType);
 
         final CombinableMatcher betweenOffsetDateTime = both(
                 new IsAfterOffsetDateTime(after, afterCompareType)
@@ -91,13 +102,19 @@ public class IsBetweenDateTime {
         return betweenOffsetDateTime;
     }
 
-    public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after, final ChronoZonedDateTime before) {
-        LOGGER.debug("IsBetweenDateTime#betweenZonedDateTime((ChronoZonedDateTime) {}, (ChronoZonedDateTime) {})", after, before);
+    public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after,
+                                                      final ChronoZonedDateTime before) {
+        LOGGER.debug("IsBetweenDateTime#betweenZonedDateTime((After) {}, (Before) {})", after, before);
         return betweenZonedDateTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after, final CompareType afterCompareType, final ChronoZonedDateTime before, final CompareType beforeCompareType) {
-        LOGGER.debug("IsBetweenDateTime#betweenZonedDateTime((ChronoZonedDateTime) {}, (CompareType) {}, (ChronoZonedDateTime) {}, (CompareType) {})", after, afterCompareType, before, beforeCompareType);
+    public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after,
+                                                      final CompareType afterCompareType,
+                                                      final ChronoZonedDateTime before,
+                                                      final CompareType beforeCompareType) {
+        LOGGER.debug(
+                "IsBetweenDateTime#betweenZonedDateTime((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
+                after, afterCompareType, before, beforeCompareType);
 
         final CombinableMatcher betweenZonedDateTime = both(
                 new IsAfterZonedDateTime(after, afterCompareType)

@@ -17,12 +17,12 @@ public abstract class IsAfterDate<T>
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterDate.class);
 
     public static <T> Matcher<T> afterLocalDate(final LocalDate after) {
-        LOGGER.debug("IsAfterDate#afterLocalDate((LocalDate) {})", after);
+        LOGGER.debug("IsAfterDate#afterLocalDate((After) {})", after);
         return afterLocalDate(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterLocalDate(final LocalDate after, final CompareType compareType) {
-        LOGGER.debug("IsAfterDate#afterLocalDate((LocalDate) {}, (CompareType) {} )", after, compareType);
+        LOGGER.debug("IsAfterDate#afterLocalDate((After) {}, (CompareType) {} )", after, compareType);
         return new IsAfterLocalDate(after, compareType);
     }
 

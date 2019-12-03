@@ -101,6 +101,22 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>3.1.0</version>
+					<configuration>
+						<consoleOutput>true</consoleOutput>
+						<failsOnError>true</failsOnError>
+						<checkstyleRules>
+							<module name="Checker">
+								<!-- Checks for Size Violations.                             -->
+								<!-- See https://checkstyle.sourceforge.io/config_sizes.html -->
+								<module name="LineLength">
+									<property name="max" value="120"></property>
+								</module>
+								<!-- Checks for whitespace                               -->
+								<!-- See http://checkstyle.sf.net/config_whitespace.html -->
+								<module name="FileTabCharacter"></module>
+							</module>
+						</checkstyleRules>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -833,7 +849,7 @@
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
-		<version.com.puppycrawl.tools.checkstyle>8.23</version.com.puppycrawl.tools.checkstyle>
+		<version.com.puppycrawl.tools.checkstyle>8.27</version.com.puppycrawl.tools.checkstyle>
 		<version.org.apache.commons.lang3>[3,3.999.999)</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2,2.999.999)</version.org.hamcrest>

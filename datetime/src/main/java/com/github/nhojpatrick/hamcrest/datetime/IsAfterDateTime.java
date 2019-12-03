@@ -21,32 +21,32 @@ public abstract class IsAfterDateTime<T>
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterDateTime.class);
 
     public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after) {
-        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((ChronoLocalDateTime) {})", after);
+        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {})", after);
         return afterLocalDateTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after, final CompareType compareType) {
-        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((ChronoLocalDateTime) {}, (CompareType) {})", after, compareType);
+        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterLocalDateTime(after, compareType);
     }
 
     public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after) {
-        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((OffsetDateTime) {})", after);
+        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {})", after);
         return afterOffsetDateTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after, final CompareType compareType) {
-        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((OffsetDateTime) {}, (CompareType) {})", after, compareType);
+        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterOffsetDateTime(after, compareType);
     }
 
     public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after) {
-        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((ChronoZonedDateTime) {})", after);
+        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {})", after);
         return afterZonedDateTime(after, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after, final CompareType compareType) {
-        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((ChronoZonedDateTime) {}, (CompareType) {})", after, compareType);
+        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterZonedDateTime(after, compareType);
     }
 
