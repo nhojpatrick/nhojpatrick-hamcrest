@@ -48,6 +48,10 @@ commands:
       - run: ./mvnw -Pcicd clean install -DskipTests
       - run: ./mvnw -Pcicd test
       - run:
+          name: "Coveralls"
+          command: ./mvnw -Pcicd,qa_jacoco verify jacoco:report coveralls:report
+          when: on_success
+      - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always

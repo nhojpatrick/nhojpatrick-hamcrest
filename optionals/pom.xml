@@ -72,5 +72,7 @@
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.optionals</project.Automatic-Module-Name>
 		<checkstyle.maxAllowedViolations>23</checkstyle.maxAllowedViolations>
+		<jacoco.bundle.class.missedcount>999</jacoco.bundle.class.missedcount>
+		<jacoco.bundle.line.coveredratio>0%</jacoco.bundle.line.coveredratio>
 	</properties>
 </project>
