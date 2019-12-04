@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.hamcrest.lang.tests;
+package com.github.nhojpatrick.hamcrest.lang;
 
 import com.github.nhojpatrick.hamcrest.testing.MatcherObjectTester;
 import org.junit.jupiter.api.DynamicTest;
@@ -38,12 +38,12 @@ public class IsThrowableTest {
 
                 DynamicTest.dynamicTest("Type", () -> {
                     TESTER.assertFails(null, throwable(TestingIsThrowableException.class),
-                            "\nExpected: Throwable of class \"com.github.nhojpatrick.hamcrest.lang.tests.IsThrowableTest$TestingIsThrowableException\"\n      but: was null");
+                            "\nExpected: Throwable of class \"com.github.nhojpatrick.hamcrest.lang.IsThrowableTest$TestingIsThrowableException\"\n      but: was null");
                 }),
 
                 DynamicTest.dynamicTest("Type & Message", () -> {
                     TESTER.assertFails(null, throwable(TestingIsThrowableException.class, "message"),
-                            "\nExpected: Throwable of class \"com.github.nhojpatrick.hamcrest.lang.tests.IsThrowableTest$TestingIsThrowableException\" with message \"message\"\n      but: was null");
+                            "\nExpected: Throwable of class \"com.github.nhojpatrick.hamcrest.lang.IsThrowableTest$TestingIsThrowableException\" with message \"message\"\n      but: was null");
                 })
 
         );
@@ -86,13 +86,13 @@ public class IsThrowableTest {
                 DynamicTest.dynamicTest("Type", () -> {
                     final TestingIsThrowableException actual = new TestingIsThrowableException();
                     TESTER.assertFails(actual, throwable(RuntimeException.class),
-                            "\nExpected: Throwable of class \"java.lang.RuntimeException\"\n      but: was Throwable of class \"com.github.nhojpatrick.hamcrest.lang.tests.IsThrowableTest$TestingIsThrowableException\"");
+                            "\nExpected: Throwable of class \"java.lang.RuntimeException\"\n      but: was Throwable of class \"com.github.nhojpatrick.hamcrest.lang.IsThrowableTest$TestingIsThrowableException\"");
                 }),
 
                 DynamicTest.dynamicTest("Type & Message", () -> {
                     final TestingIsThrowableException actual = new TestingIsThrowableException("message");
                     TESTER.assertFails(actual, throwable(RuntimeException.class, "different"),
-                            "\nExpected: Throwable of class \"java.lang.RuntimeException\" with message \"different\"\n      but: was Throwable of class \"com.github.nhojpatrick.hamcrest.lang.tests.IsThrowableTest$TestingIsThrowableException\" with message \"message\"");
+                            "\nExpected: Throwable of class \"java.lang.RuntimeException\" with message \"different\"\n      but: was Throwable of class \"com.github.nhojpatrick.hamcrest.lang.IsThrowableTest$TestingIsThrowableException\" with message \"message\"");
                 })
 
         );

@@ -1,18 +1,18 @@
-package com.github.nhojpatrick.hamcrest.datetime.tests;
+package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.testing.MatcherTypedTester;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
+import java.time.LocalTime;
+import java.time.OffsetTime;
 import java.time.ZoneOffset;
 
-public class IsOffsetDateTimeTest {
+public class IsOffsetTimeTest {
 
-    private static final MatcherTypedTester<OffsetDateTime> TESTER = new MatcherTypedTester<>();
+    private static final MatcherTypedTester<OffsetTime> TESTER = new MatcherTypedTester<>();
 
-    private static final OffsetDateTime TYPED_NULL = null;
-    private static final OffsetDateTime DATE_HARD_CODED = OffsetDateTime.of(
-            LocalDateTime.of(2018, 05, 28, 01, 02, 03),
+    private static final OffsetTime TYPED_NULL = null;
+    private static final OffsetTime DATE_HARD_CODED = OffsetTime.of(
+            LocalTime.of(01, 02, 03),
             ZoneOffset.UTC);
 //    private static final Optional<String> POPULATED = Optional.of("alpha");
 //    private static final Optional<String> MISMATCH = Optional.of("bravo");
@@ -86,17 +86,17 @@ public class IsOffsetDateTimeTest {
 //    }
 
 //    @Nested
-//    @DisplayName("Null OffsetDateTime tests")
-//    class nullOffsetDateTime {
+//    @DisplayName("Null OffsetTime tests")
+//    class nullOffsetTime {
 //
 //        @Test
 //        public void date() {
-//            TESTER.assertFails(DATE_HARD_CODED, nullOffsetDateTime(), "\nExpected: null\n      but: <2018-05-28T01:02:03Z>");
+//            TESTER.assertFails(DATE_HARD_CODED, nullOffsetTime(), "\nExpected: null\n      but: <01:02:03Z>");
 //        }
 //
 //        @Test
 //        public void typedNull() {
-//            TESTER.assertValid(TYPED_NULL, nullOffsetDateTime());
+//            TESTER.assertValid(TYPED_NULL, nullOffsetTime());
 //        }
 //
 //    }

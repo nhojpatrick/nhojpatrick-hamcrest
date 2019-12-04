@@ -1,6 +1,5 @@
-package com.github.nhojpatrick.hamcrest.testing.tests;
+package com.github.nhojpatrick.hamcrest.testing;
 
-import com.github.nhojpatrick.hamcrest.testing.MatcherTypedTester;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
