@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.hamcrest.lang.tests;
+package com.github.nhojpatrick.hamcrest.lang;
 
 import com.github.nhojpatrick.hamcrest.testing.MatcherObjectTester;
 import org.junit.jupiter.api.Test;

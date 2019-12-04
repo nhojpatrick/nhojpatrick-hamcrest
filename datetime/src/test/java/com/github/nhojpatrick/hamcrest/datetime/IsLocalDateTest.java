@@ -1,15 +1,15 @@
-package com.github.nhojpatrick.hamcrest.datetime.tests;
+package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.testing.MatcherTypedTester;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-public class IsLocalDateTimeTest {
+public class IsLocalDateTest {
 
-    private static final MatcherTypedTester<LocalDateTime> TESTER = new MatcherTypedTester<>();
+    private static final MatcherTypedTester<LocalDate> TESTER = new MatcherTypedTester<>();
 
-    private static final LocalDateTime TYPED_NULL = null;
-    private static final LocalDateTime DATE_HARD_CODED = LocalDateTime.of(2018, 05, 28, 01, 02, 03);
+    private static final LocalDate TYPED_NULL = null;
+    private static final LocalDate DATE_HARD_CODED = LocalDate.of(2018, 05, 28);
 //    private static final Optional<String> POPULATED = Optional.of("alpha");
 //    private static final Optional<String> MISMATCH = Optional.of("bravo");
 
@@ -82,17 +82,17 @@ public class IsLocalDateTimeTest {
 //    }
 
 //    @Nested
-//    @DisplayName("Null LocalDateTime tests")
-//    class nullLocalDateTime {
+//    @DisplayName("Null LocalDate tests")
+//    class nullLocalDate {
 //
 //        @Test
 //        public void date() {
-//            TESTER.assertFails(DATE_HARD_CODED, nullLocalDateTime(), "\nExpected: null\n      but: <2018-05-28T01:02:03>");
+//            TESTER.assertFails(DATE_HARD_CODED, nullLocalDate(), "\nExpected: null\n      but: <2018-05-28>");
 //        }
 //
 //        @Test
 //        public void typedNull() {
-//            TESTER.assertValid(TYPED_NULL, nullLocalDateTime());
+//            TESTER.assertValid(TYPED_NULL, nullLocalDate());
 //        }
 //
 //    }

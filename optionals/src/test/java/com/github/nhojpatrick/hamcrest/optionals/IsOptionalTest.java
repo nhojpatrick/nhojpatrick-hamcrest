@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.hamcrest.optionals.tests;
+package com.github.nhojpatrick.hamcrest.optionals;
 
 import com.github.nhojpatrick.hamcrest.testing.MatcherObjectTester;
 import org.junit.jupiter.api.DisplayName;
