@@ -51,6 +51,7 @@ commands:
           name: "Coveralls"
           command: ./mvnw -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
           when: on_success
+      - run: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
       - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
