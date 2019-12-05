@@ -746,32 +746,32 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-all</artifactId>
-				<version>${project.version}</version>
+				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
-				<version>${project.version}</version>
+				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
-				<version>${project.version}</version>
+				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-				<version>${project.version}</version>
+				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
-				<version>${project.version}</version>
+				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-testing</artifactId>
-				<version>${project.version}</version>
+				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
@@ -838,6 +838,8 @@
 	</distributionManagement>
 	<!--properties / -->
 	<properties>
+		<!-- next minor version -->
+		<project.custom.next.version>1.0.99</project.custom.next.version>
 		<!-- custom properties -->
 		<project.custom.encoding>UTF-8</project.custom.encoding>
 		<project.custom.java.version>1.8</project.custom.java.version>
