@@ -17,6 +17,9 @@ public abstract class AbstractIsAfter<T>
         if (Objects.isNull(after)) {
             throw new IllegalArgumentException("Supplied After must not be null");
         }
+        if (Objects.isNull(compareType)) {
+            throw new IllegalArgumentException("Supplied CompareType must not be null");
+        }
 
         this.after = after;
         this.compareType = compareType;

@@ -13,7 +13,7 @@ import java.time.ZonedDateTime;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
-public class IsDateTime {
+public final class IsDateTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsDateTime.class);
 
@@ -45,6 +45,10 @@ public class IsDateTime {
     public static <T> Matcher<T> zonedDateTime(final Matcher<T> matcher) {
         LOGGER.debug("IsDateTime#zonedDateTime((Matcher<T>) {})", matcher);
         return new IsZonedDateTime(matcher);
+    }
+
+    IsDateTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

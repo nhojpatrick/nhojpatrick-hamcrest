@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 import static org.hamcrest.core.CombinableMatcher.both;
 
-public class IsBetweenDate {
+public final class IsBetweenDate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBetweenDate.class);
 
@@ -53,6 +53,10 @@ public class IsBetweenDate {
         }
 
         return betweenLocalDate;
+    }
+
+    IsBetweenDate() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

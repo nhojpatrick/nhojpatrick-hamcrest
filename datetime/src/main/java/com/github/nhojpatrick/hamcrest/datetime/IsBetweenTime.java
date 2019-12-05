@@ -16,7 +16,7 @@ import java.time.OffsetTime;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 import static org.hamcrest.core.CombinableMatcher.both;
 
-public class IsBetweenTime {
+public final class IsBetweenTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBetweenTime.class);
 
@@ -94,6 +94,10 @@ public class IsBetweenTime {
         }
 
         return betweenOffsetTime;
+    }
+
+    IsBetweenTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
-import com.github.nhojpatrick.hamcrest.datetime.internal.after.AbstractIsAfter;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterOffsetTime;
 import org.hamcrest.Matcher;
@@ -13,8 +12,7 @@ import java.time.OffsetTime;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 
-public abstract class IsAfterTime<T>
-        extends AbstractIsAfter<T> {
+public final class IsAfterTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterTime.class);
 
@@ -38,8 +36,8 @@ public abstract class IsAfterTime<T>
         return new IsAfterOffsetTime(after, compareType);
     }
 
-    protected IsAfterTime(final T after, final CompareType compareType) {
-        super(after, compareType);
+    IsAfterTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

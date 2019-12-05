@@ -12,9 +12,23 @@ import static com.github.nhojpatrick.hamcrest.datetime.IsBetweenDate.betweenLoca
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IsBetweenDateTest {
+
+    @Test
+    public void checkIs_StaticUtilityClass() {
+        final Executable testMethod = () -> {
+            new IsBetweenDate();
+        };
+        final AssertionError thrown = assertThrows(AssertionError.class, testMethod);
+        assertAll(
+                () -> assertThat(thrown.getMessage(), is(equalTo("Static utility class - cannot be instantiated."))),
+                () -> assertThat(thrown.getCause(), is(nullValue()))
+        );
+    }
 
     @Nested
     @DisplayName("betweenLocalDate tests")

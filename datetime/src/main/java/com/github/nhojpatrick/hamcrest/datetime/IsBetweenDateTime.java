@@ -19,7 +19,7 @@ import java.time.chrono.ChronoZonedDateTime;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 import static org.hamcrest.core.CombinableMatcher.both;
 
-public class IsBetweenDateTime {
+public final class IsBetweenDateTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBetweenDateTime.class);
 
@@ -140,6 +140,10 @@ public class IsBetweenDateTime {
         }
 
         return betweenZonedDateTime;
+    }
+
+    IsBetweenDateTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }
