@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
-public class IsDate {
+public final class IsDate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsDate.class);
 
@@ -21,6 +21,10 @@ public class IsDate {
     public static <T> Matcher<T> localDate(final Matcher<T> matcher) {
         LOGGER.debug("IsDate#localDate((Matcher<T>) {})", matcher);
         return new IsLocalDate(matcher);
+    }
+
+    IsDate() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

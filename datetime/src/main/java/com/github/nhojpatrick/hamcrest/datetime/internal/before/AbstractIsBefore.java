@@ -17,6 +17,9 @@ public abstract class AbstractIsBefore<T>
         if (Objects.isNull(before)) {
             throw new IllegalArgumentException("Supplied Before must not be null");
         }
+        if (Objects.isNull(compareType)) {
+            throw new IllegalArgumentException("Supplied CompareType must not be null");
+        }
 
         this.before = before;
         this.compareType = compareType;

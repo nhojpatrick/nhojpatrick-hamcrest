@@ -11,7 +11,7 @@ import java.time.OffsetTime;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
-public class IsTime {
+public final class IsTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsTime.class);
 
@@ -33,6 +33,10 @@ public class IsTime {
     public static <T> Matcher<T> offsetTime(final Matcher<T> matcher) {
         LOGGER.debug("IsTime#offsetTime((Matcher<T>) {})", matcher);
         return new IsOffsetTime(matcher);
+    }
+
+    IsTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

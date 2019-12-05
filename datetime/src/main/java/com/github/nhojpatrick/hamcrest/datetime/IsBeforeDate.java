@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
-import com.github.nhojpatrick.hamcrest.datetime.internal.before.AbstractIsBefore;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDate;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
@@ -11,8 +10,7 @@ import java.time.LocalDate;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 
-public abstract class IsBeforeDate<T>
-        extends AbstractIsBefore<T> {
+public final class IsBeforeDate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBeforeDate.class);
 
@@ -26,8 +24,8 @@ public abstract class IsBeforeDate<T>
         return new IsBeforeLocalDate(before, compareType);
     }
 
-    protected IsBeforeDate(final T before, final CompareType compareType) {
-        super(before, compareType);
+    IsBeforeDate() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

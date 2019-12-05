@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
-import com.github.nhojpatrick.hamcrest.datetime.internal.before.AbstractIsBefore;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeZonedDateTime;
@@ -15,8 +14,7 @@ import java.time.chrono.ChronoZonedDateTime;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 
-public abstract class IsBeforeDateTime<T>
-        extends AbstractIsBefore<T> {
+public final class IsBeforeDateTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBeforeDateTime.class);
 
@@ -50,8 +48,8 @@ public abstract class IsBeforeDateTime<T>
         return new IsBeforeZonedDateTime(before, compareType);
     }
 
-    protected IsBeforeDateTime(final T before, final CompareType compareType) {
-        super(before, compareType);
+    IsBeforeDateTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

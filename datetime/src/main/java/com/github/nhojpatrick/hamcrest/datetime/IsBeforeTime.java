@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
-import com.github.nhojpatrick.hamcrest.datetime.internal.before.AbstractIsBefore;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetTime;
 import org.hamcrest.Matcher;
@@ -13,17 +12,16 @@ import java.time.OffsetTime;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 
-public abstract class IsBeforeTime<T>
-        extends AbstractIsBefore<T> {
+public final class IsBeforeTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBeforeTime.class);
 
-    public static <T> Matcher<T> beforeLocalTime( final LocalTime before) {
+    public static <T> Matcher<T> beforeLocalTime(final LocalTime before) {
         LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {})", before);
         return beforeLocalTime(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalTime( final LocalTime before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeLocalTime(final LocalTime before, final CompareType compareType) {
         LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeLocalTime(before, compareType);
     }
@@ -38,8 +36,8 @@ public abstract class IsBeforeTime<T>
         return new IsBeforeOffsetTime(before, compareType);
     }
 
-    protected IsBeforeTime(final T before, final CompareType compareType) {
-        super(before, compareType);
+    IsBeforeTime() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }
