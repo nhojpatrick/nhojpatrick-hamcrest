@@ -73,8 +73,11 @@ public class IsBetweenTimeTest {
             final LocalTime before = now.plusHours(2);
 
             final Executable testMethod = () -> betweenLocalTime(null, before);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied After must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied After must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -102,8 +105,11 @@ public class IsBetweenTimeTest {
             final LocalTime after = now.minusHours(2);
 
             final Executable testMethod = () -> betweenLocalTime(after, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -112,11 +118,14 @@ public class IsBetweenTimeTest {
             final LocalTime now = LocalTime.now().withHour(9);
 
             final Executable testMethod = () -> betweenLocalTime(now, now);
-            final IllegalStateException exception = assertThrows(IllegalStateException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo(String.format("After <%s> must not equal Before <%s>.",
-                    now,
-                    now
-            ))));
+            final IllegalStateException thrown = assertThrows(IllegalStateException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo(String.format("After <%s> must not equal Before <%s>.",
+                            now,
+                            now
+                    )))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -127,11 +136,14 @@ public class IsBetweenTimeTest {
             final LocalTime before = now.minusHours(2);
 
             final Executable testMethod = () -> betweenLocalTime(after, before);
-            final IllegalStateException exception = assertThrows(IllegalStateException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo(String.format("After <%s> must be Before <%s>.",
-                    after,
-                    before
-            ))));
+            final IllegalStateException thrown = assertThrows(IllegalStateException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo(String.format("After <%s> must be Before <%s>.",
+                            after,
+                            before
+                    )))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
     }
@@ -177,8 +189,11 @@ public class IsBetweenTimeTest {
             final OffsetTime before = now.plusHours(2);
 
             final Executable testMethod = () -> betweenOffsetTime(null, before);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied After must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied After must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -206,8 +221,11 @@ public class IsBetweenTimeTest {
             final OffsetTime after = now.minusHours(2);
 
             final Executable testMethod = () -> betweenOffsetTime(after, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -216,11 +234,14 @@ public class IsBetweenTimeTest {
             final OffsetTime now = OffsetTime.now().withHour(9);
 
             final Executable testMethod = () -> betweenOffsetTime(now, now);
-            final IllegalStateException exception = assertThrows(IllegalStateException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo(String.format("After <%s> must not equal Before <%s>.",
-                    now,
-                    now
-            ))));
+            final IllegalStateException thrown = assertThrows(IllegalStateException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo(String.format("After <%s> must not equal Before <%s>.",
+                            now,
+                            now
+                    )))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -231,11 +252,14 @@ public class IsBetweenTimeTest {
             final OffsetTime before = now.minusHours(2);
 
             final Executable testMethod = () -> betweenOffsetTime(after, before);
-            final IllegalStateException exception = assertThrows(IllegalStateException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo(String.format("After <%s> must be Before <%s>.",
-                    after,
-                    before
-            ))));
+            final IllegalStateException thrown = assertThrows(IllegalStateException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo(String.format("After <%s> must be Before <%s>.",
+                            after,
+                            before
+                    )))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
     }
