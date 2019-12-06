@@ -15,7 +15,6 @@ import java.time.ZonedDateTime;
 import static com.github.nhojpatrick.hamcrest.datetime.IsAfterDateTime.afterLocalDateTime;
 import static com.github.nhojpatrick.hamcrest.datetime.IsAfterDateTime.afterOffsetDateTime;
 import static com.github.nhojpatrick.hamcrest.datetime.IsAfterDateTime.afterZonedDateTime;
-import static com.github.nhojpatrick.hamcrest.datetime.IsAfterTime.afterLocalTime;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;

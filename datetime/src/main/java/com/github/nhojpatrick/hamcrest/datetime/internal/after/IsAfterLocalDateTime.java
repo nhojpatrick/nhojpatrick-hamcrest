@@ -7,7 +7,8 @@ import java.time.chrono.ChronoLocalDateTime;
 public class IsAfterLocalDateTime<T extends ChronoLocalDateTime>
         extends AbstractIsAfter<T> {
 
-    public IsAfterLocalDateTime(final T after, final CompareType compareType) {
+    public IsAfterLocalDateTime(final T after,
+                                final CompareType compareType) {
         super(after, compareType);
     }
 

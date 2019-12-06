@@ -7,7 +7,8 @@ import java.time.chrono.ChronoLocalDate;
 public class IsBeforeLocalDate<T extends ChronoLocalDate>
         extends AbstractIsBefore<T> {
 
-    public IsBeforeLocalDate(final T before, final CompareType compareType) {
+    public IsBeforeLocalDate(final T before,
+                             final CompareType compareType) {
         super(before, compareType);
     }
 

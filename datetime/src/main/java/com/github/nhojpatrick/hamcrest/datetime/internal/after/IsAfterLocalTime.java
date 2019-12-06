@@ -7,7 +7,8 @@ import java.time.LocalTime;
 public class IsAfterLocalTime<T extends LocalTime>
         extends AbstractIsAfter<T> {
 
-    public IsAfterLocalTime(final T after, final CompareType compareType) {
+    public IsAfterLocalTime(final T after,
+                            final CompareType compareType) {
         super(after, compareType);
     }
 

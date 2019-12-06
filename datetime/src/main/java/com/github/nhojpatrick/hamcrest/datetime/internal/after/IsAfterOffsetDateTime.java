@@ -7,7 +7,8 @@ import java.time.OffsetDateTime;
 public class IsAfterOffsetDateTime<T extends OffsetDateTime>
         extends AbstractIsAfter<T> {
 
-    public IsAfterOffsetDateTime(final T after, final CompareType compareType) {
+    public IsAfterOffsetDateTime(final T after,
+                                 final CompareType compareType) {
         super(after, compareType);
     }
 
