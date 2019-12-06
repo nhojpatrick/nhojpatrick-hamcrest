@@ -122,7 +122,7 @@ public class IsAfterTimeTest {
             final LocalTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertFails(now, afterLocalTime(future, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
+                    String.format("\nExpected: after or equal to <%s>\n      but: was <%s>",
                             future,
                             now
                     ));
@@ -298,7 +298,7 @@ public class IsAfterTimeTest {
             final OffsetTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertFails(now, afterOffsetTime(future, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
+                    String.format("\nExpected: after or equal to <%s>\n      but: was <%s>",
                             future,
                             now
                     ));

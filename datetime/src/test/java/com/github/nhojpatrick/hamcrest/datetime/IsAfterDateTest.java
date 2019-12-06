@@ -118,7 +118,7 @@ public class IsAfterDateTest {
             final LocalDate future = now.plusYears(1).plusMonths(2).plusDays(3);
 
             tester.assertFails(now, afterLocalDate(future, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
+                    String.format("\nExpected: after or equal to <%s>\n      but: was <%s>",
                             future,
                             now
                     ));

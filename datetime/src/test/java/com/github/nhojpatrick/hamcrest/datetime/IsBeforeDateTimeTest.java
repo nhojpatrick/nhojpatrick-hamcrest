@@ -145,7 +145,7 @@ public class IsBeforeDateTimeTest {
             final LocalDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeLocalDateTime(past, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
+                    String.format("\nExpected: before or equal to <%s>\n      but: was <%s>",
                             past,
                             now
                     ));
@@ -321,7 +321,7 @@ public class IsBeforeDateTimeTest {
             final OffsetDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeOffsetDateTime(past, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
+                    String.format("\nExpected: before or equal to <%s>\n      but: was <%s>",
                             past,
                             now
                     ));
@@ -497,7 +497,7 @@ public class IsBeforeDateTimeTest {
             final ZonedDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeZonedDateTime(past, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
+                    String.format("\nExpected: before or equal to <%s>\n      but: was <%s>",
                             past,
                             now
                     ));

@@ -124,7 +124,7 @@ public class IsAfterDateTimeTest {
             final LocalDateTime future = now.plusYears(1).plusMonths(2).plusDays(3);
 
             tester.assertFails(now, afterLocalDateTime(future, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
+                    String.format("\nExpected: after or equal to <%s>\n      but: was <%s>",
                             future,
                             now
                     ));
@@ -300,7 +300,7 @@ public class IsAfterDateTimeTest {
             final OffsetDateTime future = now.plusYears(1).plusMonths(2).plusDays(3);
 
             tester.assertFails(now, afterOffsetDateTime(future, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
+                    String.format("\nExpected: after or equal to <%s>\n      but: was <%s>",
                             future,
                             now
                     ));
@@ -477,7 +477,7 @@ public class IsAfterDateTimeTest {
             final ZonedDateTime future = now.plusYears(1).plusMonths(2).plusDays(3);
 
             tester.assertFails(now, afterZonedDateTime(future, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
+                    String.format("\nExpected: after or equal to <%s>\n      but: was <%s>",
                             future,
                             now
                     ));

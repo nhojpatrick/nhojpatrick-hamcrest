@@ -28,10 +28,20 @@ public abstract class AbstractIsAfter<T>
     @Override
     public void describeTo(final Description description) {
 
-        description
-                .appendText("after ")
-                .appendValue(this.after)
-        ;
+        switch (this.compareType) {
+            case INCLUSIVE:
+                description
+                        .appendText("after or equal to ")
+                        .appendValue(this.after);
+                break;
+
+            case EXCLUSIVE:
+            default:
+                description
+                        .appendText("after ")
+                        .appendValue(this.after);
+                break;
+        }
     }
 
 }

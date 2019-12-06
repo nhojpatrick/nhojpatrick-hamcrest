@@ -28,10 +28,20 @@ public abstract class AbstractIsBefore<T>
     @Override
     public void describeTo(final Description description) {
 
-        description
-                .appendText("before ")
-                .appendValue(this.before)
-        ;
+        switch (this.compareType) {
+            case INCLUSIVE:
+                description
+                        .appendText("before or equal to ")
+                        .appendValue(this.before);
+                break;
+
+            case EXCLUSIVE:
+            default:
+                description
+                        .appendText("before ")
+                        .appendValue(this.before);
+                break;
+        }
     }
 
 }

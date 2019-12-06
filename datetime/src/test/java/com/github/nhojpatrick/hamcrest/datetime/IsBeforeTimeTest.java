@@ -143,7 +143,7 @@ public class IsBeforeTimeTest {
             final LocalTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeLocalTime(past, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
+                    String.format("\nExpected: before or equal to <%s>\n      but: was <%s>",
                             past,
                             now
                     ));
@@ -319,7 +319,7 @@ public class IsBeforeTimeTest {
             final OffsetTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeOffsetTime(past, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
+                    String.format("\nExpected: before or equal to <%s>\n      but: was <%s>",
                             past,
                             now
                     ));
