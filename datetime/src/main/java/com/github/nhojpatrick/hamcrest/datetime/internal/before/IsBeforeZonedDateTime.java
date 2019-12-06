@@ -7,7 +7,8 @@ import java.time.chrono.ChronoZonedDateTime;
 public class IsBeforeZonedDateTime<T extends ChronoZonedDateTime>
         extends AbstractIsBefore<T> {
 
-    public IsBeforeZonedDateTime(final T before, final CompareType compareType) {
+    public IsBeforeZonedDateTime(final T before,
+                                 final CompareType compareType) {
         super(before, compareType);
     }
 

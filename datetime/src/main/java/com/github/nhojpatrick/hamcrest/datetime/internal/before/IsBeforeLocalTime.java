@@ -7,7 +7,8 @@ import java.time.LocalTime;
 public class IsBeforeLocalTime<T extends LocalTime>
         extends AbstractIsBefore<T> {
 
-    public IsBeforeLocalTime(final T before, final CompareType compareType) {
+    public IsBeforeLocalTime(final T before,
+                             final CompareType compareType) {
         super(before, compareType);
     }
 

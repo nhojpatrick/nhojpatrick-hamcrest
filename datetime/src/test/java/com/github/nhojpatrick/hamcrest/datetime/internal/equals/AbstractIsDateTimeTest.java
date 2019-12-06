@@ -1,6 +1,5 @@
 package com.github.nhojpatrick.hamcrest.datetime.internal.equals;
 
-import com.github.nhojpatrick.hamcrest.datetime.IsBetweenTime;
 import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AbstractIsDateTimeTest {
 
-    class TestingAbstractIsDateTime<T extends LocalDateTime>
+    static class TestingAbstractIsDateTime<T extends LocalDateTime>
             extends AbstractIsDateTime<T> {
 
         public TestingAbstractIsDateTime(final Matcher<T> matcher, final String type) {
