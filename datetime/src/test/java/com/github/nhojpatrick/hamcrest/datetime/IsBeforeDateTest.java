@@ -140,7 +140,7 @@ public class IsBeforeDateTest {
             final LocalDate past = now.minusYears(1).minusMonths(2).minusDays(3);
 
             tester.assertFails(now, beforeLocalDate(past, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
+                    String.format("\nExpected: before or equal to <%s>\n      but: was <%s>",
                             past,
                             now
                     ));
