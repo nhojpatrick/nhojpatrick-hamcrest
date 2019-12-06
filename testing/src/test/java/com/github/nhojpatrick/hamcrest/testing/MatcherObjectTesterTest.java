@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MatcherObjectTesterTest {
@@ -25,8 +27,11 @@ public class MatcherObjectTesterTest {
         @Test
         public void matcherNull() {
             final Executable testMethod = () -> TESTER.assertFails(EMPTY_STRING, null, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Null Matcher")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Null Matcher"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -43,8 +48,11 @@ public class MatcherObjectTesterTest {
         @Test
         public void matcherNull() {
             final Executable testMethod = () -> TESTER.assertValid(EMPTY_STRING, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Null Matcher")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Null Matcher"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
