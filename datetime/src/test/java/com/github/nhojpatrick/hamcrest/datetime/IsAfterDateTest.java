@@ -67,8 +67,11 @@ public class IsAfterDateTest {
             final LocalDate now = LocalDate.now();
 
             final Executable testMethod = () -> afterLocalDate(null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied After must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied After must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -149,24 +152,33 @@ public class IsAfterDateTest {
             final LocalDate now = LocalDate.now();
 
             final Executable testMethod = () -> afterLocalDate(now, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied CompareType must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied CompareType must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullExclusive() {
 
             final Executable testMethod = () -> afterLocalDate(null, CompareType.EXCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied After must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied After must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullInclusive() {
 
             final Executable testMethod = () -> afterLocalDate(null, CompareType.INCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied After must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied After must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -190,11 +202,7 @@ public class IsAfterDateTest {
 
             final LocalDate now = LocalDate.now();
 
-            tester.assertFails(now, afterLocalDate(now, CompareType.INCLUSIVE),
-                    String.format("\nExpected: after <%s>\n      but: was <%s>",
-                            now,
-                            now
-                    ));
+            tester.assertValid(now, afterLocalDate(now, CompareType.INCLUSIVE));
         }
 
     }

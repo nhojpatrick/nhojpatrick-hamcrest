@@ -14,7 +14,15 @@ public class IsAfterOffsetDateTime<T extends OffsetDateTime>
     @Override
     protected boolean matchesSafely(final T item) {
 
-        final boolean matchesSafely = item.isAfter(this.after);
+        boolean matchesSafely = item.isAfter(this.after);
+
+        switch (this.compareType) {
+            case INCLUSIVE:
+                final boolean isEqual = item.isEqual(this.after);
+                matchesSafely = isEqual || matchesSafely;
+                break;
+        }
+
         return matchesSafely;
     }
 

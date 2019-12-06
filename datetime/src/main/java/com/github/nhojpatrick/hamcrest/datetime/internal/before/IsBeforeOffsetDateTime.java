@@ -14,7 +14,15 @@ public class IsBeforeOffsetDateTime<T extends OffsetDateTime>
     @Override
     protected boolean matchesSafely(final T item) {
 
-        final boolean matchesSafely = item.isBefore(this.before);
+        boolean matchesSafely = item.isBefore(this.before);
+
+        switch (this.compareType) {
+            case INCLUSIVE:
+                final boolean isEqual = item.isEqual(this.before);
+                matchesSafely = isEqual || matchesSafely;
+                break;
+        }
+
         return matchesSafely;
     }
 

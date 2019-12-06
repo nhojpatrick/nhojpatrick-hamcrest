@@ -56,7 +56,7 @@ public class IsCollection<T extends Collection>
     }
 
     protected IsCollection(final IsCollectionsFlag flag, final Integer size) {
-        super(Collection.class.getName(), flag, size);
+        this(Collection.class.getName(), flag, size);
     }
 
     protected IsCollection(final String type, final IsCollectionsFlag flag, final Integer size) {

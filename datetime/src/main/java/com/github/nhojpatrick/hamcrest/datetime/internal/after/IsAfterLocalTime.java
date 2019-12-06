@@ -14,7 +14,15 @@ public class IsAfterLocalTime<T extends LocalTime>
     @Override
     protected boolean matchesSafely(final T item) {
 
-        final boolean matchesSafely = item.isAfter(this.after);
+        boolean matchesSafely = item.isAfter(this.after);
+
+        switch (this.compareType) {
+            case INCLUSIVE:
+                final boolean notBefore = !item.isBefore(this.after);
+                matchesSafely = notBefore || matchesSafely;
+                break;
+        }
+
         return matchesSafely;
     }
 

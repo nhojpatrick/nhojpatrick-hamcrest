@@ -45,7 +45,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
             final LocalDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeLocalDateTime(future));
@@ -56,7 +56,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
             final LocalDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeLocalDateTime(past),
@@ -69,11 +69,14 @@ public class IsBeforeDateTimeTest {
         @Test
         public void beforeNull() {
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
 
             final Executable testMethod = () -> beforeLocalDateTime(null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -81,7 +84,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
 
             tester.assertFails(now, beforeLocalDateTime(now),
                     String.format("\nExpected: before <%s>\n      but: was <%s>",
@@ -101,7 +104,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
             final LocalDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeLocalDateTime(future, CompareType.EXCLUSIVE));
@@ -112,7 +115,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
             final LocalDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeLocalDateTime(future, CompareType.INCLUSIVE));
@@ -123,7 +126,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
             final LocalDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeLocalDateTime(past, CompareType.EXCLUSIVE),
@@ -138,7 +141,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
             final LocalDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeLocalDateTime(past, CompareType.INCLUSIVE),
@@ -151,27 +154,36 @@ public class IsBeforeDateTimeTest {
         @Test
         public void beforeCompareTypeNull() {
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
 
             final Executable testMethod = () -> beforeLocalDateTime(now, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied CompareType must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied CompareType must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullExclusive() {
 
             final Executable testMethod = () -> beforeLocalDateTime(null, CompareType.EXCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullInclusive() {
 
             final Executable testMethod = () -> beforeLocalDateTime(null, CompareType.INCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -179,7 +191,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
 
             tester.assertFails(now, beforeLocalDateTime(now, CompareType.EXCLUSIVE),
                     String.format("\nExpected: before <%s>\n      but: was <%s>",
@@ -193,13 +205,9 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
 
-            tester.assertFails(now, beforeLocalDateTime(now, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
-                            now,
-                            now
-                    ));
+            tester.assertValid(now, beforeLocalDateTime(now, CompareType.INCLUSIVE));
         }
 
     }
@@ -213,7 +221,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
             final OffsetDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeOffsetDateTime(future));
@@ -224,7 +232,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
             final OffsetDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeOffsetDateTime(past),
@@ -237,11 +245,14 @@ public class IsBeforeDateTimeTest {
         @Test
         public void beforeNull() {
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
 
             final Executable testMethod = () -> beforeOffsetDateTime(null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -249,7 +260,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
 
             tester.assertFails(now, beforeOffsetDateTime(now),
                     String.format("\nExpected: before <%s>\n      but: was <%s>",
@@ -269,7 +280,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
             final OffsetDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeOffsetDateTime(future, CompareType.EXCLUSIVE));
@@ -280,7 +291,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
             final OffsetDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeOffsetDateTime(future, CompareType.INCLUSIVE));
@@ -291,7 +302,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
             final OffsetDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeOffsetDateTime(past, CompareType.EXCLUSIVE),
@@ -306,7 +317,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
             final OffsetDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeOffsetDateTime(past, CompareType.INCLUSIVE),
@@ -319,27 +330,36 @@ public class IsBeforeDateTimeTest {
         @Test
         public void beforeCompareTypeNull() {
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
 
             final Executable testMethod = () -> beforeOffsetDateTime(now, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied CompareType must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied CompareType must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullExclusive() {
 
             final Executable testMethod = () -> beforeOffsetDateTime(null, CompareType.EXCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullInclusive() {
 
             final Executable testMethod = () -> beforeOffsetDateTime(null, CompareType.INCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -347,7 +367,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
 
             tester.assertFails(now, beforeOffsetDateTime(now, CompareType.EXCLUSIVE),
                     String.format("\nExpected: before <%s>\n      but: was <%s>",
@@ -361,13 +381,9 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
 
-            tester.assertFails(now, beforeOffsetDateTime(now, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
-                            now,
-                            now
-                    ));
+            tester.assertValid(now, beforeOffsetDateTime(now, CompareType.INCLUSIVE));
         }
 
     }
@@ -381,7 +397,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
             final ZonedDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeZonedDateTime(future));
@@ -392,7 +408,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
             final ZonedDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeZonedDateTime(past),
@@ -405,11 +421,14 @@ public class IsBeforeDateTimeTest {
         @Test
         public void beforeNull() {
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
 
             final Executable testMethod = () -> beforeZonedDateTime(null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -417,7 +436,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
 
             tester.assertFails(now, beforeZonedDateTime(now),
                     String.format("\nExpected: before <%s>\n      but: was <%s>",
@@ -437,7 +456,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
             final ZonedDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeZonedDateTime(future, CompareType.EXCLUSIVE));
@@ -448,7 +467,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
             final ZonedDateTime future = now.plusHours(1).plusMinutes(2).plusSeconds(3);
 
             tester.assertValid(now, beforeZonedDateTime(future, CompareType.INCLUSIVE));
@@ -459,7 +478,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
             final ZonedDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeZonedDateTime(past, CompareType.EXCLUSIVE),
@@ -474,7 +493,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
             final ZonedDateTime past = now.minusHours(1).minusMinutes(2).minusSeconds(3);
 
             tester.assertFails(now, beforeZonedDateTime(past, CompareType.INCLUSIVE),
@@ -487,27 +506,36 @@ public class IsBeforeDateTimeTest {
         @Test
         public void beforeCompareTypeNull() {
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
 
             final Executable testMethod = () -> beforeZonedDateTime(now, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied CompareType must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied CompareType must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullExclusive() {
 
             final Executable testMethod = () -> beforeZonedDateTime(null, CompareType.EXCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullInclusive() {
 
             final Executable testMethod = () -> beforeZonedDateTime(null, CompareType.INCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -515,7 +543,7 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
 
             tester.assertFails(now, beforeZonedDateTime(now, CompareType.EXCLUSIVE),
                     String.format("\nExpected: before <%s>\n      but: was <%s>",
@@ -529,13 +557,9 @@ public class IsBeforeDateTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
 
-            tester.assertFails(now, beforeZonedDateTime(now, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
-                            now,
-                            now
-                    ));
+            tester.assertValid(now, beforeZonedDateTime(now, CompareType.INCLUSIVE));
         }
 
     }

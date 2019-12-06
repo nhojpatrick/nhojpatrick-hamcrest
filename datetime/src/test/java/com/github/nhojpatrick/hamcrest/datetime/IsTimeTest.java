@@ -43,7 +43,7 @@ public class IsTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalTime now = LocalTime.now();
+            final LocalTime now = LocalTime.now().withHour(12);
 
             tester.assertValid(now, localTime());
         }
@@ -97,7 +97,7 @@ public class IsTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final OffsetTime now = OffsetTime.now();
+            final OffsetTime now = OffsetTime.now().withHour(12);
 
             tester.assertValid(now, offsetTime());
         }

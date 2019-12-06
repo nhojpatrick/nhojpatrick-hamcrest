@@ -67,8 +67,11 @@ public class IsBeforeDateTest {
             final LocalDate now = LocalDate.now();
 
             final Executable testMethod = () -> beforeLocalDate(null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -149,24 +152,33 @@ public class IsBeforeDateTest {
             final LocalDate now = LocalDate.now();
 
             final Executable testMethod = () -> beforeLocalDate(now, null);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied CompareType must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied CompareType must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullExclusive() {
 
             final Executable testMethod = () -> beforeLocalDate(null, CompareType.EXCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
         public void beforeNullInclusive() {
 
             final Executable testMethod = () -> beforeLocalDate(null, CompareType.INCLUSIVE);
-            final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, testMethod);
-            assertThat(exception.getMessage(), is(equalTo("Supplied Before must not be null")));
+            final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
+            assertAll(
+                    () -> assertThat(thrown.getMessage(), is(equalTo("Supplied Before must not be null"))),
+                    () -> assertThat(thrown.getCause(), is(nullValue()))
+            );
         }
 
         @Test
@@ -190,11 +202,7 @@ public class IsBeforeDateTest {
 
             final LocalDate now = LocalDate.now();
 
-            tester.assertFails(now, beforeLocalDate(now, CompareType.INCLUSIVE),
-                    String.format("\nExpected: before <%s>\n      but: was <%s>",
-                            now,
-                            now
-                    ));
+            tester.assertValid(now, beforeLocalDate(now, CompareType.INCLUSIVE));
         }
 
     }

@@ -46,7 +46,7 @@ public class IsDateTimeTest {
 
             final MatcherObjectTester<LocalDateTime> tester = new MatcherObjectTester<>();
 
-            final LocalDateTime now = LocalDateTime.now();
+            final LocalDateTime now = LocalDateTime.now().withHour(12);
 
             tester.assertValid(now, localDateTime());
         }
@@ -100,7 +100,7 @@ public class IsDateTimeTest {
 
             final MatcherObjectTester<OffsetDateTime> tester = new MatcherObjectTester<>();
 
-            final OffsetDateTime now = OffsetDateTime.now();
+            final OffsetDateTime now = OffsetDateTime.now().withHour(12);
 
             tester.assertValid(now, offsetDateTime());
         }
@@ -154,7 +154,7 @@ public class IsDateTimeTest {
 
             final MatcherObjectTester<ZonedDateTime> tester = new MatcherObjectTester<>();
 
-            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime now = ZonedDateTime.now().withHour(12);
 
             tester.assertValid(now, zonedDateTime());
         }
