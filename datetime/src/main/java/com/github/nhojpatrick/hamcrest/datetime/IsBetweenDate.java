@@ -35,8 +35,6 @@ public final class IsBetweenDate {
                                                      final CompareType afterCompareType,
                                                      final LocalDate before,
                                                      final CompareType beforeCompareType) {
-        LOGGER.debug("IsBetweenDate#betweenLocalDate((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
-                after, afterCompareType, before, beforeCompareType);
 
         final CombinableMatcher betweenLocalDate = both(
                 new IsAfterLocalDate(after, afterCompareType)

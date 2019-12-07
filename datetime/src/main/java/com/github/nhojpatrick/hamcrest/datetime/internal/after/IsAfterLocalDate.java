@@ -4,12 +4,14 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 
 import java.time.chrono.ChronoLocalDate;
 
+import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
+
 public class IsAfterLocalDate<T extends ChronoLocalDate>
         extends AbstractIsAfter<T> {
 
     public IsAfterLocalDate(final T after,
                             final CompareType compareType) {
-        super(after, compareType);
+        super(after, compareType, NONE);
     }
 
     @Override

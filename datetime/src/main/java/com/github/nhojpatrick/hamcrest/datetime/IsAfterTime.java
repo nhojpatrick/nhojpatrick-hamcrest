@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
+import com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterOffsetTime;
 import org.hamcrest.Matcher;
@@ -11,6 +12,7 @@ import java.time.LocalTime;
 import java.time.OffsetTime;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
+import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
 
 public final class IsAfterTime {
 
@@ -18,34 +20,66 @@ public final class IsAfterTime {
 
     public static <T> Matcher<T> afterLocalTime(final LocalTime expected) {
         LOGGER.debug("IsAfterTime#afterLocalTime((After) {})", expected);
-        return doAfterLocalTime(expected, EXCLUSIVE);
+        return doAfterLocalTime(expected, EXCLUSIVE, NONE);
     }
 
     public static <T> Matcher<T> afterLocalTime(final LocalTime expected,
                                                 final CompareType compareType) {
         LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (CompareType) {})", expected, compareType);
-        return doAfterLocalTime(expected, compareType);
+        return doAfterLocalTime(expected, compareType, NONE);
+    }
+
+    public static <T> Matcher<T> afterLocalTime(final LocalTime expected,
+                                                final CompareType compareType,
+                                                final RoundingType roundingType) {
+        LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (CompareType) {}, (RoundingType) {})",
+                expected, compareType, roundingType);
+        return doAfterLocalTime(expected, compareType, roundingType);
+    }
+
+    public static <T> Matcher<T> afterLocalTime(final LocalTime expected,
+                                                final RoundingType roundingType) {
+        LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (RoundingType) {})",
+                expected, roundingType);
+        return doAfterLocalTime(expected, EXCLUSIVE, roundingType);
     }
 
     public static <T> Matcher<T> afterOffsetTime(final OffsetTime expected) {
         LOGGER.debug("IsAfterTime#afterOffsetTime((After) {})", expected);
-        return doAfterOffsetTime(expected, EXCLUSIVE);
+        return doAfterOffsetTime(expected, EXCLUSIVE, NONE);
     }
 
     public static <T> Matcher<T> afterOffsetTime(final OffsetTime expected,
                                                  final CompareType compareType) {
         LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (CompareType) {})", expected, compareType);
-        return doAfterOffsetTime(expected, compareType);
+        return doAfterOffsetTime(expected, compareType, NONE);
+    }
+
+    public static <T> Matcher<T> afterOffsetTime(final OffsetTime expected,
+                                                 final CompareType compareType,
+                                                 final RoundingType roundingType) {
+        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (CompareType) {}, (RoundingType) {})",
+                expected, compareType, roundingType);
+        return doAfterOffsetTime(expected, compareType, roundingType);
+    }
+
+    public static <T> Matcher<T> afterOffsetTime(final OffsetTime expected,
+                                                 final RoundingType roundingType) {
+        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (RoundingType) {})",
+                expected, roundingType);
+        return doAfterOffsetTime(expected, EXCLUSIVE, roundingType);
     }
 
     private static <T> Matcher<T> doAfterLocalTime(final LocalTime expected,
-                                                   final CompareType compareType) {
-        return new IsAfterLocalTime(expected, compareType);
+                                                   final CompareType compareType,
+                                                   final RoundingType roundingType) {
+        return new IsAfterLocalTime(expected, compareType, roundingType);
     }
 
     private static <T> Matcher<T> doAfterOffsetTime(final OffsetTime expected,
-                                                    final CompareType compareType) {
-        return new IsAfterOffsetTime(expected, compareType);
+                                                    final CompareType compareType,
+                                                    final RoundingType roundingType) {
+        return new IsAfterOffsetTime(expected, compareType, roundingType);
     }
 
     IsAfterTime() {
