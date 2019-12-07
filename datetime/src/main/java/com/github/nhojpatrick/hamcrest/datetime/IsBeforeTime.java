@@ -21,7 +21,8 @@ public final class IsBeforeTime {
         return beforeLocalTime(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalTime(final LocalTime before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeLocalTime(final LocalTime before,
+                                                 final CompareType compareType) {
         LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeLocalTime(before, compareType);
     }
@@ -31,7 +32,8 @@ public final class IsBeforeTime {
         return beforeOffsetTime(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeOffsetTime(final OffsetTime before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeOffsetTime(final OffsetTime before,
+                                                  final CompareType compareType) {
         LOGGER.debug("IsBeforeTime#beforeOffsetTime((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeOffsetTime(before, compareType);
     }

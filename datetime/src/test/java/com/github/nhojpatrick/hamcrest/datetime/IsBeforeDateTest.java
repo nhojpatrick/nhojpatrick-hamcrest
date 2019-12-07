@@ -21,9 +21,8 @@ public class IsBeforeDateTest {
 
     @Test
     public void checkIs_StaticUtilityClass() {
-        final Executable testMethod = () -> {
-            new IsBeforeDate();
-        };
+
+        final Executable testMethod = IsBeforeDate::new;
         final AssertionError thrown = assertThrows(AssertionError.class, testMethod);
         assertAll(
                 () -> assertThat(thrown.getMessage(), is(equalTo("Static utility class - cannot be instantiated."))),

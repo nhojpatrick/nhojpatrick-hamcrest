@@ -31,6 +31,7 @@ public class AbstractIsDateTimeTest {
 
     @Test
     public void constructorNullMatcher() {
+
         final Executable testMethod = () -> new TestingAbstractIsDateTime(null, "type");
         final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
         assertAll(

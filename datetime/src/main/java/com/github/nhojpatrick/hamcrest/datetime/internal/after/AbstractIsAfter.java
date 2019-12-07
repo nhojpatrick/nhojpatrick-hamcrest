@@ -4,7 +4,7 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-import java.util.Objects;
+import static java.util.Objects.isNull;
 
 public abstract class AbstractIsAfter<T>
         extends TypeSafeMatcher<T> {
@@ -12,12 +12,13 @@ public abstract class AbstractIsAfter<T>
     protected final T after;
     protected final CompareType compareType;
 
-    protected AbstractIsAfter(final T after, CompareType compareType) {
+    protected AbstractIsAfter(final T after,
+                              final CompareType compareType) {
 
-        if (Objects.isNull(after)) {
+        if (isNull(after)) {
             throw new IllegalArgumentException("Supplied After must not be null");
         }
-        if (Objects.isNull(compareType)) {
+        if (isNull(compareType)) {
             throw new IllegalArgumentException("Supplied CompareType must not be null");
         }
 

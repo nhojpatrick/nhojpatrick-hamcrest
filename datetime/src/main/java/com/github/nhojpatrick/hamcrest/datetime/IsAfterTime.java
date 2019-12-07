@@ -21,7 +21,8 @@ public final class IsAfterTime {
         return afterLocalTime(after, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalTime(final LocalTime after, final CompareType compareType) {
+    public static <T> Matcher<T> afterLocalTime(final LocalTime after,
+                                                final CompareType compareType) {
         LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterLocalTime(after, compareType);
     }
@@ -31,7 +32,8 @@ public final class IsAfterTime {
         return afterOffsetTime(after, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterOffsetTime(final OffsetTime after, final CompareType compareType) {
+    public static <T> Matcher<T> afterOffsetTime(final OffsetTime after,
+                                                 final CompareType compareType) {
         LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterOffsetTime(after, compareType);
     }

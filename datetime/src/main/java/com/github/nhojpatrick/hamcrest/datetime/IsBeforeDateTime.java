@@ -23,7 +23,8 @@ public final class IsBeforeDateTime {
         return beforeLocalDateTime(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalDateTime(final ChronoLocalDateTime before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeLocalDateTime(final ChronoLocalDateTime before,
+                                                     final CompareType compareType) {
         LOGGER.debug("IsBeforeDateTime#beforeLocalDateTime((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeLocalDateTime(before, compareType);
     }
@@ -33,7 +34,8 @@ public final class IsBeforeDateTime {
         return beforeOffsetDateTime(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeOffsetDateTime(final OffsetDateTime before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeOffsetDateTime(final OffsetDateTime before,
+                                                      final CompareType compareType) {
         LOGGER.debug("IsBeforeDateTime#beforeOffsetDateTime((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeOffsetDateTime(before, compareType);
     }
@@ -43,7 +45,8 @@ public final class IsBeforeDateTime {
         return beforeZonedDateTime(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeZonedDateTime(final ChronoZonedDateTime before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeZonedDateTime(final ChronoZonedDateTime before,
+                                                     final CompareType compareType) {
         LOGGER.debug("IsBeforeDateTime#beforeZonedDateTime((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeZonedDateTime(before, compareType);
     }

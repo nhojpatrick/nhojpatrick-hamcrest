@@ -24,9 +24,8 @@ public class IsTimeTest {
 
     @Test
     public void checkIs_StaticUtilityClass() {
-        final Executable testMethod = () -> {
-            new IsTime();
-        };
+
+        final Executable testMethod = IsTime::new;
         final AssertionError thrown = assertThrows(AssertionError.class, testMethod);
         assertAll(
                 () -> assertThat(thrown.getMessage(), is(equalTo("Static utility class - cannot be instantiated."))),
@@ -53,7 +52,7 @@ public class IsTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDate now = LocalDate.of(2019, 12, 01);
+            final LocalDate now = LocalDate.of(2019, 12, 1);
 
             tester.assertFails(now, localTime(), "\nExpected: an instance of java.time.LocalTime\n      but: <2019-12-01> is a java.time.LocalDate");
         }
@@ -107,7 +106,7 @@ public class IsTimeTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalDate now = LocalDate.of(2019, 12, 01);
+            final LocalDate now = LocalDate.of(2019, 12, 1);
 
             tester.assertFails(now, offsetTime(), "\nExpected: an instance of java.time.OffsetTime\n      but: <2019-12-01> is a java.time.LocalDate");
         }

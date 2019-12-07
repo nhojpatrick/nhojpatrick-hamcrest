@@ -19,7 +19,8 @@ public final class IsBeforeDate {
         return beforeLocalDate(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalDate(final LocalDate before, final CompareType compareType) {
+    public static <T> Matcher<T> beforeLocalDate(final LocalDate before,
+                                                 final CompareType compareType) {
         LOGGER.debug("IsBeforeDate#beforeLocalDate((Before) {}, (CompareType) {})", before, compareType);
         return new IsBeforeLocalDate(before, compareType);
     }
