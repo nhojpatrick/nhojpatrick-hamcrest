@@ -4,7 +4,7 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-import java.util.Objects;
+import static java.util.Objects.isNull;
 
 public abstract class AbstractIsBefore<T>
         extends TypeSafeMatcher<T> {
@@ -12,12 +12,13 @@ public abstract class AbstractIsBefore<T>
     protected final T before;
     protected final CompareType compareType;
 
-    protected AbstractIsBefore(final T before, CompareType compareType) {
+    protected AbstractIsBefore(final T before,
+                               final CompareType compareType) {
 
-        if (Objects.isNull(before)) {
+        if (isNull(before)) {
             throw new IllegalArgumentException("Supplied Before must not be null");
         }
-        if (Objects.isNull(compareType)) {
+        if (isNull(compareType)) {
             throw new IllegalArgumentException("Supplied CompareType must not be null");
         }
 

@@ -4,7 +4,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
-import java.util.Objects;
+import static java.util.Objects.isNull;
 
 public abstract class AbstractIsDateTime<T>
         extends TypeSafeMatcher<T> {
@@ -14,7 +14,7 @@ public abstract class AbstractIsDateTime<T>
 
     protected AbstractIsDateTime(final Matcher<T> matcher, final String type) {
 
-        if (Objects.isNull(matcher)) {
+        if (isNull(matcher)) {
             throw new IllegalArgumentException("Supplied Matcher must not be null");
         }
 

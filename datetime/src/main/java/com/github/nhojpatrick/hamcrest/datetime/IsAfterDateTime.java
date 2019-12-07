@@ -23,7 +23,8 @@ public final class IsAfterDateTime {
         return afterLocalDateTime(after, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after, final CompareType compareType) {
+    public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after,
+                                                    final CompareType compareType) {
         LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterLocalDateTime(after, compareType);
     }
@@ -33,7 +34,8 @@ public final class IsAfterDateTime {
         return afterOffsetDateTime(after, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after, final CompareType compareType) {
+    public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after,
+                                                     final CompareType compareType) {
         LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterOffsetDateTime(after, compareType);
     }
@@ -43,7 +45,8 @@ public final class IsAfterDateTime {
         return afterZonedDateTime(after, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after, final CompareType compareType) {
+    public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after,
+                                                    final CompareType compareType) {
         LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterZonedDateTime(after, compareType);
     }

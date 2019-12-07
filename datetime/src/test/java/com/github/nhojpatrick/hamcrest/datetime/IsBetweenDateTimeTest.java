@@ -24,9 +24,8 @@ public class IsBetweenDateTimeTest {
 
     @Test
     public void checkIs_StaticUtilityClass() {
-        final Executable testMethod = () -> {
-            new IsBetweenDateTime();
-        };
+
+        final Executable testMethod = IsBetweenDateTime::new;
         final AssertionError thrown = assertThrows(AssertionError.class, testMethod);
         assertAll(
                 () -> assertThat(thrown.getMessage(), is(equalTo("Static utility class - cannot be instantiated."))),

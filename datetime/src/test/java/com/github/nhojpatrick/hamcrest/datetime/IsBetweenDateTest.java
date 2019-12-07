@@ -20,9 +20,8 @@ public class IsBetweenDateTest {
 
     @Test
     public void checkIs_StaticUtilityClass() {
-        final Executable testMethod = () -> {
-            new IsBetweenDate();
-        };
+
+        final Executable testMethod = IsBetweenDate::new;
         final AssertionError thrown = assertThrows(AssertionError.class, testMethod);
         assertAll(
                 () -> assertThat(thrown.getMessage(), is(equalTo("Static utility class - cannot be instantiated."))),

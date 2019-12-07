@@ -19,7 +19,8 @@ public final class IsAfterDate {
         return afterLocalDate(after, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalDate(final LocalDate after, final CompareType compareType) {
+    public static <T> Matcher<T> afterLocalDate(final LocalDate after,
+                                                final CompareType compareType) {
         LOGGER.debug("IsAfterDate#afterLocalDate((After) {}, (CompareType) {})", after, compareType);
         return new IsAfterLocalDate(after, compareType);
     }

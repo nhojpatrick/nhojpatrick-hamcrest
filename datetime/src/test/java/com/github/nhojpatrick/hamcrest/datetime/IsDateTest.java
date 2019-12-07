@@ -21,9 +21,8 @@ public class IsDateTest {
 
     @Test
     public void checkIs_StaticUtilityClass() {
-        final Executable testMethod = () -> {
-            new IsDate();
-        };
+
+        final Executable testMethod = IsDate::new;
         final AssertionError thrown = assertThrows(AssertionError.class, testMethod);
         assertAll(
                 () -> assertThat(thrown.getMessage(), is(equalTo("Static utility class - cannot be instantiated."))),
@@ -50,7 +49,7 @@ public class IsDateTest {
 
             final MatcherObjectTester<LocalTime> tester = new MatcherObjectTester<>();
 
-            final LocalTime now = LocalTime.of(20, 12, 01);
+            final LocalTime now = LocalTime.of(20, 12, 1);
 
             tester.assertFails(now, localDate(), "\nExpected: an instance of java.time.LocalDate\n      but: <20:12:01> is a java.time.LocalTime");
         }
@@ -66,8 +65,8 @@ public class IsDateTest {
 
             final MatcherObjectTester<LocalDate> tester = new MatcherObjectTester<>();
 
-            final LocalDate actual = LocalDate.of(2019, 01, 02);
-            final LocalDate expected = LocalDate.of(2019, 01, 02);
+            final LocalDate actual = LocalDate.of(2019, 1, 2);
+            final LocalDate expected = LocalDate.of(2019, 1, 2);
 
             tester.assertValid(actual, localDate(is(expected)));
         }
@@ -77,8 +76,8 @@ public class IsDateTest {
 
             final MatcherObjectTester<LocalDate> tester = new MatcherObjectTester<>();
 
-            final LocalDate actual = LocalDate.of(2019, 01, 02);
-            final LocalDate expected = LocalDate.of(2019, 03, 04);
+            final LocalDate actual = LocalDate.of(2019, 1, 2);
+            final LocalDate expected = LocalDate.of(2019, 3, 4);
 
             tester.assertFails(actual, localDate(equalTo(expected)), "\nExpected: java.time.LocalDate <2019-03-04>\n      but: was <2019-01-02>");
         }
