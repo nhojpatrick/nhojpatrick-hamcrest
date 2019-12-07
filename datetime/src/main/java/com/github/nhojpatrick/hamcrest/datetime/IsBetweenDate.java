@@ -19,13 +19,22 @@ public final class IsBetweenDate {
 
     public static <T> Matcher<T> betweenLocalDate(final LocalDate after, final LocalDate before) {
         LOGGER.debug("IsBetweenDate#betweenLocalDate((After) {}, (Before) {})", after, before);
-        return betweenLocalDate(after, EXCLUSIVE, before, EXCLUSIVE);
+        return doBetweenLocalDate(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> betweenLocalDate(final LocalDate after,
                                                   final CompareType afterCompareType,
                                                   final LocalDate before,
                                                   final CompareType beforeCompareType) {
+        LOGGER.debug("IsBetweenDate#betweenLocalDate((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
+                after, afterCompareType, before, beforeCompareType);
+        return doBetweenLocalDate(after, afterCompareType, before, beforeCompareType);
+    }
+
+    private static <T> Matcher<T> doBetweenLocalDate(final LocalDate after,
+                                                     final CompareType afterCompareType,
+                                                     final LocalDate before,
+                                                     final CompareType beforeCompareType) {
         LOGGER.debug("IsBetweenDate#betweenLocalDate((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
                 after, afterCompareType, before, beforeCompareType);
 

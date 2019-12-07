@@ -22,7 +22,7 @@ public final class IsBetweenTime {
 
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after, final LocalTime before) {
         LOGGER.debug("IsBetweenTime#betweenLocalTime((After) {}, (Before) {})", after, before);
-        return betweenLocalTime(after, EXCLUSIVE, before, EXCLUSIVE);
+        return doBetweenLocalTime(after, EXCLUSIVE, before, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after,
@@ -31,6 +31,27 @@ public final class IsBetweenTime {
                                                   final CompareType beforeCompareType) {
         LOGGER.debug("IsBetweenTime#betweenLocalTime((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
                 after, afterCompareType, before, beforeCompareType);
+        return doBetweenLocalTime(after, afterCompareType, before, beforeCompareType);
+    }
+
+    public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after, final OffsetTime before) {
+        LOGGER.debug("IsBetweenTime#betweenOffsetTime((After) {}, (Before) {})", after, before);
+        return doBetweenOffsetTime(after, EXCLUSIVE, before, EXCLUSIVE);
+    }
+
+    public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after,
+                                                   final CompareType afterCompareType,
+                                                   final OffsetTime before,
+                                                   final CompareType beforeCompareType) {
+        LOGGER.debug("IsBetweenTime#betweenOffsetTime((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
+                after, afterCompareType, before, beforeCompareType);
+        return doBetweenOffsetTime(after, afterCompareType, before, beforeCompareType);
+    }
+
+    private static <T> Matcher<T> doBetweenLocalTime(final LocalTime after,
+                                                     final CompareType afterCompareType,
+                                                     final LocalTime before,
+                                                     final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenLocalTime = both(
                 new IsAfterLocalTime(after, afterCompareType)
@@ -58,17 +79,10 @@ public final class IsBetweenTime {
         return betweenLocalTime;
     }
 
-    public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after, final OffsetTime before) {
-        LOGGER.debug("IsBetweenTime#betweenOffsetTime((After) {}, (Before) {})", after, before);
-        return betweenOffsetTime(after, EXCLUSIVE, before, EXCLUSIVE);
-    }
-
-    public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after,
-                                                   final CompareType afterCompareType,
-                                                   final OffsetTime before,
-                                                   final CompareType beforeCompareType) {
-        LOGGER.debug("IsBetweenTime#betweenOffsetTime((After) {}, (CompareType) {}, (Before) {}, (CompareType) {})",
-                after, afterCompareType, before, beforeCompareType);
+    private static <T> Matcher<T> doBetweenOffsetTime(final OffsetTime after,
+                                                      final CompareType afterCompareType,
+                                                      final OffsetTime before,
+                                                      final CompareType beforeCompareType) {
 
         final CombinableMatcher betweenOffsetTime = both(
                 new IsAfterOffsetTime(after, afterCompareType)
@@ -76,7 +90,7 @@ public final class IsBetweenTime {
                 new IsBeforeOffsetTime(before, beforeCompareType)
         );
 
-        if (after.isEqual(before)) {
+        if (after.equals(before)) {
             throw new IllegalStateException(
                     String.format("After <%s> must not equal Before <%s>.",
                             after,

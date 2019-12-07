@@ -18,37 +18,52 @@ public final class IsAfterDateTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterDateTime.class);
 
-    public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after) {
-        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {})", after);
-        return afterLocalDateTime(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime expected) {
+        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {})", expected);
+        return doAfterLocalDateTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime after,
+    public static <T> Matcher<T> afterLocalDateTime(final ChronoLocalDateTime expected,
                                                     final CompareType compareType) {
-        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {}, (CompareType) {})", after, compareType);
-        return new IsAfterLocalDateTime(after, compareType);
+        LOGGER.debug("IsAfterDateTime#afterLocalDateTime((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterLocalDateTime(expected, compareType);
     }
 
-    public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after) {
-        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {})", after);
-        return afterOffsetDateTime(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime expected) {
+        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {})", expected);
+        return doAfterOffsetDateTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime after,
+    public static <T> Matcher<T> afterOffsetDateTime(final OffsetDateTime expected,
                                                      final CompareType compareType) {
-        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {}, (CompareType) {})", after, compareType);
-        return new IsAfterOffsetDateTime(after, compareType);
+        LOGGER.debug("IsAfterDateTime#afterOffsetDateTime((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterOffsetDateTime(expected, compareType);
     }
 
-    public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after) {
-        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {})", after);
-        return afterZonedDateTime(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime expected) {
+        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {})", expected);
+        return doAfterZonedDateTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime after,
+    public static <T> Matcher<T> afterZonedDateTime(final ChronoZonedDateTime expected,
                                                     final CompareType compareType) {
-        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {}, (CompareType) {})", after, compareType);
-        return new IsAfterZonedDateTime(after, compareType);
+        LOGGER.debug("IsAfterDateTime#afterZonedDateTime((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterZonedDateTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doAfterLocalDateTime(final ChronoLocalDateTime expected,
+                                                       final CompareType compareType) {
+        return new IsAfterLocalDateTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doAfterOffsetDateTime(final OffsetDateTime expected,
+                                                        final CompareType compareType) {
+        return new IsAfterOffsetDateTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doAfterZonedDateTime(final ChronoZonedDateTime expected,
+                                                       final CompareType compareType) {
+        return new IsAfterZonedDateTime(expected, compareType);
     }
 
     IsAfterDateTime() {

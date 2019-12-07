@@ -16,12 +16,17 @@ public final class IsBeforeDate {
 
     public static <T> Matcher<T> beforeLocalDate(final LocalDate before) {
         LOGGER.debug("IsBeforeDate#beforeLocalDate((Before) {})", before);
-        return beforeLocalDate(before, EXCLUSIVE);
+        return doBeforeLocalDate(before, EXCLUSIVE);
     }
 
     public static <T> Matcher<T> beforeLocalDate(final LocalDate before,
                                                  final CompareType compareType) {
         LOGGER.debug("IsBeforeDate#beforeLocalDate((Before) {}, (CompareType) {})", before, compareType);
+        return doBeforeLocalDate(before, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeLocalDate(final LocalDate before,
+                                                    final CompareType compareType) {
         return new IsBeforeLocalDate(before, compareType);
     }
 

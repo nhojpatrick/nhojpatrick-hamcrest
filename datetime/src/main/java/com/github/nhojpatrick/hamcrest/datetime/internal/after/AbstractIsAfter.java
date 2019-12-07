@@ -9,6 +9,9 @@ import static java.util.Objects.isNull;
 public abstract class AbstractIsAfter<T>
         extends TypeSafeMatcher<T> {
 
+    public static final String SUPPLIED_COMPARE_TYPE_MUST_NOT_BE_NULL = "Supplied After CompareType must not be null";
+    public static final String SUPPLIED_EXPECTED_MUST_NOT_BE_NULL = "Supplied After must not be null";
+
     protected final T after;
     protected final CompareType compareType;
 
@@ -16,10 +19,10 @@ public abstract class AbstractIsAfter<T>
                               final CompareType compareType) {
 
         if (isNull(after)) {
-            throw new IllegalArgumentException("Supplied After must not be null");
+            throw new IllegalArgumentException(SUPPLIED_EXPECTED_MUST_NOT_BE_NULL);
         }
         if (isNull(compareType)) {
-            throw new IllegalArgumentException("Supplied CompareType must not be null");
+            throw new IllegalArgumentException(SUPPLIED_COMPARE_TYPE_MUST_NOT_BE_NULL);
         }
 
         this.after = after;

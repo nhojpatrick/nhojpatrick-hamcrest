@@ -16,26 +16,36 @@ public final class IsBeforeTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBeforeTime.class);
 
-    public static <T> Matcher<T> beforeLocalTime(final LocalTime before) {
-        LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {})", before);
-        return beforeLocalTime(before, EXCLUSIVE);
+    public static <T> Matcher<T> beforeLocalTime(final LocalTime expected) {
+        LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {})", expected);
+        return doBeforeLocalTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalTime(final LocalTime before,
+    public static <T> Matcher<T> beforeLocalTime(final LocalTime expected,
                                                  final CompareType compareType) {
-        LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {}, (CompareType) {})", before, compareType);
-        return new IsBeforeLocalTime(before, compareType);
+        LOGGER.debug("IsBeforeTime#beforeLocalTime((Before) {}, (CompareType) {})", expected, compareType);
+        return doBeforeLocalTime(expected, compareType);
     }
 
-    public static <T> Matcher<T> beforeOffsetTime(final OffsetTime before) {
-        LOGGER.debug("IsBeforeTime#beforeOffsetTime((Before) {})", before);
-        return beforeOffsetTime(before, EXCLUSIVE);
+    public static <T> Matcher<T> beforeOffsetTime(final OffsetTime expected) {
+        LOGGER.debug("IsBeforeTime#beforeOffsetTime((Before) {})", expected);
+        return doBeforeLocalTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeOffsetTime(final OffsetTime before,
+    public static <T> Matcher<T> beforeOffsetTime(final OffsetTime expected,
                                                   final CompareType compareType) {
-        LOGGER.debug("IsBeforeTime#beforeOffsetTime((Before) {}, (CompareType) {})", before, compareType);
-        return new IsBeforeOffsetTime(before, compareType);
+        LOGGER.debug("IsBeforeTime#beforeOffsetTime((Before) {}, (CompareType) {})", expected, compareType);
+        return doBeforeLocalTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeLocalTime(final LocalTime expected,
+                                                    final CompareType compareType) {
+        return new IsBeforeLocalTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeLocalTime(final OffsetTime expected,
+                                                    final CompareType compareType) {
+        return new IsBeforeOffsetTime(expected, compareType);
     }
 
     IsBeforeTime() {

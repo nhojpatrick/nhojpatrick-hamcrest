@@ -18,37 +18,52 @@ public final class IsBeforeDateTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBeforeDateTime.class);
 
-    public static <T> Matcher<T> beforeLocalDateTime(final ChronoLocalDateTime before) {
-        LOGGER.debug("IsBeforeDateTime#beforeLocalDateTime((Before) {})", before);
-        return beforeLocalDateTime(before, EXCLUSIVE);
+    public static <T> Matcher<T> beforeLocalDateTime(final ChronoLocalDateTime expected) {
+        LOGGER.debug("IsBeforeDateTime#beforeLocalDateTime((Before) {})", expected);
+        return doBeforeLocalDateTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalDateTime(final ChronoLocalDateTime before,
+    public static <T> Matcher<T> beforeLocalDateTime(final ChronoLocalDateTime expected,
                                                      final CompareType compareType) {
-        LOGGER.debug("IsBeforeDateTime#beforeLocalDateTime((Before) {}, (CompareType) {})", before, compareType);
-        return new IsBeforeLocalDateTime(before, compareType);
+        LOGGER.debug("IsBeforeDateTime#beforeLocalDateTime((Before) {}, (CompareType) {})", expected, compareType);
+        return doBeforeLocalDateTime(expected, compareType);
     }
 
-    public static <T> Matcher<T> beforeOffsetDateTime(final OffsetDateTime before) {
-        LOGGER.debug("IsBeforeDateTime#beforeOffsetDateTime((Before) {})", before);
-        return beforeOffsetDateTime(before, EXCLUSIVE);
+    public static <T> Matcher<T> beforeOffsetDateTime(final OffsetDateTime expected) {
+        LOGGER.debug("IsBeforeDateTime#beforeOffsetDateTime((Before) {})", expected);
+        return doBeforeOffsetDateTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeOffsetDateTime(final OffsetDateTime before,
+    public static <T> Matcher<T> beforeOffsetDateTime(final OffsetDateTime expected,
                                                       final CompareType compareType) {
-        LOGGER.debug("IsBeforeDateTime#beforeOffsetDateTime((Before) {}, (CompareType) {})", before, compareType);
-        return new IsBeforeOffsetDateTime(before, compareType);
+        LOGGER.debug("IsBeforeDateTime#beforeOffsetDateTime((Before) {}, (CompareType) {})", expected, compareType);
+        return doBeforeOffsetDateTime(expected, compareType);
     }
 
-    public static <T> Matcher<T> beforeZonedDateTime(final ChronoZonedDateTime before) {
-        LOGGER.debug("IsBeforeDateTime#beforeZonedDateTime((Before) {})", before);
-        return beforeZonedDateTime(before, EXCLUSIVE);
+    public static <T> Matcher<T> beforeZonedDateTime(final ChronoZonedDateTime expected) {
+        LOGGER.debug("IsBeforeDateTime#beforeZonedDateTime((Before) {})", expected);
+        return doBeforeZonedDateTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeZonedDateTime(final ChronoZonedDateTime before,
+    public static <T> Matcher<T> beforeZonedDateTime(final ChronoZonedDateTime expected,
                                                      final CompareType compareType) {
-        LOGGER.debug("IsBeforeDateTime#beforeZonedDateTime((Before) {}, (CompareType) {})", before, compareType);
-        return new IsBeforeZonedDateTime(before, compareType);
+        LOGGER.debug("IsBeforeDateTime#beforeZonedDateTime((Before) {}, (CompareType) {})", expected, compareType);
+        return doBeforeZonedDateTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeLocalDateTime(final ChronoLocalDateTime expected,
+                                                        final CompareType compareType) {
+        return new IsBeforeLocalDateTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeOffsetDateTime(final OffsetDateTime expected,
+                                                         final CompareType compareType) {
+        return new IsBeforeOffsetDateTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeZonedDateTime(final ChronoZonedDateTime expected,
+                                                        final CompareType compareType) {
+        return new IsBeforeZonedDateTime(expected, compareType);
     }
 
     IsBeforeDateTime() {
