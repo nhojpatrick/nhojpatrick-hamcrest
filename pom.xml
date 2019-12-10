@@ -348,19 +348,6 @@
 		</pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>com.github.ekryd.sortpom</groupId>
-				<artifactId>sortpom-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>sortpom-sort</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>sort</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
@@ -485,6 +472,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>qa_jacoco</id>
@@ -547,6 +537,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>qa_javadoc</id>
@@ -567,6 +560,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>qa_pmd</id>
@@ -588,6 +584,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>qa_spotbugs</id>
@@ -608,6 +607,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>release</id>
@@ -668,6 +670,9 @@
 		</profile>
 		<profile>
 			<id>sortpom</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -708,6 +713,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 		<profile>
 			<id>wrapper</id>
@@ -728,6 +736,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<sort.skip>true</sort.skip>
+			</properties>
 		</profile>
 	</profiles>
 	<!--modules / -->
