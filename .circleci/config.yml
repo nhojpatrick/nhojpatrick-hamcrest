@@ -206,10 +206,30 @@ workflows:
   build_all:
     jobs:
       - jdk8
-      - checkstyle
-      - javadoc
-      - pmd
-      - spotbugs
+      - checkstyle:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - javadoc:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - pmd:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - spotbugs:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
       #- jdk11
       #- jdk13
       #- jdk14
