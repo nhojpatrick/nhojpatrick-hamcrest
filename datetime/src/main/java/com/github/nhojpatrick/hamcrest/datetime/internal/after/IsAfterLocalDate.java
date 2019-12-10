@@ -22,6 +22,7 @@ public class IsAfterLocalDate<T extends ChronoLocalDate>
                 final boolean isEqual = item.isEqual(this.after);
                 matchesSafely = isEqual || matchesSafely;
                 break;
+            default:
         }
 
         return matchesSafely;

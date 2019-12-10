@@ -22,6 +22,7 @@ public class IsBeforeLocalDateTime<T extends ChronoLocalDateTime>
                 final boolean isEqual = item.isEqual(this.before);
                 matchesSafely = isEqual || matchesSafely;
                 break;
+            default:
         }
 
         return matchesSafely;

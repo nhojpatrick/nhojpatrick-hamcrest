@@ -22,6 +22,7 @@ public class IsBeforeZonedDateTime<T extends ChronoZonedDateTime>
                 final boolean isEqual = item.isEqual(this.before);
                 matchesSafely = isEqual || matchesSafely;
                 break;
+            default:
         }
 
         return matchesSafely;

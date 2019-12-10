@@ -22,6 +22,7 @@ public class IsAfterOffsetDateTime<T extends OffsetDateTime>
                 final boolean isEqual = item.isEqual(this.after);
                 matchesSafely = isEqual || matchesSafely;
                 break;
+            default:
         }
 
         return matchesSafely;

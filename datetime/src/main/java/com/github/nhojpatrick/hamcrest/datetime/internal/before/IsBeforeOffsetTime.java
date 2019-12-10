@@ -22,6 +22,7 @@ public class IsBeforeOffsetTime<T extends OffsetTime>
                 final boolean isEqual = item.isEqual(this.before);
                 matchesSafely = isEqual || matchesSafely;
                 break;
+            default:
         }
 
         return matchesSafely;

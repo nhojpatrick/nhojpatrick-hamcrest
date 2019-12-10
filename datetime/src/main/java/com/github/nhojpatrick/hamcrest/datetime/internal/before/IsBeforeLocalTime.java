@@ -22,6 +22,7 @@ public class IsBeforeLocalTime<T extends LocalTime>
                 final boolean notAfter = !item.isAfter(this.before);
                 matchesSafely = notAfter || matchesSafely;
                 break;
+            default:
         }
 
         return matchesSafely;
