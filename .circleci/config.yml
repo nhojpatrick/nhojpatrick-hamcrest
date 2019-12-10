@@ -63,6 +63,27 @@ commands:
             - ~/.m2/wrapper
           when: always
 
+  qa_checkstyle:
+    description: "Standard mvnw checkstyle"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw -Pcicd,qa_checkstyle -DskipTests verify
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
   qa_spotbugs:
     description: "Standard mvnw spotbugs"
     steps:
@@ -110,6 +131,13 @@ jobs:
     steps:
       - std_mvnw
 
+  checkstyle:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - install_openjdk_11
+      - qa_checkstyle
+
   spotbugs:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
@@ -122,6 +150,7 @@ workflows:
   build_all:
     jobs:
       - jdk8
+      - checkstyle
       - spotbugs
       #- jdk11
       #- jdk13
