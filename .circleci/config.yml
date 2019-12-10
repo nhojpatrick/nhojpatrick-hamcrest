@@ -105,6 +105,27 @@ commands:
             - ~/.m2/wrapper
           when: always
 
+  qa_pmd:
+    description: "Standard mvnw pmd"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-pmd
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw -Pcicd,qa_pmd -DskipTests verify
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}-pmd
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
   qa_spotbugs:
     description: "Standard mvnw spotbugs"
     steps:
@@ -166,6 +187,13 @@ jobs:
       - install_openjdk_11
       - qa_javadoc
 
+  pmd:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - install_openjdk_11
+      - qa_pmd
+
   spotbugs:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
@@ -185,6 +213,12 @@ workflows:
                 - develop
                 - master
       - javadoc
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - pmd
           filters:
             branches:
               ignore:
