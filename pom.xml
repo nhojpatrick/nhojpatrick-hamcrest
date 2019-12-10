@@ -228,6 +228,18 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>3.12.0</version>
+					<configuration>
+						<rulesets>
+							<ruleset>com/github/nhojpatrick/pmd/rulesets/ruleset.xml</ruleset>
+						</rulesets>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.github.nhojpatrick.pmd</groupId>
+							<artifactId>nhojpatrick-pmd-ruleset</artifactId>
+							<version>[1.0,1.999)</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -587,6 +599,7 @@
 				</plugins>
 			</build>
 			<properties>
+				<pmd.verbose>true</pmd.verbose>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
