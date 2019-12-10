@@ -92,7 +92,7 @@
 						<dependency>
 							<groupId>com.github.spotbugs</groupId>
 							<artifactId>spotbugs</artifactId>
-							<version>3.1.12</version>
+							<version>${version.com.github.spotbugs}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -791,12 +791,12 @@
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs</artifactId>
-				<version>${version.org.spotbugs}</version>
+				<version>${version.com.github.spotbugs}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-annotations</artifactId>
-				<version>${version.org.spotbugs}</version>
+				<version>${version.com.github.spotbugs}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.puppycrawl.tools</groupId>
@@ -886,7 +886,7 @@
 		<version.org.junit.jupiter>[5.5.0,5.5.999)</version.org.junit.jupiter>
 		<version.org.junit.vintage>[5.5.0,5.5.999)</version.org.junit.vintage>
 		<version.org.slf4j>[1.7,1.7.999)</version.org.slf4j>
-		<version.org.spotbugs>3.1.12</version.org.spotbugs>
+		<version.com.github.spotbugs>[3.1.12,3.1.999)</version.com.github.spotbugs>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.class.missedcount>999</jacoco.bundle.class.missedcount>
