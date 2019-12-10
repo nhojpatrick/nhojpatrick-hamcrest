@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.hamcrest.datetime.internal.before;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
+import com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType;
 
 import java.time.chrono.ChronoLocalDateTime;
 
@@ -8,8 +9,9 @@ public class IsBeforeLocalDateTime<T extends ChronoLocalDateTime>
         extends AbstractIsBefore<T> {
 
     public IsBeforeLocalDateTime(final T before,
-                                 final CompareType compareType) {
-        super(before, compareType);
+                                 final CompareType compareType,
+                                 final RoundingType roundingType) {
+        super(before, compareType, roundingType);
     }
 
     @Override

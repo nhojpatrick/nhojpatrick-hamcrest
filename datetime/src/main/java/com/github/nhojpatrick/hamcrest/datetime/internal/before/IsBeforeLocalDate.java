@@ -4,12 +4,14 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 
 import java.time.chrono.ChronoLocalDate;
 
+import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
+
 public class IsBeforeLocalDate<T extends ChronoLocalDate>
         extends AbstractIsBefore<T> {
 
     public IsBeforeLocalDate(final T before,
                              final CompareType compareType) {
-        super(before, compareType);
+        super(before, compareType, NONE);
     }
 
     @Override
