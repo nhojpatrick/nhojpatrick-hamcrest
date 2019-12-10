@@ -16,26 +16,36 @@ public final class IsAfterTime {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterTime.class);
 
-    public static <T> Matcher<T> afterLocalTime(final LocalTime after) {
-        LOGGER.debug("IsAfterTime#afterLocalTime((After) {})", after);
-        return afterLocalTime(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterLocalTime(final LocalTime expected) {
+        LOGGER.debug("IsAfterTime#afterLocalTime((After) {})", expected);
+        return doAfterLocalTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalTime(final LocalTime after,
+    public static <T> Matcher<T> afterLocalTime(final LocalTime expected,
                                                 final CompareType compareType) {
-        LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (CompareType) {})", after, compareType);
-        return new IsAfterLocalTime(after, compareType);
+        LOGGER.debug("IsAfterTime#afterLocalTime((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterLocalTime(expected, compareType);
     }
 
-    public static <T> Matcher<T> afterOffsetTime(final OffsetTime after) {
-        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {})", after);
-        return afterOffsetTime(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterOffsetTime(final OffsetTime expected) {
+        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {})", expected);
+        return doAfterOffsetTime(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterOffsetTime(final OffsetTime after,
+    public static <T> Matcher<T> afterOffsetTime(final OffsetTime expected,
                                                  final CompareType compareType) {
-        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (CompareType) {})", after, compareType);
-        return new IsAfterOffsetTime(after, compareType);
+        LOGGER.debug("IsAfterTime#afterOffsetTime((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterOffsetTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doAfterLocalTime(final LocalTime expected,
+                                                   final CompareType compareType) {
+        return new IsAfterLocalTime(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doAfterOffsetTime(final OffsetTime expected,
+                                                    final CompareType compareType) {
+        return new IsAfterOffsetTime(expected, compareType);
     }
 
     IsAfterTime() {

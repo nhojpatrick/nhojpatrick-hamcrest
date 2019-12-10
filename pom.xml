@@ -442,8 +442,10 @@
 				<base.java.version>11</base.java.version>
 				<maven.compiler.release>11</maven.compiler.release>
 				<project.custom.java.version>11</project.custom.java.version>
-				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
-				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
+				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global}
+                    ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
+				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global}
+                    ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
 		</profile>
 		<profile>
@@ -829,6 +831,11 @@
 				<version>${version.org.junit.jupiter}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${version.org.junit.jupiter}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.junit.vintage</groupId>
 				<artifactId>junit-vintage-engine</artifactId>
 				<version>${version.org.junit.vintage}</version>
@@ -870,13 +877,15 @@
 		<downloadJavadocs>true</downloadJavadocs>
 		<!-- Surefire/Failsafe jpms override(s) -->
 		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
-		<project.failsafe.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
+		<project.failsafe.argLine.jpms.global>--add-opens
+            ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
 		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
 		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
-		<project.surefire.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=org.junit.platform.commons
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
+		<project.surefire.argLine.jpms.global>--add-opens
+            ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED
+            --add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=org.junit.platform.commons
+            --add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
+            --add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
 		<version.com.puppycrawl.tools.checkstyle>8.27</version.com.puppycrawl.tools.checkstyle>

@@ -14,15 +14,20 @@ public final class IsAfterDate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterDate.class);
 
-    public static <T> Matcher<T> afterLocalDate(final LocalDate after) {
-        LOGGER.debug("IsAfterDate#afterLocalDate((After) {})", after);
-        return afterLocalDate(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterLocalDate(final LocalDate expected) {
+        LOGGER.debug("IsAfterDate#afterLocalDate((After) {})", expected);
+        return doAfterLocalDate(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalDate(final LocalDate after,
+    public static <T> Matcher<T> afterLocalDate(final LocalDate expected,
                                                 final CompareType compareType) {
-        LOGGER.debug("IsAfterDate#afterLocalDate((After) {}, (CompareType) {})", after, compareType);
-        return new IsAfterLocalDate(after, compareType);
+        LOGGER.debug("IsAfterDate#afterLocalDate((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterLocalDate(expected, compareType);
+    }
+
+    private static <T> Matcher<T> doAfterLocalDate(final LocalDate expected,
+                                                   final CompareType compareType) {
+        return new IsAfterLocalDate(expected, compareType);
     }
 
     IsAfterDate() {
