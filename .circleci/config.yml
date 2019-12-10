@@ -69,6 +69,7 @@ commands:
       - checkout
       - restore_cache:
           keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
       - run: ./mvnw -Pcicd,qa_spotbugs -DskipTests verify
@@ -77,7 +78,7 @@ commands:
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
       - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}
+          key: m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
           paths:
             - ~/.m2/repository
             - ~/.m2/wrapper
