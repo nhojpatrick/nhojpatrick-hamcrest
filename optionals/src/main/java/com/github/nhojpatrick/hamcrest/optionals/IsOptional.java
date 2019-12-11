@@ -73,6 +73,7 @@ public class IsOptional<T extends Optional<?>>
     @Override
     protected boolean matchesSafely(final T item) {
 
+        // FIXME Java 11 version can be simply Optional.isEmpty()
         final boolean isPresent = Objects.nonNull(item)
                 && item.isPresent();
 
