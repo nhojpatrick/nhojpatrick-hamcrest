@@ -230,7 +230,7 @@
 					<version>3.12.0</version>
 					<configuration>
 						<rulesets>
-							<ruleset>com/github/nhojpatrick/pmd/rulesets/ruleset.xml</ruleset>
+							<ruleset>com/github/nhojpatrick/pmd/ruleset/rules.xml</ruleset>
 						</rulesets>
 					</configuration>
 					<dependencies>
