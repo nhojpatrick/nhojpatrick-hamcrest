@@ -45,7 +45,8 @@ public final class IsBetweenTime {
                                                   final RoundingType beforeRoundingType) {
         LOGGER.debug("IsBetweenTime#betweenLocalTime((After) {}, (CompareType) {}, (RoundingType) {}, (Before) {}, (CompareType) {}, (RoundingType) {})",
                 after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
-        return doBetweenLocalTime(after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
+        return doBetweenLocalTime(after, afterCompareType, afterRoundingType,
+                before, beforeCompareType,beforeRoundingType);
     }
 
     public static <T> Matcher<T> betweenLocalTime(final LocalTime after,
@@ -81,7 +82,8 @@ public final class IsBetweenTime {
                                                    final RoundingType beforeRoundingType) {
         LOGGER.debug("IsBetweenTime#betweenOffsetTime((After) {}, (CompareType) {}, (RoundingType) {}, (Before) {}, (CompareType) {}, (RoundingType) {})",
                 after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
-        return doBetweenOffsetTime(after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
+        return doBetweenOffsetTime(after, afterCompareType, afterRoundingType,
+                before, beforeCompareType, beforeRoundingType);
     }
 
     public static <T> Matcher<T> betweenOffsetTime(final OffsetTime after,

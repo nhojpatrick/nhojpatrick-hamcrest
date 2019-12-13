@@ -48,7 +48,8 @@ public final class IsBetweenDateTime {
                                                       final RoundingType beforeRoundingType) {
         LOGGER.debug("IsBetweenTime#betweenLocalDateTime((After) {}, (CompareType) {}, (RoundingType) {}, (Before) {}, (CompareType) {}, (RoundingType) {})",
                 after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
-        return doBetweenLocalDateTime(after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
+        return doBetweenLocalDateTime(after, afterCompareType, afterRoundingType,
+                before, beforeCompareType, beforeRoundingType);
     }
 
     public static <T> Matcher<T> betweenLocalDateTime(final ChronoLocalDateTime after,
@@ -83,7 +84,8 @@ public final class IsBetweenDateTime {
                                                        final RoundingType beforeRoundingType) {
         LOGGER.debug("IsBetweenTime#betweenOffsetDateTime((After) {}, (CompareType) {}, (RoundingType) {}, (Before) {}, (CompareType) {}, (RoundingType) {})",
                 after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
-        return doBetweenOffsetDateTime(after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
+        return doBetweenOffsetDateTime(after, afterCompareType, afterRoundingType,
+                before, beforeCompareType, beforeRoundingType);
     }
 
     public static <T> Matcher<T> betweenOffsetDateTime(final OffsetDateTime after,
@@ -118,7 +120,8 @@ public final class IsBetweenDateTime {
                                                       final RoundingType beforeRoundingType) {
         LOGGER.debug("IsBetweenTime#betweenZonedDateTime((After) {}, (CompareType) {}, (RoundingType) {}, (Before) {}, (CompareType) {}, (RoundingType) {})",
                 after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
-        return doBetweenZonedDateTime(after, afterCompareType, afterRoundingType, before, beforeCompareType, beforeRoundingType);
+        return doBetweenZonedDateTime(after, afterCompareType, afterRoundingType,
+                before, beforeCompareType, beforeRoundingType);
     }
 
     public static <T> Matcher<T> betweenZonedDateTime(final ChronoZonedDateTime after,
