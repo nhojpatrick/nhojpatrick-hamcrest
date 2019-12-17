@@ -71,8 +71,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.collections</project.Automatic-Module-Name>
-		<checkstyle.maxAllowedViolations>74</checkstyle.maxAllowedViolations>
-		<jacoco.bundle.class.missedcount>999</jacoco.bundle.class.missedcount>
-		<jacoco.bundle.line.coveredratio>0%</jacoco.bundle.line.coveredratio>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 	</properties>
 </project>
