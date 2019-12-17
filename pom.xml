@@ -827,11 +827,6 @@
 				<version>${version.org.junit.jupiter}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.junit.vintage</groupId>
-				<artifactId>junit-vintage-engine</artifactId>
-				<version>${version.org.junit.vintage}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${version.org.slf4j}</version>
@@ -878,13 +873,12 @@
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
 		<version.com.puppycrawl.tools.checkstyle>8.27</version.com.puppycrawl.tools.checkstyle>
-		<version.org.apache.commons.lang3>[3,3.999.999)</version.org.apache.commons.lang3>
-		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
-		<version.org.hamcrest>[2,2.999.999)</version.org.hamcrest>
-		<version.org.junit.jupiter>[5.5.0,5.5.999)</version.org.junit.jupiter>
-		<version.org.junit.vintage>[5.5.0,5.5.999)</version.org.junit.vintage>
-		<version.org.slf4j>[1.7,1.7.999)</version.org.slf4j>
-		<version.com.github.spotbugs>[3.1.12,3.1.999)</version.com.github.spotbugs>
+		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
+		<version.org.apache.logging.log4j>[2.12.1,2.12.99)</version.org.apache.logging.log4j>
+		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
+		<version.org.junit.jupiter>[5.5.0,5.5.99)</version.org.junit.jupiter>
+		<version.org.slf4j>[1.7.0,1.7.99)</version.org.slf4j>
+		<version.com.github.spotbugs>[3.1.12,3.1.99)</version.com.github.spotbugs>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
