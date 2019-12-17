@@ -4,9 +4,23 @@ commands:
   install_openjdk_11:
     description: "Install OpenJdk 11"
     steps:
-      - run: wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz -O ~/openjdk-11.tar.gz
+      - run: wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz.sha256 -O ~/openjdk-11.tar.gz.sha256
+      - restore_cache:
+          keys:
+            - openjdk-11-{{ checksum "~/openjdk-11.tar.gz.sha256" }}
+      - run: touch ~/openjdk-11.tar.gz
+      - run: wget -c https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz -O ~/openjdk-11.tar.gz
+      - save_cache:
+          key: openjdk-11-{{ checksum "~/openjdk-11.tar.gz.sha256" }}
+          paths:
+            - ~/openjdk-11.tar.gz
+          when: always
       - run: tar xvf ~/openjdk-11.tar.gz -C ~/
       - run: sudo mv ~/jdk-11.0.2 /usr/local/openjdk-11
+
+  setup_for_openjdk_8_11:
+    description: "Setup for OpenJdk 8 and 11"
+    steps:
       - run: mkdir ~/.m2
       - run: |
           cat > ~/.m2/toolchains.xml \<< EOF
@@ -37,18 +51,64 @@ commands:
           </toolchains>
           EOF
 
-  std_mvnw:
-    description: "Standard mvnw steps"
+  setup_for_openjdk_11:
+    description: "Setup for OpenJdk 11"
+    steps:
+      - run: mkdir ~/.m2
+      - run: |
+          cat > ~/.m2/toolchains.xml \<< EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <toolchains xmlns="http://maven.apache.org/TOOLCHAINS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/TOOLCHAINS/1.1.0 http://maven.apache.org/xsd/toolchains-1.1.0.xsd">
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>1.8</version>
+                <vendor>openjdk</vendor>
+                <id>openjdk-1.8</id>
+              </provides>
+              <configuration>
+                <jdkHome>/usr/local/openjdk-11</jdkHome>
+              </configuration>
+            </toolchain>
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>11</version>
+                <vendor>openjdk</vendor>
+                <id>openjdk-11</id>
+              </provides>
+              <configuration>
+                <jdkHome>/usr/local/openjdk-11</jdkHome>
+              </configuration>
+            </toolchain>
+          </toolchains>
+          EOF
+
+  std_mvnw_jdk8:
+    description: "Standard JDK8 mvnw steps"
     steps:
       - checkout
       - restore_cache:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
-      - run: ./mvnw dependency:go-offline
-      - run: ./mvnw clean install -DskipTests
-      - run: ./mvnw test
-      - run: rm -rf ~/.m2/repository/com/github/nhojpatrick
+      - run:
+          name: "Maven Jdk8 Clean Install SkipTests"
+          command: ./mvnw -Pcicd clean install -DskipTests
+      - run:
+          name: "Maven Jdk8 Tests"
+          command: ./mvnw -Pcicd test
+      - run:
+          name: "Coveralls"
+          command: ./mvnw -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
+          when: on_success
+      - run:
+          name: "Maven Jdk8 Build Jdk11 Tests"
+          command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
       - save_cache:
           key: m2-dependencies-{{ checksum "pom.xml" }}
           paths:
@@ -56,37 +116,236 @@ commands:
             - ~/.m2/wrapper
           when: always
 
+  std_mvnw_jdk11:
+    description: "Standard JDK11 mvnw steps"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run:
+          name: "Maven Jdk11 Clean Install SkipTests"
+          command: ./mvnw -Pcicd clean install -DskipTests
+      - run:
+          name: "Maven Jdk11 Tests"
+          command: ./mvnw -Pcicd test
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
+  qa_checkstyle:
+    description: "Standard mvnw checkstyle"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw -Pcicd,qa_checkstyle -DskipTests verify
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
+  qa_javadoc:
+    description: "Standard mvnw javadoc"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-javadoc
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw -Pcicd,qa_javadoc -DskipTests verify
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}-javadoc
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
+  qa_pmd:
+    description: "Standard mvnw pmd"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-pmd
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw -Pcicd,qa_pmd -DskipTests verify
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}-pmd
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
+  qa_spotbugs:
+    description: "Standard mvnw spotbugs"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
+            - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-
+      - run: ./mvnw -Pcicd,qa_spotbugs -DskipTests verify
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
+          paths:
+            - ~/.m2/repository
+            - ~/.m2/wrapper
+          when: always
+
 jobs:
+  builds_passed:
+    machine:
+      image: circleci/classic:latest
+    steps:
+      - run: echo "Build Passed"
+
+  qa_passed:
+    machine:
+      image: circleci/classic:latest
+    steps:
+      - run: echo "QA Passed"
+
   jdk8:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
-      - std_mvnw
+      - setup_for_openjdk_8_11
+      - std_mvnw_jdk8
 
   jdk11:
     docker:
       - image: circleci/openjdk:11-jdk-stretch
     steps:
-      - std_mvnw
+      - setup_for_openjdk_11
+      - std_mvnw_jdk11
 
   jdk13:
     docker:
       - image: circleci/openjdk:13-jdk-buster
     steps:
-      - std_mvnw
+      - std_mvnw_jdk11
 
   jdk14:
     docker:
       - image: circleci/openjdk:14-jdk-buster
     steps:
-      - std_mvnw
+      - std_mvnw_jdk11
+
+  checkstyle:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - install_openjdk_11
+      - setup_for_openjdk_8_11
+      - qa_checkstyle
+
+  javadoc:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - install_openjdk_11
+      - setup_for_openjdk_8_11
+      - qa_javadoc
+
+  pmd:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - install_openjdk_11
+      - setup_for_openjdk_8_11
+      - qa_pmd
+
+  spotbugs:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - install_openjdk_11
+      - setup_for_openjdk_8_11
+      - qa_spotbugs
 
 workflows:
   version: 2
   build_all:
     jobs:
       - jdk8
-      #- jdk11
+      - jdk11
       #- jdk13
       #- jdk14
+      - builds_passed:
+          requires:
+            - jdk8
+            - jdk11
+            #- jdk13
+            #- jdk14
+      - qa_passed:
+          requires:
+            - checkstyle
+            - javadoc
+            - pmd
+            - spotbugs
+      - checkstyle:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - javadoc:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - pmd:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - spotbugs:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master

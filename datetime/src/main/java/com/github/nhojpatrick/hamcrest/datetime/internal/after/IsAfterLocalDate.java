@@ -4,17 +4,29 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 
 import java.time.chrono.ChronoLocalDate;
 
+import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
+
 public class IsAfterLocalDate<T extends ChronoLocalDate>
         extends AbstractIsAfter<T> {
 
-    public IsAfterLocalDate(final T after, final CompareType compareType) {
-        super(after, compareType);
+    public IsAfterLocalDate(final T after,
+                            final CompareType compareType) {
+        super(after, compareType, NONE);
     }
 
     @Override
     protected boolean matchesSafely(final T item) {
 
-        final boolean matchesSafely = item.isAfter(this.after);
+        boolean matchesSafely = item.isAfter(this.after);
+
+        switch (this.compareType) {
+            case INCLUSIVE:
+                final boolean isEqual = item.isEqual(this.after);
+                matchesSafely = isEqual || matchesSafely;
+                break;
+            default:
+        }
+
         return matchesSafely;
     }
 

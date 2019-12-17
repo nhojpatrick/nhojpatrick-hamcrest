@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.github.nhojpatrick.hamcrest</groupId>
 		<artifactId>nhojpatrick-hamcrest</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
@@ -35,40 +35,33 @@
 	<!--pluginRepositories / -->
 	<!--dependencies / -->
 	<dependencies>
-
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->
@@ -77,6 +70,8 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.testing</project.Automatic-Module-Name>
-		<checkstyle.maxAllowedViolations>12</checkstyle.maxAllowedViolations>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<maven.deploy.skip>true</maven.deploy.skip>
+		<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 	</properties>
 </project>

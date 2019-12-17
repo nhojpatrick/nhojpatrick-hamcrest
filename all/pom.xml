@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.github.nhojpatrick.hamcrest</groupId>
 		<artifactId>nhojpatrick-hamcrest</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
@@ -35,27 +35,22 @@
 	<!--pluginRepositories / -->
 	<!--dependencies / -->
 	<dependencies>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
 		</dependency>
-
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->
@@ -64,6 +59,8 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.all</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>

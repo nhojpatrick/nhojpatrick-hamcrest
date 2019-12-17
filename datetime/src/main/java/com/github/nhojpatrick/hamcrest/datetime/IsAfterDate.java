@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
-import com.github.nhojpatrick.hamcrest.datetime.internal.after.AbstractIsAfter;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalDate;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
@@ -11,23 +10,28 @@ import java.time.LocalDate;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 
-public abstract class IsAfterDate<T>
-        extends AbstractIsAfter<T> {
+public final class IsAfterDate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAfterDate.class);
 
-    public static <T> Matcher<T> afterLocalDate(final LocalDate after) {
-        LOGGER.debug("IsAfterDate#afterLocalDate((LocalDate) {})", after);
-        return afterLocalDate(after, EXCLUSIVE);
+    public static <T> Matcher<T> afterLocalDate(final LocalDate expected) {
+        LOGGER.debug("IsAfterDate#afterLocalDate((After) {})", expected);
+        return doAfterLocalDate(expected, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> afterLocalDate(final LocalDate after, final CompareType compareType) {
-        LOGGER.debug("IsAfterDate#afterLocalDate((LocalDate) {}, (CompareType) {} )", after, compareType);
-        return new IsAfterLocalDate(after, compareType);
+    public static <T> Matcher<T> afterLocalDate(final LocalDate expected,
+                                                final CompareType compareType) {
+        LOGGER.debug("IsAfterDate#afterLocalDate((After) {}, (CompareType) {})", expected, compareType);
+        return doAfterLocalDate(expected, compareType);
     }
 
-    protected IsAfterDate(final T after, final CompareType compareType) {
-        super(after, compareType);
+    private static <T> Matcher<T> doAfterLocalDate(final LocalDate expected,
+                                                   final CompareType compareType) {
+        return new IsAfterLocalDate(expected, compareType);
+    }
+
+    IsAfterDate() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }

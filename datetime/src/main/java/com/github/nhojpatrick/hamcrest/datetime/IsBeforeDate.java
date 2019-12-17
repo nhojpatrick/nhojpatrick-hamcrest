@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
-import com.github.nhojpatrick.hamcrest.datetime.internal.before.AbstractIsBefore;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDate;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
@@ -11,23 +10,28 @@ import java.time.LocalDate;
 
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 
-public abstract class IsBeforeDate<T>
-        extends AbstractIsBefore<T> {
+public final class IsBeforeDate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsBeforeDate.class);
 
     public static <T> Matcher<T> beforeLocalDate(final LocalDate before) {
-        LOGGER.debug("IsBeforeDate#beforeLocalDate((LocalDate) {})", before);
-        return beforeLocalDate(before, EXCLUSIVE);
+        LOGGER.debug("IsBeforeDate#beforeLocalDate((Before) {})", before);
+        return doBeforeLocalDate(before, EXCLUSIVE);
     }
 
-    public static <T> Matcher<T> beforeLocalDate(final LocalDate before, final CompareType compareType) {
-        LOGGER.debug("IsBeforeDate#beforeLocalDate((LocalDate) {}, (CompareType) {})", before, compareType);
+    public static <T> Matcher<T> beforeLocalDate(final LocalDate before,
+                                                 final CompareType compareType) {
+        LOGGER.debug("IsBeforeDate#beforeLocalDate((Before) {}, (CompareType) {})", before, compareType);
+        return doBeforeLocalDate(before, compareType);
+    }
+
+    private static <T> Matcher<T> doBeforeLocalDate(final LocalDate before,
+                                                    final CompareType compareType) {
         return new IsBeforeLocalDate(before, compareType);
     }
 
-    protected IsBeforeDate(final T before, final CompareType compareType) {
-        super(before, compareType);
+    IsBeforeDate() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
 }
