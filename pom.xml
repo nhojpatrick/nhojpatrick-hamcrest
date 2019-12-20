@@ -97,11 +97,6 @@
 					</dependencies>
 				</plugin>
 				<plugin>
-					<groupId>io.takari</groupId>
-					<artifactId>maven</artifactId>
-					<version>0.7.7</version>
-				</plugin>
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>3.1.0</version>
@@ -667,6 +662,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
+				<defaultGoal>validate</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>com.github.ekryd.sortpom</groupId>
@@ -687,6 +683,7 @@
 		<profile>
 			<id>versions</id>
 			<build>
+				<defaultGoal>validate</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
@@ -713,10 +710,12 @@
 		<profile>
 			<id>wrapper</id>
 			<build>
+				<defaultGoal>validate</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>io.takari</groupId>
 						<artifactId>maven</artifactId>
+						<version>0.7.7</version>
 						<executions>
 							<execution>
 								<id>wrapper-latest</id>
