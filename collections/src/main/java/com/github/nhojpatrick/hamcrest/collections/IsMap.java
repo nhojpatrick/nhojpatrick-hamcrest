@@ -12,6 +12,10 @@ import java.util.Objects;
 
 import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.CONTAINS;
 import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.EMPTY;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN_OR_EQUAL_TO;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN_OR_EQUAL_TO;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.IsNull.nullValue;
 
@@ -28,6 +32,46 @@ public class IsMap<T extends Map>
     public static <T extends Map> Matcher<T> mapWithSize(final int size) {
         LOGGER.debug("IsMap#mapWithSize((int) {})", size);
         return new IsMap<>(size);
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeGreaterThan(final long size) {
+        LOGGER.debug("IsMap#mapWithSizeGreaterThan((long) {})", size);
+        return mapWithSizeGreaterThan(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeGreaterThan(final int size) {
+        LOGGER.debug("IsMap#mapWithSizeGreaterThan((int) {})", size);
+        return new IsMap<>(GREATER_THAN, size);
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeGreaterThanOrEqualTo(final long size) {
+        LOGGER.debug("IsMap#mapWithSizeGreaterThanOrEqualTo((long) {})", size);
+        return mapWithSizeGreaterThanOrEqualTo(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeGreaterThanOrEqualTo(final int size) {
+        LOGGER.debug("IsMap#mapWithSizeGreaterThanOrEqualTo((int) {})", size);
+        return new IsMap<>(GREATER_THAN_OR_EQUAL_TO, size);
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeLessThan(final long size) {
+        LOGGER.debug("IsMap#mapWithSizeLessThan((long) {})", size);
+        return mapWithSizeLessThan(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeLessThan(final int size) {
+        LOGGER.debug("IsMap#mapWithSizeLessThan((int) {})", size);
+        return new IsMap<>(LESS_THAN, size);
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeLessThanOrEqualTo(final long size) {
+        LOGGER.debug("IsMap#mapWithSizeLessThanOrEqualTo((long) {})", size);
+        return mapWithSizeLessThanOrEqualTo(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Map> Matcher<T> mapWithSizeLessThanOrEqualTo(final int size) {
+        LOGGER.debug("IsMap#mapWithSizeLessThanOrEqualTo((int) {})", size);
+        return new IsMap<>(LESS_THAN_OR_EQUAL_TO, size);
     }
 
     public static <T extends Map> Matcher<T> emptyMap() {
