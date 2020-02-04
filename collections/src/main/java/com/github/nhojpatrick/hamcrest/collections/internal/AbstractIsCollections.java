@@ -39,6 +39,30 @@ public abstract class AbstractIsCollections<T>
                 description.appendText(this.type);
                 break;
 
+            case GREATER_THAN:
+                description.appendText(this.type);
+                description.appendText(" size greater than ");
+                description.appendValue(this.expectedSize);
+                break;
+
+            case GREATER_THAN_OR_EQUAL_TO:
+                description.appendText(this.type);
+                description.appendText(" size greater than or equal to ");
+                description.appendValue(this.expectedSize);
+                break;
+
+            case LESS_THAN:
+                description.appendText(this.type);
+                description.appendText(" size less than ");
+                description.appendValue(this.expectedSize);
+                break;
+
+            case LESS_THAN_OR_EQUAL_TO:
+                description.appendText(this.type);
+                description.appendText(" size less than or equal to ");
+                description.appendValue(this.expectedSize);
+                break;
+
             case CONTAINS:
             default:
                 description.appendText(this.type);
@@ -67,6 +91,18 @@ public abstract class AbstractIsCollections<T>
         switch (this.flag) {
             case EMPTY:
                 return isEmptyOrNull;
+
+            case GREATER_THAN:
+                return this.expectedSize < this.actualSize;
+
+            case GREATER_THAN_OR_EQUAL_TO:
+                return this.expectedSize <= this.actualSize;
+
+            case LESS_THAN:
+                return this.expectedSize > this.actualSize;
+
+            case LESS_THAN_OR_EQUAL_TO:
+                return this.expectedSize >= this.actualSize;
 
             case CONTAINS:
             default:
