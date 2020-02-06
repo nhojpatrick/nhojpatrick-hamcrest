@@ -12,6 +12,10 @@ import java.util.Objects;
 
 import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.CONTAINS;
 import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.EMPTY;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN_OR_EQUAL_TO;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN_OR_EQUAL_TO;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.IsNull.nullValue;
 
@@ -28,6 +32,46 @@ public class IsCollection<T extends Collection>
     public static <T extends Collection> Matcher<T> collectionWithSize(final int size) {
         LOGGER.debug("IsCollection#collectionWithSize((int) {})", size);
         return new IsCollection<>(size);
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeGreaterThan(final long size) {
+        LOGGER.debug("IsCollection#collectionWithSizeGreaterThan((long) {})", size);
+        return collectionWithSizeGreaterThan(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeGreaterThan(final int size) {
+        LOGGER.debug("IsCollection#collectionWithSizeGreaterThan((int) {})", size);
+        return new IsCollection<>(GREATER_THAN, size);
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeGreaterThanOrEqualTo(final long size) {
+        LOGGER.debug("IsCollection#collectionWithSizeGreaterThanOrEqualTo((long) {})", size);
+        return collectionWithSizeGreaterThanOrEqualTo(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeGreaterThanOrEqualTo(final int size) {
+        LOGGER.debug("IsCollection#collectionWithSizeGreaterThanOrEqualTo((int) {})", size);
+        return new IsCollection<>(GREATER_THAN_OR_EQUAL_TO, size);
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeLessThan(final long size) {
+        LOGGER.debug("IsCollection#collectionWithSizeLessThan((long) {})", size);
+        return collectionWithSizeLessThan(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeLessThan(final int size) {
+        LOGGER.debug("IsCollection#collectionWithSizeLessThan((int) {})", size);
+        return new IsCollection<>(LESS_THAN, size);
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeLessThanOrEqualTo(final long size) {
+        LOGGER.debug("IsCollection#collectionWithSizeLessThanOrEqualTo((long) {})", size);
+        return collectionWithSizeLessThanOrEqualTo(Long.valueOf(size).intValue());
+    }
+
+    public static <T extends Collection> Matcher<T> collectionWithSizeLessThanOrEqualTo(final int size) {
+        LOGGER.debug("IsCollection#collectionWithSizeLessThanOrEqualTo((int) {})", size);
+        return new IsCollection<>(LESS_THAN_OR_EQUAL_TO, size);
     }
 
     public static <T extends Collection> Matcher<T> emptyCollection() {
