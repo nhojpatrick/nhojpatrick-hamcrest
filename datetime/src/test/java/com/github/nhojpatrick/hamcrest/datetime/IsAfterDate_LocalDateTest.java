@@ -14,11 +14,11 @@ import java.time.LocalDate;
 import java.util.stream.Stream;
 
 import static com.github.nhojpatrick.hamcrest.datetime.IsAfterDate.afterLocalDate;
-import static com.github.nhojpatrick.hamcrest.datetime.RandomHelper.randomIntBetween;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.INCLUSIVE;
 import static com.github.nhojpatrick.hamcrest.datetime.internal.after.AbstractIsAfter.SUPPLIED_COMPARE_TYPE_MUST_NOT_BE_NULL;
 import static com.github.nhojpatrick.hamcrest.datetime.internal.after.AbstractIsAfter.SUPPLIED_EXPECTED_MUST_NOT_BE_NULL;
+import static com.github.nhojpatrick.hamcrest.testing.util.RandomHelper.randomIntBetween;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;

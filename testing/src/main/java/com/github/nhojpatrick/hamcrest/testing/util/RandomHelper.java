@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.hamcrest.datetime;
+package com.github.nhojpatrick.hamcrest.testing.util;
 
 import java.util.Random;
 

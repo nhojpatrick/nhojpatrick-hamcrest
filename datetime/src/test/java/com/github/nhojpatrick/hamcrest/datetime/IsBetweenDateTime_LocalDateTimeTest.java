@@ -17,12 +17,12 @@ import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import static com.github.nhojpatrick.hamcrest.datetime.IsBetweenDateTime.betweenLocalDateTime;
-import static com.github.nhojpatrick.hamcrest.datetime.RandomHelper.randomIntBetween;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.INCLUSIVE;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.DOWN;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
 import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.UP;
+import static com.github.nhojpatrick.hamcrest.testing.util.RandomHelper.randomIntBetween;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
