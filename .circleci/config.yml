@@ -18,8 +18,8 @@ commands:
       - run: tar xvf ~/openjdk-11.tar.gz -C ~/
       - run: sudo mv ~/jdk-11.0.2 /usr/local/openjdk-11
 
-  setup_for_openjdk_8_11:
-    description: "Setup for OpenJdk 8 and 11"
+  setup_std_toolchain:
+    description: "Setup ToolChain for multiple OpenJdk versions"
     steps:
       - run: mkdir ~/.m2
       - run: |
@@ -51,7 +51,7 @@ commands:
           </toolchains>
           EOF
 
-  setup_for_openjdk_11:
+  setup_openjdk_11_toolchain:
     description: "Setup for OpenJdk 11"
     steps:
       - run: mkdir ~/.m2
@@ -240,14 +240,14 @@ jobs:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
+      - setup_std_toolchain
       - std_mvnw_jdk8
 
   jdk11:
     docker:
       - image: circleci/openjdk:11-jdk-stretch
     steps:
-      - setup_for_openjdk_11
+      - setup_openjdk_11_toolchain
       - std_mvnw_jdk11
 
   jdk13:
@@ -267,7 +267,7 @@ jobs:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
+      - setup_std_toolchain
       - qa_checkstyle
 
   javadoc:
@@ -275,7 +275,7 @@ jobs:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
+      - setup_std_toolchain
       - qa_javadoc
 
   pmd:
@@ -283,7 +283,7 @@ jobs:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
+      - setup_std_toolchain
       - qa_pmd
 
   spotbugs:
@@ -291,7 +291,7 @@ jobs:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
+      - setup_std_toolchain
       - qa_spotbugs
 
 workflows:
