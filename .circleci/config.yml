@@ -52,7 +52,7 @@ commands:
           EOF
 
   setup_openjdk_11_toolchain:
-    description: "Setup for OpenJdk 11"
+    description: "Setup ToolChain for OpenJdk 11"
     steps:
       - run: mkdir ~/.m2
       - run: |
