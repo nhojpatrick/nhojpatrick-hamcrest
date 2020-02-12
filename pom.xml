@@ -155,7 +155,6 @@
 									<version>11</version>
 								</jdkToolchain>
 								<compileSourceRoots>
-									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
 									<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
 								</compileSourceRoots>
 								<multiReleaseOutput>true</multiReleaseOutput>
