@@ -94,14 +94,14 @@ commands:
             - m2-dependencies-
       - run:
           name: "Maven Jdk8 Clean Install"
-          command: ./mvnw -Pcicd clean install
+          command: ./mvnw -Pcicd clean verify -DskipTests
       - run:
           name: "Coveralls"
           command: ./mvnw -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
           when: on_success
       - run:
           name: "Maven Jdk8 Build Jdk11 Tests"
-          command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
+          command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd verify
       - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
