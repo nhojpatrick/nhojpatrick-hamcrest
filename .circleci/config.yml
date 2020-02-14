@@ -123,10 +123,10 @@ commands:
             - m2-dependencies-
       - run:
           name: "Maven Jdk11 Clean Install SkipTests"
-          command: ./mvnw -Pcicd clean install -DskipTests
+          command: ./mvnw -Pcicd clean verify -DskipTests
       - run:
           name: "Maven Jdk11 Tests"
-          command: ./mvnw -Pcicd test
+          command: ./mvnw -Pcicd verify
       - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
