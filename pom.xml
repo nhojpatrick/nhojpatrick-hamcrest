@@ -484,7 +484,7 @@
 		<profile>
 			<id>qa_checkstyle</id>
 			<build>
-				<defaultGoal>validate</defaultGoal>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -522,6 +522,7 @@
 		<profile>
 			<id>qa_javadoc</id>
 			<build>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -545,6 +546,7 @@
 		<profile>
 			<id>qa_pmd</id>
 			<build>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -570,6 +572,7 @@
 		<profile>
 			<id>qa_spotbugs</id>
 			<build>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>com.github.spotbugs</groupId>
