@@ -138,98 +138,38 @@ commands:
             - ~/.m2/wrapper
           when: always
 
-  qa_checkstyle:
-    description: "Standard mvnw checkstyle"
+  qa_step:
+    parameters:
+      stepName:
+        type: string
+    description: "Standard QA Step << parameters.stepName >>"
     steps:
       - checkout
       - restore_cache:
           keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
+            - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.stepName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_checkstyle -DskipTests verify
+      - run: ./mvnw -Pcicd,qa_<< parameters.stepName >> -DskipTests verify
       - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
       - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
-
-  qa_javadoc:
-    description: "Standard mvnw javadoc"
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-javadoc
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_javadoc -DskipTests verify
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-javadoc
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
-
-  qa_pmd:
-    description: "Standard mvnw pmd"
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-pmd
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_pmd -DskipTests verify
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-pmd
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
-
-  qa_spotbugs:
-    description: "Standard mvnw spotbugs"
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_spotbugs -DskipTests verify
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
+          key: m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.stepName >>
           paths:
             - ~/.m2/repository
             - ~/.m2/wrapper
           when: always
 
 jobs:
-  builds_passed:
+  passed_builds:
     machine:
       image: circleci/classic:latest
     steps:
       - run: echo "Build Passed"
 
-  qa_passed:
+  passed_qa:
     machine:
       image: circleci/classic:latest
     steps:
@@ -250,25 +190,14 @@ jobs:
       - setup_openjdk_11_toolchain
       - std_mvnw_jdk11
 
-  jdk13:
-    docker:
-      - image: circleci/openjdk:13-jdk-buster
-    steps:
-      - std_mvnw_jdk11
-
-  jdk14:
-    docker:
-      - image: circleci/openjdk:14-jdk-buster
-    steps:
-      - std_mvnw_jdk11
-
   checkstyle:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
       - setup_std_toolchain
-      - qa_checkstyle
+      - qa_step:
+          stepName: checkstyle
 
   javadoc:
     docker:
@@ -276,7 +205,8 @@ jobs:
     steps:
       - install_openjdk_11
       - setup_std_toolchain
-      - qa_javadoc
+      - qa_step:
+          stepName: javadoc
 
   pmd:
     docker:
@@ -284,7 +214,8 @@ jobs:
     steps:
       - install_openjdk_11
       - setup_std_toolchain
-      - qa_pmd
+      - qa_step:
+          stepName: pmd
 
   spotbugs:
     docker:
@@ -292,7 +223,8 @@ jobs:
     steps:
       - install_openjdk_11
       - setup_std_toolchain
-      - qa_spotbugs
+      - qa_step:
+          stepName: spotbugs
 
 workflows:
   version: 2
@@ -300,15 +232,11 @@ workflows:
     jobs:
       - jdk8
       - jdk11
-      #- jdk13
-      #- jdk14
-      - builds_passed:
+      - passed_builds:
           requires:
             - jdk8
             - jdk11
-            #- jdk13
-            #- jdk14
-      - qa_passed:
+      - passed_qa:
           requires:
             - checkstyle
             - javadoc
@@ -316,7 +244,7 @@ workflows:
             - spotbugs
       - checkstyle:
           requires:
-            - builds_passed
+            - passed_builds
           filters:
             branches:
               ignore:
@@ -324,7 +252,7 @@ workflows:
                 - master
       - javadoc:
           requires:
-            - builds_passed
+            - passed_builds
           filters:
             branches:
               ignore:
@@ -332,7 +260,7 @@ workflows:
                 - master
       - pmd:
           requires:
-            - builds_passed
+            - passed_builds
           filters:
             branches:
               ignore:
@@ -340,7 +268,7 @@ workflows:
                 - master
       - spotbugs:
           requires:
-            - builds_passed
+            - passed_builds
           filters:
             branches:
               ignore:
