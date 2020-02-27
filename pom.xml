@@ -12,7 +12,7 @@
 	<!--name / -->
 	<name>Hamcrest extensions</name>
 	<!--version / -->
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<!--description / -->
 	<description>Hamcrest extensions project</description>
 	<!--url / -->
