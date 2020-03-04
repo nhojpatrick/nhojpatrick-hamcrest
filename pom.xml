@@ -69,25 +69,25 @@
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
 					<version>3.1.12.2</version>
-					<!--					<configuration>-->
-					<!--						<plugins>-->
-					<!--							<plugin>-->
-					<!--								<groupId>com.h3xstream.findsecbugs</groupId>-->
-					<!--								<artifactId>findsecbugs-plugin</artifactId>-->
-					<!--								<version>1.9.0</version>-->
-					<!--							</plugin>-->
-					<!--							<plugin>-->
-					<!--								<groupId>com.mebigfatguy.fb-contrib</groupId>-->
-					<!--								<artifactId>fb-contrib</artifactId>-->
-					<!--								<version>7.4.6</version>-->
-					<!--							</plugin>-->
-					<!--							<plugin>-->
-					<!--								<groupId>jp.skypencil.findbugs.slf4j</groupId>-->
-					<!--								<artifactId>bug-pattern</artifactId>-->
-					<!--								<version>1.5.0</version>-->
-					<!--							</plugin>-->
-					<!--						</plugins>-->
-					<!--					</configuration>-->
+					<configuration>
+						<plugins>
+							<plugin>
+								<groupId>com.h3xstream.findsecbugs</groupId>
+								<artifactId>findsecbugs-plugin</artifactId>
+								<version>1.10.1</version>
+							</plugin>
+							<plugin>
+								<groupId>com.mebigfatguy.fb-contrib</groupId>
+								<artifactId>fb-contrib</artifactId>
+								<version>7.4.7</version>
+							</plugin>
+							<plugin>
+								<groupId>jp.skypencil.findbugs.slf4j</groupId>
+								<artifactId>bug-pattern</artifactId>
+								<version>1.5.0</version>
+							</plugin>
+						</plugins>
+					</configuration>
 					<dependencies>
 						<dependency>
 							<groupId>com.github.spotbugs</groupId>
@@ -580,7 +580,7 @@
 						<executions>
 							<execution>
 								<id>spotbugs-check</id>
-								<phase>validate</phase>
+								<phase>verify</phase>
 								<goals>
 									<goal>check</goal>
 								</goals>
