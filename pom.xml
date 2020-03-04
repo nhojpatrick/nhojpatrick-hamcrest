@@ -857,9 +857,6 @@
 		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
-		<!-- maven user properties -->
-		<downloadSources>true</downloadSources>
-		<downloadJavadocs>true</downloadJavadocs>
 		<!-- Surefire/Failsafe jpms override(s) -->
 		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
 		<project.failsafe.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
