@@ -2,6 +2,7 @@ package com.github.nhojpatrick.hamcrest.collections;
 
 import com.github.nhojpatrick.hamcrest.collections.internal.AbstractIsCollections;
 import com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.AnyOf;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public class IsMap<T extends Map>
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsMap.class);
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Map> Matcher<T> mapWithSize(final long size) {
         LOGGER.debug("IsMap#mapWithSize((long) {})", size);
         return mapWithSize(Long.valueOf(size).intValue());
@@ -34,6 +36,7 @@ public class IsMap<T extends Map>
         return new IsMap<>(size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Map> Matcher<T> mapWithSizeGreaterThan(final long size) {
         LOGGER.debug("IsMap#mapWithSizeGreaterThan((long) {})", size);
         return mapWithSizeGreaterThan(Long.valueOf(size).intValue());
@@ -44,6 +47,7 @@ public class IsMap<T extends Map>
         return new IsMap<>(GREATER_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Map> Matcher<T> mapWithSizeGreaterThanOrEqualTo(final long size) {
         LOGGER.debug("IsMap#mapWithSizeGreaterThanOrEqualTo((long) {})", size);
         return mapWithSizeGreaterThanOrEqualTo(Long.valueOf(size).intValue());
@@ -54,6 +58,7 @@ public class IsMap<T extends Map>
         return new IsMap<>(GREATER_THAN_OR_EQUAL_TO, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Map> Matcher<T> mapWithSizeLessThan(final long size) {
         LOGGER.debug("IsMap#mapWithSizeLessThan((long) {})", size);
         return mapWithSizeLessThan(Long.valueOf(size).intValue());
@@ -64,6 +69,7 @@ public class IsMap<T extends Map>
         return new IsMap<>(LESS_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Map> Matcher<T> mapWithSizeLessThanOrEqualTo(final long size) {
         LOGGER.debug("IsMap#mapWithSizeLessThanOrEqualTo((long) {})", size);
         return mapWithSizeLessThanOrEqualTo(Long.valueOf(size).intValue());
@@ -79,6 +85,7 @@ public class IsMap<T extends Map>
         return new IsMap<>(EMPTY);
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public static <T extends Map> Matcher<T> nullOrEmptyMap() {
 
         LOGGER.debug("IsMap#nullOrEmptyMap()");

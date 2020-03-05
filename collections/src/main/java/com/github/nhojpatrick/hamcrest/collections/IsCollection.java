@@ -2,6 +2,7 @@ package com.github.nhojpatrick.hamcrest.collections;
 
 import com.github.nhojpatrick.hamcrest.collections.internal.AbstractIsCollections;
 import com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.AnyOf;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public class IsCollection<T extends Collection>
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsCollection.class);
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Collection> Matcher<T> collectionWithSize(final long size) {
         LOGGER.debug("IsCollection#collectionWithSize((long) {})", size);
         return collectionWithSize(Long.valueOf(size).intValue());
@@ -34,6 +36,7 @@ public class IsCollection<T extends Collection>
         return new IsCollection<>(size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Collection> Matcher<T> collectionWithSizeGreaterThan(final long size) {
         LOGGER.debug("IsCollection#collectionWithSizeGreaterThan((long) {})", size);
         return collectionWithSizeGreaterThan(Long.valueOf(size).intValue());
@@ -44,6 +47,7 @@ public class IsCollection<T extends Collection>
         return new IsCollection<>(GREATER_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Collection> Matcher<T> collectionWithSizeGreaterThanOrEqualTo(final long size) {
         LOGGER.debug("IsCollection#collectionWithSizeGreaterThanOrEqualTo((long) {})", size);
         return collectionWithSizeGreaterThanOrEqualTo(Long.valueOf(size).intValue());
@@ -54,6 +58,7 @@ public class IsCollection<T extends Collection>
         return new IsCollection<>(GREATER_THAN_OR_EQUAL_TO, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Collection> Matcher<T> collectionWithSizeLessThan(final long size) {
         LOGGER.debug("IsCollection#collectionWithSizeLessThan((long) {})", size);
         return collectionWithSizeLessThan(Long.valueOf(size).intValue());
@@ -64,6 +69,7 @@ public class IsCollection<T extends Collection>
         return new IsCollection<>(LESS_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Collection> Matcher<T> collectionWithSizeLessThanOrEqualTo(final long size) {
         LOGGER.debug("IsCollection#collectionWithSizeLessThanOrEqualTo((long) {})", size);
         return collectionWithSizeLessThanOrEqualTo(Long.valueOf(size).intValue());
@@ -79,6 +85,7 @@ public class IsCollection<T extends Collection>
         return new IsCollection<>(EMPTY);
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public static <T extends Collection> Matcher<T> nullOrEmptyCollection() {
 
         LOGGER.debug("IsCollection#nullOrEmptyCollection()");

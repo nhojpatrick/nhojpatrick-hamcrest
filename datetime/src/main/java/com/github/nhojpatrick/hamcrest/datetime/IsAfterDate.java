@@ -2,6 +2,7 @@ package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalDate;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ public final class IsAfterDate {
         return doAfterLocalDate(expected, compareType);
     }
 
+    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doAfterLocalDate(final LocalDate expected,
                                                    final CompareType compareType) {
         return new IsAfterLocalDate(expected, compareType);

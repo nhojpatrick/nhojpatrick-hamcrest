@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.hamcrest.collections;
 
 import com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.AnyOf;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class IsList<T extends List>
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsList.class);
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends List> Matcher<T> listWithSize(final long size) {
         LOGGER.debug("IsList#listWithSize((long) {})", size);
         return listWithSize(Long.valueOf(size).intValue());
@@ -32,6 +34,7 @@ public class IsList<T extends List>
         return new IsList<>(size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends List> Matcher<T> listWithSizeGreaterThan(final long size) {
         LOGGER.debug("IsList#listWithSizeGreaterThan((long) {})", size);
         return listWithSizeGreaterThan(Long.valueOf(size).intValue());
@@ -42,6 +45,7 @@ public class IsList<T extends List>
         return new IsList<>(GREATER_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends List> Matcher<T> listWithSizeGreaterThanOrEqualTo(final long size) {
         LOGGER.debug("IsList#listWithSizeGreaterThanOrEqualTo((long) {})", size);
         return listWithSizeGreaterThanOrEqualTo(Long.valueOf(size).intValue());
@@ -52,6 +56,7 @@ public class IsList<T extends List>
         return new IsList<>(GREATER_THAN_OR_EQUAL_TO, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends List> Matcher<T> listWithSizeLessThan(final long size) {
         LOGGER.debug("IsList#listWithSizeLessThan((long) {})", size);
         return listWithSizeLessThan(Long.valueOf(size).intValue());
@@ -62,6 +67,7 @@ public class IsList<T extends List>
         return new IsList<>(LESS_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends List> Matcher<T> listWithSizeLessThanOrEqualTo(final long size) {
         LOGGER.debug("IsList#listWithSizeLessThanOrEqualTo((long) {})", size);
         return listWithSizeLessThanOrEqualTo(Long.valueOf(size).intValue());
@@ -77,6 +83,7 @@ public class IsList<T extends List>
         return new IsList<>(EMPTY);
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public static <T extends List> Matcher<T> nullOrEmptyList() {
 
         LOGGER.debug("IsList#nullOrEmptyList()");

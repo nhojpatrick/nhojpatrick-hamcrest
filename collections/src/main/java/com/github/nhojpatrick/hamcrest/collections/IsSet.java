@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.hamcrest.collections;
 
 import com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.AnyOf;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class IsSet<T extends Set>
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsSet.class);
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Set> Matcher<T> setWithSize(final long size) {
         LOGGER.debug("IsSet#setWithSize((long) {})", size);
         return setWithSize(Long.valueOf(size).intValue());
@@ -32,6 +34,7 @@ public class IsSet<T extends Set>
         return new IsSet<>(size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Set> Matcher<T> setWithSizeGreaterThan(final long size) {
         LOGGER.debug("IsSet#setWithSizeGreaterThan((long) {})", size);
         return setWithSizeGreaterThan(Long.valueOf(size).intValue());
@@ -42,6 +45,7 @@ public class IsSet<T extends Set>
         return new IsSet<>(GREATER_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Set> Matcher<T> setWithSizeGreaterThanOrEqualTo(final long size) {
         LOGGER.debug("IsSet#setWithSizeGreaterThanOrEqualTo((long) {})", size);
         return setWithSizeGreaterThanOrEqualTo(Long.valueOf(size).intValue());
@@ -52,6 +56,7 @@ public class IsSet<T extends Set>
         return new IsSet<>(GREATER_THAN_OR_EQUAL_TO, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Set> Matcher<T> setWithSizeLessThan(final long size) {
         LOGGER.debug("IsSet#setWithSizeLessThan((long) {})", size);
         return setWithSizeLessThan(Long.valueOf(size).intValue());
@@ -62,6 +67,7 @@ public class IsSet<T extends Set>
         return new IsSet<>(LESS_THAN, size);
     }
 
+    @SuppressFBWarnings(value = "NAB_NEEDLESS_BOX_TO_CAST", justification = "Aware and accepted 2020/03/05")
     public static <T extends Set> Matcher<T> setWithSizeLessThanOrEqualTo(final long size) {
         LOGGER.debug("IsSet#setWithSizeLessThanOrEqualTo((long) {})", size);
         return setWithSizeLessThanOrEqualTo(Long.valueOf(size).intValue());
@@ -77,6 +83,7 @@ public class IsSet<T extends Set>
         return new IsSet<>(EMPTY);
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public static <T extends Set> Matcher<T> nullOrEmptySet() {
 
         LOGGER.debug("IsSet#nullOrEmptySet()");

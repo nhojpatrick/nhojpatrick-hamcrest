@@ -1,9 +1,13 @@
 package com.github.nhojpatrick.hamcrest.testing.util;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import java.util.Random;
 
 public class RandomHelper {
 
+    @SuppressFBWarnings(value = "PREDICTABLE_RANDOM",
+            justification = "Accepted issue and just for datetime testing currently")
     public static int randomIntBetween(final int low,
                                        final int high) {
         return randomIntBetween(new Random(), low, high);

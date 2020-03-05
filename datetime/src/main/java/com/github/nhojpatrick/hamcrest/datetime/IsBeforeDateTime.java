@@ -5,6 +5,7 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeZonedDateTime;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,6 +73,7 @@ public final class IsBeforeDateTime {
         return doBeforeOffsetDateTime(expected, EXCLUSIVE, roundingType);
     }
 
+    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doBeforeOffsetDateTime(final OffsetDateTime expected,
                                                          final CompareType compareType,
                                                          final RoundingType roundingType) {
@@ -104,12 +106,14 @@ public final class IsBeforeDateTime {
         return doBeforeZonedDateTime(expected, EXCLUSIVE, roundingType);
     }
 
+    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doBeforeLocalDateTime(final ChronoLocalDateTime expected,
                                                         final CompareType compareType,
                                                         final RoundingType roundingType) {
         return new IsBeforeLocalDateTime(expected, compareType, roundingType);
     }
 
+    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doBeforeZonedDateTime(final ChronoZonedDateTime expected,
                                                         final CompareType compareType,
                                                         final RoundingType roundingType) {
