@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.hamcrest.optionals;
 
 import com.github.nhojpatrick.hamcrest.optionals.internal.IsOptionalFlag;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -71,6 +72,7 @@ public class IsOptional<T extends Optional<?>>
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     protected boolean matchesSafely(final T item) {
 
         // FIXME Java 11 version can be simply Optional.isEmpty()

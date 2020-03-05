@@ -23,7 +23,7 @@ public class IsAfterJavaSqlTimeImpl<T extends Time>
 
     public IsAfterJavaSqlTimeImpl(final T after,
                                   final CompareType compareType) {
-        LOGGER.debug("IsAfterJavaSqlTimeImpl((After) {}, (CompareType) {}, (RoundingType) {})",
+        LOGGER.debug("IsAfterJavaSqlTimeImpl((After) {}, (CompareType) {})",
                 after, compareType);
 
         if (isNull(after)) {

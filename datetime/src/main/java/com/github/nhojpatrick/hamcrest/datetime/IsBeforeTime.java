@@ -4,6 +4,7 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetTime;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,12 +71,14 @@ public final class IsBeforeTime {
         return doBeforeOffsetTime(expected, EXCLUSIVE, roundingType);
     }
 
+    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doBeforeLocalTime(final LocalTime expected,
                                                     final CompareType compareType,
                                                     final RoundingType roundingType) {
         return new IsBeforeLocalTime(expected, compareType, roundingType);
     }
 
+    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doBeforeOffsetTime(final OffsetTime expected,
                                                      final CompareType compareType,
                                                      final RoundingType roundingType) {

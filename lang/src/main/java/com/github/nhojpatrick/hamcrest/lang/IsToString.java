@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.hamcrest.lang;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -40,6 +41,7 @@ public class IsToString<T extends Object>
     }
 
     @Override
+    @SuppressFBWarnings(value = "STT_TOSTRING_STORED_IN_FIELD", justification = "Useful for debugging")
     protected boolean matchesSafely(final T item) {
 
         if (Objects.nonNull(item)) {
