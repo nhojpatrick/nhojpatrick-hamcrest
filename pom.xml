@@ -59,9 +59,9 @@
 					<version>2.11.0</version>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.sortpom</groupId>
+							<groupId>com.github.nhojpatrick.qa</groupId>
 							<artifactId>nhojpatrick-sortpom-sortorderfile</artifactId>
-							<version>[1.1,1.999)</version>
+							<version>[1.0.0,1.0.999)</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -106,9 +106,9 @@
 					</configuration>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.checkstyle</groupId>
+							<groupId>com.github.nhojpatrick.qa</groupId>
 							<artifactId>nhojpatrick-checkstyle-rules</artifactId>
-							<version>[1.0.0,1.0.999)</version>
+							<version>[1.0.1,1.0.999)</version>
 						</dependency>
 						<dependency>
 							<groupId>com.puppycrawl.tools</groupId>
@@ -224,14 +224,14 @@
 					<version>3.13.0</version>
 					<configuration>
 						<rulesets>
-							<ruleset>com/github/nhojpatrick/pmd/ruleset/rules.xml</ruleset>
+							<ruleset>com/github/nhojpatrick/qa/pmd/ruleset/rules.xml</ruleset>
 						</rulesets>
 					</configuration>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.pmd</groupId>
+							<groupId>com.github.nhojpatrick.qa</groupId>
 							<artifactId>nhojpatrick-pmd-ruleset</artifactId>
-							<version>[1.0,1.999)</version>
+							<version>[1.0.1,1.0.999)</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -313,9 +313,9 @@
 					<version>2.7</version>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.versions</groupId>
+							<groupId>com.github.nhojpatrick.qa</groupId>
 							<artifactId>nhojpatrick-versions-ruleset</artifactId>
-							<version>1.1</version>
+							<version>[1.0.0,1.0.999)</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -882,19 +882,19 @@
 		<pmd.maxAllowedViolations>0</pmd.maxAllowedViolations>
 		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
 		<!-- checkstyle -->
-		<checkstyle.config.location>com/github/nhojpatrick/checkstyle/rules/rules.xml</checkstyle.config.location>
+		<checkstyle.config.location>com/github/nhojpatrick/qa/checkstyle/rules/rules.xml</checkstyle.config.location>
 		<!-- sortpom -->
 		<sort.createBackupFile>false</sort.createBackupFile>
 		<sort.nrOfIndentSpace>-1</sort.nrOfIndentSpace>
 		<sort.pomFile>pom.xml</sort.pomFile>
 		<sort.sortDependencies>groupId,artifactId,version,scope</sort.sortDependencies>
 		<sort.sortModules>true</sort.sortModules>
-		<sort.sortOrderFile>com/github/nhojpatrick/sortpom/sortorderfile/nhojpatrick.xml</sort.sortOrderFile>
+		<sort.sortOrderFile>com/github/nhojpatrick/qa/sortpom/sortorderfile/sortorderfile.xml</sort.sortOrderFile>
 		<sort.sortPlugins>groupId,artifactId,version,scope</sort.sortPlugins>
 		<sort.sortProperties>false</sort.sortProperties>
 		<!-- versions-maven-plugin -->
 		<generateBackupPoms>false</generateBackupPoms>
-		<maven.version.rules>classpath:///com/github/nhojpatrick/versions/ruleset/rules.xml</maven.version.rules>
+		<maven.version.rules>classpath:///com/github/nhojpatrick/qa/versions/rules/rules.xml</maven.version.rules>
 		<!-- JPMS -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<toolchain.vendor>openjdk</toolchain.vendor>
