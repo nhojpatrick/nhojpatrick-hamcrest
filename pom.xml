@@ -862,12 +862,13 @@
 		<!-- custom properties -->
 		<project.custom.encoding>UTF-8</project.custom.encoding>
 		<project.custom.java.version>1.8</project.custom.java.version>
-		<!-- override maven properties -->
-		<maven.test.failure.ignore>false</maven.test.failure.ignore>
+		<!-- maven user properties -->
+		<generateBackupPoms>false</generateBackupPoms>
 		<maven.compiler.source>${project.custom.java.version}</maven.compiler.source>
 		<maven.compiler.target>${project.custom.java.version}</maven.compiler.target>
-		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
+		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
+		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
 		<!-- Surefire/Failsafe jpms override(s) -->
 		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
@@ -882,14 +883,14 @@
 		<!-- plugin versions -->
 		<plugins.github.ekryd.sortpom-maven-plugin>2.11.0</plugins.github.ekryd.sortpom-maven-plugin>
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
-		<!-- -->
+		<!-- dependency versions -->
+		<version.com.github.spotbugs>[4.0.2,4.0.99)</version.com.github.spotbugs>
 		<version.com.puppycrawl.tools.checkstyle>8.32</version.com.puppycrawl.tools.checkstyle>
 		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>[2.13.0,2.99.99)</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
 		<version.org.junit.jupiter>[5.6.0,5.6.99)</version.org.junit.jupiter>
 		<version.org.slf4j>[1.7.30,1.7.99)</version.org.slf4j>
-		<version.com.github.spotbugs>[4.0.2,4.0.99)</version.com.github.spotbugs>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
@@ -908,7 +909,6 @@
 		<sort.sortPlugins>groupId,artifactId,version,scope</sort.sortPlugins>
 		<sort.sortProperties>false</sort.sortProperties>
 		<!-- versions-maven-plugin -->
-		<generateBackupPoms>false</generateBackupPoms>
 		<maven.version.rules>classpath:///com/github/nhojpatrick/qa/versions/rules/rules.xml</maven.version.rules>
 		<!-- JPMS -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
