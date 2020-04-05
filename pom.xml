@@ -692,9 +692,9 @@
 								<id>versions-check</id>
 								<phase>validate</phase>
 								<goals>
-									<goal>display-dependency-updates</goal>
 									<goal>display-parent-updates</goal>
 									<goal>display-plugin-updates</goal>
+									<goal>display-dependency-updates</goal>
 									<goal>display-property-updates</goal>
 								</goals>
 							</execution>
@@ -703,6 +703,8 @@
 				</plugins>
 			</build>
 			<properties>
+				<downloadJavadocs>false</downloadJavadocs>
+				<downloadSources>false</downloadSources>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
