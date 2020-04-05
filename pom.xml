@@ -97,6 +97,11 @@
 					</dependencies>
 				</plugin>
 				<plugin>
+					<groupId>io.takari</groupId>
+					<artifactId>maven</artifactId>
+					<version>${plugins.takari.maven}</version>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>3.1.1</version>
@@ -709,7 +714,6 @@
 					<plugin>
 						<groupId>io.takari</groupId>
 						<artifactId>maven</artifactId>
-						<version>0.7.7</version>
 						<executions>
 							<execution>
 								<id>wrapper-latest</id>
@@ -723,6 +727,8 @@
 				</plugins>
 			</build>
 			<properties>
+				<downloadJavadocs>false</downloadJavadocs>
+				<downloadSources>false</downloadSources>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
@@ -867,6 +873,8 @@
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<!-- plugin versions -->
+		<plugins.takari.maven>0.7.7</plugins.takari.maven>
 		<!-- -->
 		<version.com.puppycrawl.tools.checkstyle>8.32</version.com.puppycrawl.tools.checkstyle>
 		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
