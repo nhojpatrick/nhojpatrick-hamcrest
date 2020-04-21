@@ -190,41 +190,17 @@ jobs:
       - setup_openjdk_11_toolchain
       - std_mvnw_jdk11
 
-  checkstyle:
+  qa_matrix:
+    parameters:
+      qa_step_profile:
+        type: string
     docker:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - install_openjdk_11
       - setup_std_toolchain
       - qa_step:
-          stepName: checkstyle
-
-  javadoc:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    steps:
-      - install_openjdk_11
-      - setup_std_toolchain
-      - qa_step:
-          stepName: javadoc
-
-  pmd:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    steps:
-      - install_openjdk_11
-      - setup_std_toolchain
-      - qa_step:
-          stepName: pmd
-
-  spotbugs:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    steps:
-      - install_openjdk_11
-      - setup_std_toolchain
-      - qa_step:
-          stepName: spotbugs
+          stepName: << parameters.qa_step_profile >>
 
 workflows:
   version: 2
@@ -236,41 +212,25 @@ workflows:
           requires:
             - jdk8
             - jdk11
+
+      - qa_matrix:
+          name: qa_<< matrix.qa_step_profile >>
+          requires:
+            - passed_builds
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+          matrix:
+            parameters:
+              qa_step_profile: [
+                "checkstyle",
+                "javadoc",
+                "pmd",
+                "spotbugs"
+              ]
+
       - passed_qa:
           requires:
-            - checkstyle
-            - javadoc
-            - pmd
-            - spotbugs
-      - checkstyle:
-          requires:
-            - passed_builds
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
-      - javadoc:
-          requires:
-            - passed_builds
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
-      - pmd:
-          requires:
-            - passed_builds
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
-      - spotbugs:
-          requires:
-            - passed_builds
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
+            - qa_matrix
