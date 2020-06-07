@@ -885,7 +885,7 @@
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
 		<!-- dependency versions -->
 		<version.com.github.spotbugs>[4.0.2,4.0.99)</version.com.github.spotbugs>
-		<version.com.puppycrawl.tools.checkstyle>8.32</version.com.puppycrawl.tools.checkstyle>
+		<version.com.puppycrawl.tools.checkstyle>8.33</version.com.puppycrawl.tools.checkstyle>
 		<version.org.apache.commons.lang3>[3.10,3.99)</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>[2.13.0,2.99.99)</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
