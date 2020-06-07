@@ -178,6 +178,7 @@ jobs:
   jdk8:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
+    resource_class: small
     steps:
       - install_openjdk_11
       - setup_std_toolchain
@@ -186,6 +187,7 @@ jobs:
   jdk11:
     docker:
       - image: circleci/openjdk:11-jdk-stretch
+    resource_class: small
     steps:
       - setup_openjdk_11_toolchain
       - std_mvnw_jdk11
@@ -196,6 +198,7 @@ jobs:
         type: string
     docker:
       - image: circleci/openjdk:8-jdk-stretch
+    resource_class: small
     steps:
       - install_openjdk_11
       - setup_std_toolchain
