@@ -156,6 +156,57 @@
 								<multiReleaseOutput>true</multiReleaseOutput>
 							</configuration>
 						</execution>
+						<!--		<execution>-->
+						<!--							<id>default-compile</id>-->
+						<!--							<phase>compile</phase>-->
+						<!--							<goals>-->
+						<!--								<goal>compile</goal>-->
+						<!--							</goals>-->
+						<!--							<configuration>-->
+						<!--								<source>1.8</source>-->
+						<!--								<target>1.8</target>-->
+						<!--								<jdkToolchain>-->
+						<!--									<version>1.8</version>-->
+						<!--								</jdkToolchain>-->
+						<!--								<compileSourceRoots>-->
+						<!--									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>-->
+						<!--								</compileSourceRoots>-->
+						<!--							</configuration>-->
+						<!--						</execution>-->
+						<!--						<execution>-->
+						<!--							<id>java11-test</id>-->
+						<!--							<phase>test-compile</phase>-->
+						<!--							<goals>-->
+						<!--								<goal>testCompile</goal>-->
+						<!--							</goals>-->
+						<!--							<configuration>-->
+						<!--								<release>11</release>-->
+						<!--								<jdkToolchain>-->
+						<!--									<version>11</version>-->
+						<!--								</jdkToolchain>-->
+						<!--								<testCompileSourceRoots>-->
+						<!--									<testCompileSourceRoot>${project.basedir}/src/test/java11</testCompileSourceRoot>-->
+						<!--								</testCompileSourceRoots>-->
+						<!--								<multiReleaseOutput>true</multiReleaseOutput>-->
+						<!--							</configuration>-->
+						<!--						</execution>-->
+						<!--						<execution>-->
+						<!--							<id>default-testCompile</id>-->
+						<!--							<phase>test-compile</phase>-->
+						<!--							<goals>-->
+						<!--								<goal>testCompile</goal>-->
+						<!--							</goals>-->
+						<!--							<configuration>-->
+						<!--								<source>1.8</source>-->
+						<!--								<target>1.8</target>-->
+						<!--								<jdkToolchain>-->
+						<!--									<version>1.8</version>-->
+						<!--								</jdkToolchain>-->
+						<!--								<compileSourceRoots>-->
+						<!--									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>-->
+						<!--								</compileSourceRoots>-->
+						<!--							</configuration>-->
+						<!--						</execution>-->
 					</executions>
 				</plugin>
 				<plugin>
@@ -183,7 +234,7 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>3.0.0-M5</version>
 					<configuration>
-						<argLine>${project.failsafe.argLine.jpms}</argLine>
+						<!--						<argLine>${project.failsafe.argLine.jpms}</argLine>-->
 						<includes>
 							<include>**/*IT.java</include>
 						</includes>
@@ -270,7 +321,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>3.0.0-M5</version>
 					<configuration>
-						<argLine>${project.surefire.argLine.jpms}</argLine>
+						<!--						<argLine>${project.surefire.argLine.jpms}</argLine>-->
 						<excludes>
 							<exclude>**/*IT.java</exclude>
 						</excludes>
@@ -479,6 +530,18 @@
 								<configuration>
 									<sources>
 										<source>${project.basedir}/src/main/java11</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-test-source-java11</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${project.basedir}/src/test/java11</source>
 									</sources>
 								</configuration>
 							</execution>
@@ -878,13 +941,10 @@
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
 		<!-- Surefire/Failsafe jpms override(s) -->
 		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
-		<project.failsafe.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
+		<project.failsafe.argLine.jpms.global></project.failsafe.argLine.jpms.global>
 		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
 		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
-		<project.surefire.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
+		<project.surefire.argLine.jpms.global></project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- plugin versions -->
 		<plugins.github.ekryd.sortpom-maven-plugin>2.11.0</plugins.github.ekryd.sortpom-maven-plugin>
