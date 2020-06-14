@@ -2,6 +2,7 @@ package com.github.nhojpatrick.hamcrest.datetime.tests;
 
 import com.github.nhojpatrick.hamcrest.datetime.IsDate;
 import com.github.nhojpatrick.hamcrest.testing.MatcherObjectTester;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
