@@ -232,7 +232,7 @@ public final class IsBetweenDateTime {
         return betweenZonedDateTime;
     }
 
-    IsBetweenDateTime() {
+    public IsBetweenDateTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

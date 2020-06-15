@@ -51,7 +51,7 @@ public final class IsDateTime {
         return new IsZonedDateTime(matcher);
     }
 
-    IsDateTime() {
+    public IsDateTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

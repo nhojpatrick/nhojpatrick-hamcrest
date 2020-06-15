@@ -85,7 +85,7 @@ public final class IsBeforeTime {
         return new IsBeforeOffsetTime(expected, compareType, roundingType);
     }
 
-    IsBeforeTime() {
+    public IsBeforeTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

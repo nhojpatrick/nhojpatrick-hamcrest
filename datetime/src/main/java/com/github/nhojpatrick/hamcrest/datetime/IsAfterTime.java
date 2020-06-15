@@ -85,7 +85,7 @@ public final class IsAfterTime {
         return new IsAfterOffsetTime(expected, compareType, roundingType);
     }
 
-    IsAfterTime() {
+    public IsAfterTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

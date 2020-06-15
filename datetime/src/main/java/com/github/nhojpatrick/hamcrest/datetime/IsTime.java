@@ -38,7 +38,7 @@ public final class IsTime {
         return new IsOffsetTime(matcher);
     }
 
-    IsTime() {
+    public IsTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

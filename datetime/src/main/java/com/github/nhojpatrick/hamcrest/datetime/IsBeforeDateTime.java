@@ -120,7 +120,7 @@ public final class IsBeforeDateTime {
         return new IsBeforeZonedDateTime(expected, compareType, roundingType);
     }
 
-    IsBeforeDateTime() {
+    public IsBeforeDateTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

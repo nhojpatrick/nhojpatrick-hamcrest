@@ -32,7 +32,7 @@ public final class IsAfterDate {
         return new IsAfterLocalDate(expected, compareType);
     }
 
-    IsAfterDate() {
+    public IsAfterDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
