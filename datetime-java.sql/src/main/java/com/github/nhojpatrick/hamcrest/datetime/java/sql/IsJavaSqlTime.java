@@ -65,7 +65,7 @@ public final class IsJavaSqlTime {
         return new IsBeforeJavaSqlTimeImpl(before, compareType);
     }
 
-    IsJavaSqlTime() {
+    public IsJavaSqlTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

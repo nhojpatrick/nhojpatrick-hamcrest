@@ -62,7 +62,7 @@ public final class IsBetweenDate {
         return betweenLocalDate;
     }
 
-    IsBetweenDate() {
+    public IsBetweenDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

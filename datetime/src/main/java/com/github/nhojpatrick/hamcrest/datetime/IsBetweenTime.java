@@ -161,7 +161,7 @@ public final class IsBetweenTime {
         return betweenOffsetTime;
     }
 
-    IsBetweenTime() {
+    public IsBetweenTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

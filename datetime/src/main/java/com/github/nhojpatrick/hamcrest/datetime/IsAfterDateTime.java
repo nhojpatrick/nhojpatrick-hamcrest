@@ -120,7 +120,7 @@ public final class IsAfterDateTime {
         return new IsAfterZonedDateTime(expected, compareType, roundingType);
     }
 
-    IsAfterDateTime() {
+    public IsAfterDateTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 

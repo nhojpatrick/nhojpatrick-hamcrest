@@ -25,7 +25,7 @@ public final class IsDate {
         return new IsLocalDate(matcher);
     }
 
-    IsDate() {
+    public IsDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
