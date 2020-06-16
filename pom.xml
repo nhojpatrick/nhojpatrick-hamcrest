@@ -274,6 +274,8 @@
 						<excludes>
 							<exclude>**/*IT.java</exclude>
 						</excludes>
+						<forkCount>1</forkCount>
+						<reuseForks>true</reuseForks>
 					</configuration>
 				</plugin>
 				<plugin>
