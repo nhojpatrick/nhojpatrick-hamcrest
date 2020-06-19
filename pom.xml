@@ -234,7 +234,6 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>3.0.0-M5</version>
 					<configuration>
-						<!--						<argLine>${project.failsafe.argLine.jpms}</argLine>-->
 						<includes>
 							<include>**/*IT.java</include>
 						</includes>
@@ -321,7 +320,6 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>3.0.0-M5</version>
 					<configuration>
-						<!--						<argLine>${project.surefire.argLine.jpms}</argLine>-->
 						<excludes>
 							<exclude>**/*IT.java</exclude>
 						</excludes>
@@ -553,8 +551,6 @@
 				<base.java.version>11</base.java.version>
 				<maven.compiler.release>11</maven.compiler.release>
 				<project.custom.java.version>11</project.custom.java.version>
-				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
-				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
 		</profile>
 		<profile>
@@ -939,13 +935,6 @@
 		<project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
 		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
-		<!-- Surefire/Failsafe jpms override(s) -->
-		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
-		<project.failsafe.argLine.jpms.global></project.failsafe.argLine.jpms.global>
-		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
-		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
-		<project.surefire.argLine.jpms.global></project.surefire.argLine.jpms.global>
-		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- plugin versions -->
 		<plugins.github.ekryd.sortpom-maven-plugin>2.11.0</plugins.github.ekryd.sortpom-maven-plugin>
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
