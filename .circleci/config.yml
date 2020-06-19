@@ -132,19 +132,19 @@ commands:
             - m2-dependencies-
       - run:
           name: "Tidy Local Maven Repo of lastUpdated"
-          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rf xxx
+          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rfv xxx
           when: always
       - run:
           name: "Tidy Local Maven Repo of _remote.repositories"
-          command: find ~/.m2/repository/ -name "_remote.repositories" | xargs -ixxx rm -rf xxx
+          command: find ~/.m2/repository/ -name "_remote.repositories" | xargs -ixxx rm -rfv xxx
           when: always
       - run:
           name: "Tidy Local Maven Repo of resolver-status.properties"
-          command: find ~/.m2/repository/ -name "resolver-status.properties" | xargs -ixxx rm -rf xxx
+          command: find ~/.m2/repository/ -name "resolver-status.properties" | xargs -ixxx rm -rfv xxx
           when: always
       - run:
           name: "Tidy Local Maven Repo of maven-metadata-*.xml"
-          command: find ~/.m2/repository/ -name "maven-metadata-*.xml" | xargs -ixxx rm -rf xxx
+          command: find ~/.m2/repository/ -name "maven-metadata-*.xml" | xargs -ixxx rm -rfv xxx
           when: always
 
   cache_save:
