@@ -259,30 +259,31 @@ workflows:
   build_all:
     jobs:
       - jdk8
-      #- jdk11
-      #- passed_builds:
-      #    requires:
-      #      - jdk8
-      #      - jdk11
+      - jdk11
 
-      #- qa_matrix:
-      #    name: qa_<< matrix.qa_step_profile >>
-      #    requires:
-      #      - passed_builds
-      #    filters:
-      #      branches:
-      #        ignore:
-      #          - develop
-      #          - master
-      #    matrix:
-      #      parameters:
-      #        qa_step_profile: [
-      #          "checkstyle",
-      #          "javadoc",
-      #          "pmd",
-      #          "spotbugs"
-      #        ]
+      - passed_builds:
+          requires:
+            - jdk8
+            - jdk11
 
-      #- passed_qa:
-      #    requires:
-      #      - qa_matrix
+      - qa_matrix:
+          name: qa_<< matrix.qa_step_profile >>
+          requires:
+            - passed_builds
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+          matrix:
+            parameters:
+              qa_step_profile: [
+                "checkstyle",
+                "javadoc",
+                "pmd",
+                "spotbugs"
+              ]
+
+      - passed_qa:
+          requires:
+            - qa_matrix
