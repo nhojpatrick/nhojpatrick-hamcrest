@@ -93,6 +93,22 @@ commands:
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
       - run:
+          name: "Tidy Local Maven Repo of lastUpdated"
+          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of _remote.repositories"
+          command: find ~/.m2/repository/ -name "_remote.repositories" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of resolver-status.properties"
+          command: find ~/.m2/repository/ -name "resolver-status.properties" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of maven-metadata-*.xml"
+          command: find ~/.m2/repository/ -name "maven-metadata-*.xml" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
           name: "Maven Jdk8 Clean Install"
           command: ./mvnw -Pcicd clean verify -DskipTests
       - run:
@@ -103,7 +119,7 @@ commands:
           name: "Maven Jdk8 Build Jdk11 Tests"
           command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd verify
       - run:
-          name: "Tidy Cache before save"
+          name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
       - save_cache:
@@ -122,13 +138,29 @@ commands:
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
       - run:
+          name: "Tidy Local Maven Repo of lastUpdated"
+          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of _remote.repositories"
+          command: find ~/.m2/repository/ -name "_remote.repositories" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of resolver-status.properties"
+          command: find ~/.m2/repository/ -name "resolver-status.properties" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of maven-metadata-*.xml"
+          command: find ~/.m2/repository/ -name "maven-metadata-*.xml" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
           name: "Maven Jdk11 Clean Install SkipTests"
           command: ./mvnw -Pcicd clean verify -DskipTests
       - run:
           name: "Maven Jdk11 Tests"
           command: ./mvnw -Pcicd verify
       - run:
-          name: "Tidy Cache before save"
+          name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
       - save_cache:
@@ -149,10 +181,27 @@ commands:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.stepName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies--
             - m2-dependencies-
+      - run:
+          name: "Tidy Local Maven Repo of lastUpdated"
+          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of _remote.repositories"
+          command: find ~/.m2/repository/ -name "_remote.repositories" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of resolver-status.properties"
+          command: find ~/.m2/repository/ -name "resolver-status.properties" | xargs -ixxx rm -rf xxx
+          when: always
+      - run:
+          name: "Tidy Local Maven Repo of maven-metadata-*.xml"
+          command: find ~/.m2/repository/ -name "maven-metadata-*.xml" | xargs -ixxx rm -rf xxx
+          when: always
       - run: ./mvnw -Pcicd,qa_<< parameters.stepName >> -DskipTests verify
       - run:
-          name: "Tidy Cache before save"
+          name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
       - save_cache:
