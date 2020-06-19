@@ -69,7 +69,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.testing</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 	</properties>
