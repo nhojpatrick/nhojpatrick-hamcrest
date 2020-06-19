@@ -87,7 +87,6 @@ commands:
   std_mvnw_jdk8:
     description: "Standard JDK8 mvnw steps"
     steps:
-      - checkout
       - restore_cache:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}
@@ -132,7 +131,6 @@ commands:
   std_mvnw_jdk11:
     description: "Standard JDK11 mvnw steps"
     steps:
-      - checkout
       - restore_cache:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}
@@ -176,7 +174,6 @@ commands:
         type: string
     description: "Standard QA Step << parameters.stepName >>"
     steps:
-      - checkout
       - restore_cache:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.stepName >>
@@ -231,6 +228,7 @@ jobs:
     steps:
       - install_openjdk_11
       - setup_std_toolchain
+      - checkout
       - std_mvnw_jdk8
 
   jdk11:
@@ -239,6 +237,7 @@ jobs:
     resource_class: small
     steps:
       - setup_openjdk_11_toolchain
+      - checkout
       - std_mvnw_jdk11
 
   qa_matrix:
@@ -251,6 +250,7 @@ jobs:
     steps:
       - install_openjdk_11
       - setup_std_toolchain
+      - checkout
       - qa_step:
           stepName: << parameters.qa_step_profile >>
 
