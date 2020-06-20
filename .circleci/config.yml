@@ -285,6 +285,11 @@ workflows:
       - qa_owasp_dependency_check:
           requires:
             - passed_builds
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
 
       - passed_qa:
           requires:
