@@ -126,6 +126,10 @@ commands:
     steps:
       - restore_cache:
           keys:
+            - m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+            - m2-wrapper-
+      - restore_cache:
+          keys:
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
@@ -153,6 +157,11 @@ commands:
         type: string
     description: "Save Cache Step << parameters.cacheSaveName >>"
     steps:
+      - save_cache:
+          key: m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+          paths:
+            - ~/.m2/wrapper
+          when: always
       - run:
           name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
@@ -161,7 +170,6 @@ commands:
           key: m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
           paths:
             - ~/.m2/repository
-            - ~/.m2/wrapper
           when: always
 
 jobs:
