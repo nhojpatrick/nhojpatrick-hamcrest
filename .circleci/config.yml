@@ -134,6 +134,7 @@ commands:
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
+      - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of lastUpdated"
           command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rfv xxx
@@ -157,11 +158,13 @@ commands:
         type: string
     description: "Save Cache Step << parameters.cacheSaveName >>"
     steps:
+      - run: mkdir -p ~/.m2/wrapper
       - save_cache:
           key: m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
           paths:
             - ~/.m2/wrapper
           when: always
+      - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
@@ -249,6 +252,7 @@ jobs:
           keys:
             - m2-owasp-dependency-check-{{ checksum "date" }}
             - m2-owasp-dependency-check-
+      - run: mkdir -p ~/.m2/owasp-dependency-check-data
       - run:
           command: ./mvnw -Pcicd,qa_owasp-dependency-check -DskipTests verify -DdataDirectory=~/.m2/owasp-dependency-check-data
           no_output_timeout: 30m
