@@ -130,26 +130,19 @@ commands:
             - m2-wrapper-
       - restore_cache:
           keys:
+            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
+            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
+            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
+            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}
+            - m2-dependencies-{{ .Branch }}
             - m2-dependencies-
       - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of lastUpdated"
-          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rfv xxx
-          when: always
-      - run:
-          name: "Tidy Local Maven Repo of _remote.repositories"
-          command: find ~/.m2/repository/ -name "_remote.repositories" | xargs -ixxx rm -rfv xxx
-          when: always
-      - run:
-          name: "Tidy Local Maven Repo of resolver-status.properties"
-          command: find ~/.m2/repository/ -name "resolver-status.properties" | xargs -ixxx rm -rfv xxx
-          when: always
-      - run:
-          name: "Tidy Local Maven Repo of maven-metadata-*.xml"
-          command: find ~/.m2/repository/ -name "maven-metadata-*.xml" | xargs -ixxx rm -rfv xxx
+          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx dirname xxx | sort -u | xargs -ixxx rm -rfv xxx
           when: always
 
   cache_save:
@@ -169,8 +162,17 @@ commands:
           name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
+      - run:
+          name: "Tidy Local Maven Repo of lastUpdated"
+          command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx dirname xxx | sort -u | xargs -ixxx rm -rfv xxx
+          when: always
       - save_cache:
           key: m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
+          paths:
+            - ~/.m2/repository
+          when: always
+      - save_cache:
+          key: m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
           paths:
             - ~/.m2/repository
           when: always
@@ -247,10 +249,24 @@ jobs:
       - cache_restore:
           cacheAlphaName: owasp-dependency-check
           cacheBravoName: jdk8
-      - run: date +%F_%T > date
+      - run: date +"%F" | tee .DAY_TODAY
+      - run: date --date="1 days ago" +"%F" | tee .DAY_MINUS_1
+      - run: date --date="2 days ago" +"%F" | tee .DAY_MINUS_2
+      - run: date --date="3 days ago" +"%F" | tee .DAY_MINUS_3
+      - run: date --date="4 days ago" +"%F" | tee .DAY_MINUS_4
+      - run: date --date="5 days ago" +"%F" | tee .DAY_MINUS_5
+      - run: date --date="6 days ago" +"%F" | tee .DAY_MINUS_6
+      - run: date --date="7 days ago" +"%F" | tee .DAY_MINUS_7
       - restore_cache:
           keys:
-            - m2-owasp-dependency-check-{{ checksum "date" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_TODAY" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_1" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_2" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_3" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_4" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_5" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_6" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_7" }}
             - m2-owasp-dependency-check-
       - run: mkdir -p ~/.m2/owasp-dependency-check-data
       - run:
@@ -259,7 +275,7 @@ jobs:
       - cache_save:
           cacheSaveName: owasp-dependency-check
       - save_cache:
-          key: m2-owasp-dependency-check-{{ checksum "date" }}
+          key: m2-owasp-dependency-check-{{ checksum ".DAY_TODAY" }}
           paths:
             - ~/.m2/owasp-dependency-check-data
           when: always
