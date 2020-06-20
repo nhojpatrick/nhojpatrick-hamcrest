@@ -247,7 +247,7 @@ jobs:
       - cache_restore:
           cacheAlphaName: owasp-dependency-check
           cacheBravoName: jdk8
-      - run: date +%F > date
+      - run: date +%F_%T > date
       - restore_cache:
           keys:
             - m2-owasp-dependency-check-{{ checksum "date" }}
