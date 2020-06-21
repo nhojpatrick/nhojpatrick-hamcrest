@@ -127,18 +127,11 @@ commands:
       - restore_cache:
           keys:
             - m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
-            - m2-wrapper-
       - restore_cache:
           keys:
-            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
-            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
-            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}
-            - m2-dependencies-{{ .Branch }}
-            - m2-dependencies-
       - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of lastUpdated"
@@ -160,7 +153,7 @@ commands:
       - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of project before save cache"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick/hamcrest
           when: always
       - run:
           name: "Tidy Local Maven Repo of lastUpdated"
@@ -168,11 +161,6 @@ commands:
           when: always
       - save_cache:
           key: m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
-          paths:
-            - ~/.m2/repository
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
           paths:
             - ~/.m2/repository
           when: always
