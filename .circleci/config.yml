@@ -249,25 +249,10 @@ jobs:
       - cache_restore:
           cacheAlphaName: owasp-dependency-check
           cacheBravoName: jdk8
-      - run: date +"%F" | tee .DAY_TODAY
-      - run: date --date="1 days ago" +"%F" | tee .DAY_MINUS_1
-      - run: date --date="2 days ago" +"%F" | tee .DAY_MINUS_2
-      - run: date --date="3 days ago" +"%F" | tee .DAY_MINUS_3
-      - run: date --date="4 days ago" +"%F" | tee .DAY_MINUS_4
-      - run: date --date="5 days ago" +"%F" | tee .DAY_MINUS_5
-      - run: date --date="6 days ago" +"%F" | tee .DAY_MINUS_6
-      - run: date --date="7 days ago" +"%F" | tee .DAY_MINUS_7
+      - run: date +"%Y_%V" | tee .YEAR_WEEK
       - restore_cache:
           keys:
-            - m2-owasp-dependency-check-{{ checksum ".DAY_TODAY" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_1" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_2" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_3" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_4" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_5" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_6" }}
-            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_7" }}
-            - m2-owasp-dependency-check-
+            - m2-owasp-dependency-check-{{ checksum ".YEAR_WEEK" }}
       - run: mkdir -p ~/.m2/owasp-dependency-check-data
       - run:
           command: ./mvnw -Pcicd,qa_owasp-dependency-check -DskipTests verify -DdataDirectory=~/.m2/owasp-dependency-check-data
@@ -275,7 +260,7 @@ jobs:
       - cache_save:
           cacheSaveName: owasp-dependency-check
       - save_cache:
-          key: m2-owasp-dependency-check-{{ checksum ".DAY_TODAY" }}
+          key: m2-owasp-dependency-check-{{ checksum ".YEAR_WEEK" }}
           paths:
             - ~/.m2/owasp-dependency-check-data
           when: always
