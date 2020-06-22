@@ -243,6 +243,9 @@ jobs:
             - m2-owasp-dependency-check-{{ checksum ".YEAR_WEEK" }}
       - run: mkdir -p ~/.m2/owasp-dependency-check-data
       - run:
+          command: ./mvnw -N -Pcicd org.owasp:dependency-check-maven:update-only -DdataDirectory=~/.m2/owasp-dependency-check-data
+          no_output_timeout: 30m
+      - run:
           command: ./mvnw -Pcicd,qa_owasp-dependency-check -DskipTests verify -DdataDirectory=~/.m2/owasp-dependency-check-data
           no_output_timeout: 30m
       - cache_save:
