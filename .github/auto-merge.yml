@@ -1,3 +1,7 @@
+# Configuration for probot-auto-merge - https://github.com/bobvanderlinden/probot-auto-merge
+
+reportStatus: true
+
 # Whether the pull request branch is automatically deleted.
 # This is the equivalent of clicking the 'Delete branch' button shown on merged pull requests.
 # Note: this only works when the branch of the pull request resides in the same repository as
