@@ -240,7 +240,7 @@ jobs:
       - run: date +"%Y_%V" | tee .YEAR_WEEK
       - restore_cache:
           keys:
-            - m2-owasp-dependency-check-{{ checksum ".YEAR_WEEK" }}
+            - m2-owasp-dependency-check-data-{{ checksum ".YEAR_WEEK" }}
       - run: mkdir -p ~/.m2/owasp-dependency-check-data
       - run:
           command: ./mvnw -N -Pcicd org.owasp:dependency-check-maven:update-only -DdataDirectory=~/.m2/owasp-dependency-check-data
@@ -251,7 +251,7 @@ jobs:
       - cache_save:
           cacheSaveName: owasp-dependency-check
       - save_cache:
-          key: m2-owasp-dependency-check-{{ checksum ".YEAR_WEEK" }}
+          key: m2-owasp-dependency-check-data-{{ checksum ".YEAR_WEEK" }}
           paths:
             - ~/.m2/owasp-dependency-check-data
           when: always
