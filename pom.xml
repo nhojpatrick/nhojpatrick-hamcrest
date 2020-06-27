@@ -170,6 +170,35 @@
 								-->
 							</configuration>
 						</execution>
+						<execution>
+							<id>default-testCompile</id>
+							<configuration>
+								<jdkToolchain>
+									<version>1.8</version>
+								</jdkToolchain>
+							</configuration>
+						</execution>
+						<execution>
+							<id>java11-test</id>
+							<phase>test-compile</phase>
+							<goals>
+								<goal>testCompile</goal>
+							</goals>
+							<configuration>
+								<release>11</release>
+								<jdkToolchain>
+									<version>11</version>
+								</jdkToolchain>
+								<compileSourceRoots>
+									<compileSourceRoot>${project.basedir}/src/test/java11</compileSourceRoot>
+								</compileSourceRoots>
+								<multiReleaseOutput>true</multiReleaseOutput>
+								<compilerArgs>
+									<arg>--patch-module</arg>
+									<arg>${project.Automatic-Module-Name}.tests=${project.build.testOutputDirectory}</arg>
+								</compilerArgs>
+							</configuration>
+						</execution>
 					</executions>
 				</plugin>
 				<plugin>
