@@ -298,4 +298,3 @@ workflows:
       - passed_qa:
           requires:
             - qa_matrix
-            - qa_owasp_dependency_check
