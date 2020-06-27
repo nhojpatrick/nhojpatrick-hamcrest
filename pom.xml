@@ -260,9 +260,6 @@
 								<Multi-Release>true</Multi-Release>
 							</manifestEntries>
 						</archive>
-						<excludes>
-							<exclude>**/ModuleInfoHack.class</exclude>
-						</excludes>
 					</configuration>
 				</plugin>
 				<plugin>
