@@ -91,9 +91,19 @@ commands:
           name: "Maven Jdk8 Clean Install"
           command: ./mvnw -Pcicd clean verify -DskipTests
       - run:
+          name: "Maven Jdk8 Tests"
+          command: ./mvnw -Pcicd verify
+      - run:
           name: "Coveralls"
           command: ./mvnw -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
           when: on_success
+
+  mvnw_jdk8_tests_jdk11:
+    description: "JDK8 Build JDK11 Tests mvnw steps"
+    steps:
+      - run:
+          name: "Maven Jdk8 Clean Install"
+          command: ./mvnw -Pcicd clean verify -DskipTests
       - run:
           name: "Maven Jdk8 Build Jdk11 Tests"
           command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd verify
@@ -193,6 +203,21 @@ jobs:
       - cache_save:
           cacheSaveName: jdk8
 
+  jdk8_tests_jdk11:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    resource_class: small
+    steps:
+      - install_openjdk_11
+      - setup_std_toolchain
+      - checkout
+      - cache_restore:
+          cacheAlphaName: jdk8
+          cacheBravoName: jdk8
+      - mvnw_jdk8_tests_jdk11
+      - cache_save:
+          cacheSaveName: jdk8
+
   jdk11:
     docker:
       - image: circleci/openjdk:11-jdk-stretch
@@ -261,11 +286,13 @@ workflows:
   build_all:
     jobs:
       - jdk8
+      - jdk8_tests_jdk11
       - jdk11
 
       - passed_builds:
           requires:
             - jdk8
+            - jdk8_tests_jdk11
             - jdk11
 
       - qa_matrix:
