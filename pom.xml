@@ -965,7 +965,7 @@
 		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
 		<!-- plugin versions -->
-		<plugins.com.github.spotbugs.spotbugs-maven-plugin>4.1.3</plugins.com.github.spotbugs.spotbugs-maven-plugin>
+		<plugins.com.github.spotbugs.spotbugs-maven-plugin>4.1.4</plugins.com.github.spotbugs.spotbugs-maven-plugin>
 		<plugins.github.ekryd.sortpom-maven-plugin>2.12.0</plugins.github.ekryd.sortpom-maven-plugin>
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
 		<!-- dependency versions -->
