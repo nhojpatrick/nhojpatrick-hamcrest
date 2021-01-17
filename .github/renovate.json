@@ -3,5 +3,6 @@
     "config:base"
   ],
   "labels": ["dependencies"],
+  "additionalReviewers" : ["nhojpatrick"],
   "prHourlyLimit": 0
 }
