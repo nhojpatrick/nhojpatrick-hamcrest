@@ -3,6 +3,7 @@
     "config:base"
   ],
   "dependencyDashboard": true,
+  "excludeCommitPaths": ["relocation_**"],
   "labels": ["dependencies"],
   "additionalReviewers" : ["nhojpatrick"],
   "prHourlyLimit": 0,
