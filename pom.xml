@@ -969,7 +969,7 @@
 		<plugins.com.github.spotbugs.spotbugs-maven-plugin>4.2.0</plugins.com.github.spotbugs.spotbugs-maven-plugin>
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
 		<!-- dependency versions -->
-		<version.com.github.spotbugs>4.2.1</version.com.github.spotbugs>
+		<version.com.github.spotbugs>4.2.2</version.com.github.spotbugs>
 		<version.com.puppycrawl.tools.checkstyle>8.40</version.com.puppycrawl.tools.checkstyle>
 		<version.org.apache.commons.lang3>3.11</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>2.14.0</version.org.apache.logging.log4j>
