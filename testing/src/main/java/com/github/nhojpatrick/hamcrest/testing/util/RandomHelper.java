@@ -13,6 +13,8 @@ public class RandomHelper {
         return randomIntBetween(new Random(), low, high);
     }
 
+    @SuppressFBWarnings(value = "DMI_RANDOM_USED_ONLY_ONCE",
+            justification = "Accepted issue and just for datetime testing currently")
     public static int randomIntBetween(final Random r,
                                        final int low,
                                        final int high) {
