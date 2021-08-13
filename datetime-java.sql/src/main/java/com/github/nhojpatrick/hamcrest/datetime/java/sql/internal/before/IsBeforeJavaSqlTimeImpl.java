@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.before;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.slf4j.Logger;
@@ -21,6 +22,8 @@ public class IsBeforeJavaSqlTimeImpl<T extends Time>
     protected final T before;
     protected final CompareType compareType;
 
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP2",
+            justification = "Accepted will look at changing 'this.before = before;'")
     public IsBeforeJavaSqlTimeImpl(final T before,
                                    final CompareType compareType) {
         LOGGER.debug("IsBeforeJavaSqlTimeImpl((Before) {}, (CompareType) {})",
