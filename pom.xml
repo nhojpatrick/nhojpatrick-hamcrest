@@ -21,7 +21,7 @@
 	<!--issueManagement / -->
 	<issueManagement>
 		<system>GITHUB</system>
-		<url>http://github.com/nhojpatrick/nhojpatrick-hamcrest/issues</url>
+		<url>https://github.com/nhojpatrick/nhojpatrick-hamcrest/issues</url>
 	</issueManagement>
 	<!--ciManagement / -->
 	<!--inceptionYear / -->
@@ -46,7 +46,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/nhojpatrick/nhojpatrick-hamcrest.git</connection>
 		<developerConnection>scm:git:ssh://github.com:nhojpatrick/nhojpatrick-hamcrest.git</developerConnection>
-		<url>http://github.com/nhojpatrick/nhojpatrick-hamcrest/tree/master</url>
+		<url>https://github.com/nhojpatrick/nhojpatrick-hamcrest/tree/master</url>
 	</scm>
 	<!--organization / -->
 	<!--build / -->
