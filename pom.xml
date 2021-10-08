@@ -737,6 +737,7 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>bom</module>
 		<module>collections</module>
 		<module>datetime</module>
 		<module>lang</module>
