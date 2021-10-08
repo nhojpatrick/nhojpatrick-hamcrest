@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--modelVersion / -->
+	<modelVersion>4.0.0</modelVersion>
+	<!--parent / -->
+	<parent>
+		<groupId>com.github.nhojpatrick.hamcrest</groupId>
+		<artifactId>nhojpatrick-hamcrest</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<!--groupId / -->
+	<!--artifactId / -->
+	<artifactId>nhojpatrick-hamcrest-bom</artifactId>
+	<!--packaging / -->
+	<packaging>pom</packaging>
+	<!--name / -->
+	<name>Hamcrest extensions (BOM)</name>
+	<!--version / -->
+	<!--description / -->
+	<!--url / -->
+	<!--prerequisites / -->
+	<!--issueManagement / -->
+	<!--ciManagement / -->
+	<!--inceptionYear / -->
+	<!--mailingLists / -->
+	<!--developers / -->
+	<!--contributors / -->
+	<!--licenses / -->
+	<!--scm / -->
+	<!--organization / -->
+	<!--build /-->
+	<!--profiles / -->
+	<!--modules / -->
+	<!--repositories / -->
+	<!--pluginRepositories / -->
+	<!--dependencies / -->
+	<!--reports (Deprecated) / -->
+	<!--reporting / -->
+	<!--dependencyManagement / -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-all</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<!--distributionManagement / -->
+	<!--properties / -->
+	<properties>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.bom</project.Automatic-Module-Name>
+	</properties>
+</project>
