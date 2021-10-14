@@ -959,7 +959,7 @@
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
 		<!-- plugin versions -->
 		<plugins.com.github.ekryd.sortpom.sortpom-maven-plugin>3.0.0</plugins.com.github.ekryd.sortpom.sortpom-maven-plugin>
-		<plugins.com.github.spotbugs.spotbugs-maven-plugin>4.4.1</plugins.com.github.spotbugs.spotbugs-maven-plugin>
+		<plugins.com.github.spotbugs.spotbugs-maven-plugin>4.4.2</plugins.com.github.spotbugs.spotbugs-maven-plugin>
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
 		<!-- dependency versions -->
 		<version.com.github.spotbugs>4.4.2</version.com.github.spotbugs>
