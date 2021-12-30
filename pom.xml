@@ -958,6 +958,7 @@
 		<!-- next minor version -->
 		<project.custom.next.version>1.0.99</project.custom.next.version>
 		<!-- custom properties -->
+		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<project.custom.encoding>UTF-8</project.custom.encoding>
 		<project.custom.java.version>1.8</project.custom.java.version>
 		<!-- maven user properties -->
@@ -1023,7 +1024,6 @@
 		<!-- versions-maven-plugin -->
 		<maven.version.rules>classpath:///com/github/nhojpatrick/qa/versions/rules/rules.xml</maven.version.rules>
 		<!-- JPMS -->
-		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<toolchain.vendor>openjdk</toolchain.vendor>
 		<base.java.version>1.8</base.java.version>
 	</properties>
