@@ -349,21 +349,18 @@ workflows:
               ignore:
                 - develop
                 - main
-                - master
       - jdk11:
           filters:
             branches:
               ignore:
                 - develop
                 - main
-                - master
       - jdk17:
           filters:
             branches:
               ignore:
                 - develop
                 - main
-                - master
 
       - passed_builds:
           requires:
@@ -381,7 +378,6 @@ workflows:
               ignore:
                 - develop
                 - main
-                - master
           matrix:
             parameters:
               qa_step_profile: [
@@ -399,7 +395,6 @@ workflows:
               ignore:
                 - develop
                 - main
-                - master
 
       - passed_qa:
           requires:
