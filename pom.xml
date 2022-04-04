@@ -743,6 +743,7 @@
 				</plugins>
 			</build>
 			<properties>
+				<maven.test.skip>true</maven.test.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
