@@ -1,4 +1,4 @@
-open module com.github.nhojpatrick.hamcrest.collections.tests {
+open module com.github.nhojpatrick.hamcrest.collections.test {
     requires com.github.nhojpatrick.hamcrest.collections;
     requires com.github.nhojpatrick.hamcrest.testing;
     requires org.apache.logging.log4j;
