@@ -1,4 +1,4 @@
-open module com.github.nhojpatrick.hamcrest.lang.tests {
+open module com.github.nhojpatrick.hamcrest.lang.test {
     requires com.github.nhojpatrick.hamcrest.lang;
     requires com.github.nhojpatrick.hamcrest.testing;
     requires org.apache.logging.log4j;
