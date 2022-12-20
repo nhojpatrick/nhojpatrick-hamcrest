@@ -910,7 +910,7 @@
 		<module>datetime</module>
 		<module>datetime-java.sql</module>
 		<module>lang</module>
-		<module>optionals</module>
+		<module>optional</module>
 		<module>testing</module>
 	</modules>
 	<!--repositories / -->
@@ -966,7 +966,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
+				<artifactId>nhojpatrick-hamcrest-optional</artifactId>
 				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>
