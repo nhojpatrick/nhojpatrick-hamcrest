@@ -11,7 +11,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-hamcrest-all</artifactId>
+	<artifactId>nhojpatrick-hamcrest-optional</artifactId>
 	<!--packaging / -->
 	<packaging>jar</packaging>
 	<!--name / -->
@@ -37,23 +37,30 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+			<artifactId>nhojpatrick-hamcrest-testing</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-datetime</artifactId>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs-annotations</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-datetime-java.sql</artifactId>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-optional</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 	</dependencies>
 	<!--reports (Deprecated) / -->
@@ -62,8 +69,6 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.all</project.Automatic-Module-Name>
-		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<spotbugs.skip>true</spotbugs.skip>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.hamcrest.optional</project.Automatic-Module-Name>
 	</properties>
 </project>

@@ -67,7 +67,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
+				<artifactId>nhojpatrick-hamcrest-optional</artifactId>
 				<version>1.0.4-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
