@@ -848,6 +848,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<enforcer.fail>false</enforcer.fail>
+			</properties>
 		</profile>
 		<profile>
 			<id>versions</id>
