@@ -25,6 +25,8 @@ public final class IsDate {
         return new IsLocalDate(matcher);
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

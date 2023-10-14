@@ -120,6 +120,8 @@ public final class IsAfterDateTime {
         return new IsAfterZonedDateTime(expected, compareType, roundingType);
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsAfterDateTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

@@ -8,6 +8,7 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterZonedDateT
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetDateTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeZonedDateTime;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
 import org.slf4j.Logger;
@@ -232,6 +233,8 @@ public final class IsBetweenDateTime {
         return betweenZonedDateTime;
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsBetweenDateTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

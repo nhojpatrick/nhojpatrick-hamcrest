@@ -6,6 +6,7 @@ import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterOffsetTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeOffsetTime;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
 import org.slf4j.Logger;
@@ -161,6 +162,8 @@ public final class IsBetweenTime {
         return betweenOffsetTime;
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsBetweenTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

@@ -4,6 +4,7 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.after.IsAfterJavaSqlTimeImpl;
 import com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.before.IsBeforeJavaSqlTimeImpl;
 import com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.equals.IsEqualJavaSqlTimeImpl;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +66,8 @@ public final class IsJavaSqlTime {
         return new IsBeforeJavaSqlTimeImpl(before, compareType);
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsJavaSqlTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

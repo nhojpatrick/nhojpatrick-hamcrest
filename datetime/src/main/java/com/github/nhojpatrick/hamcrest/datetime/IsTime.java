@@ -38,6 +38,8 @@ public final class IsTime {
         return new IsOffsetTime(matcher);
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

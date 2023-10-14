@@ -3,6 +3,7 @@ package com.github.nhojpatrick.hamcrest.datetime;
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.after.IsAfterLocalDate;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDate;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.CombinableMatcher;
 import org.slf4j.Logger;
@@ -62,6 +63,8 @@ public final class IsBetweenDate {
         return betweenLocalDate;
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsBetweenDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

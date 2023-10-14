@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime.internal.equals;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -12,6 +13,8 @@ public abstract class AbstractIsDateTime<T>
     protected final Matcher<T> matcher;
     private final String type;
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     protected AbstractIsDateTime(final Matcher<T> matcher, final String type) {
 
         if (isNull(matcher)) {
