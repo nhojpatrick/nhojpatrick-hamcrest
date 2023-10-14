@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.equals;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -20,6 +21,8 @@ public class IsEqualJavaSqlTimeImpl<T extends Time>
     protected final Matcher<T> matcher;
     private final String type;
 
+        @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+                justification = "Accepted")
     public IsEqualJavaSqlTimeImpl(final Matcher<T> matcher) {
         LOGGER.debug("IsEqualJavaSqlTimeImpl(Matcher<T> {})", matcher);
 

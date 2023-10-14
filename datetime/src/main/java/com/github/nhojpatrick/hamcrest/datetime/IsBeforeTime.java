@@ -85,6 +85,8 @@ public final class IsBeforeTime {
         return new IsBeforeOffsetTime(expected, compareType, roundingType);
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsBeforeTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

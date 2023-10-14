@@ -32,6 +32,8 @@ public final class IsBeforeDate {
         return new IsBeforeLocalDate(before, compareType);
     }
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     public IsBeforeDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

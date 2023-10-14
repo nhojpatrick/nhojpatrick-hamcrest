@@ -22,7 +22,7 @@ public class IsAfterJavaSqlTimeImpl<T extends Time>
     protected final T after;
     protected final CompareType compareType;
 
-    @SuppressFBWarnings(value = "EI_EXPOSE_REP2",
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW", "EI_EXPOSE_REP2"},
             justification = "Accepted will look at changing 'this.after = after;'")
     public IsAfterJavaSqlTimeImpl(final T after,
                                   final CompareType compareType) {

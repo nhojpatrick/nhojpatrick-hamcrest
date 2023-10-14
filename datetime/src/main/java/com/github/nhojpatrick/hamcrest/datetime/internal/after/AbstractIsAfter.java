@@ -2,6 +2,7 @@ package com.github.nhojpatrick.hamcrest.datetime.internal.after;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
@@ -20,6 +21,8 @@ public abstract class AbstractIsAfter<T extends Temporal>
     protected final T after;
     protected final CompareType compareType;
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     protected AbstractIsAfter(final T after,
                               final CompareType compareType,
                               final RoundingType roundingType) {

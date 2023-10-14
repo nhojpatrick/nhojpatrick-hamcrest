@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.hamcrest.lang;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -25,6 +26,8 @@ public class IsCompareTo<T extends Object>
     private final Integer expectedCompareToValue;
     private final Comparable compareToObject;
 
+    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
+            justification = "Accepted")
     private IsCompareTo(final int expectedCompareToValue, final Comparable compareToObject) {
 
         if (isNull(compareToObject)) {
