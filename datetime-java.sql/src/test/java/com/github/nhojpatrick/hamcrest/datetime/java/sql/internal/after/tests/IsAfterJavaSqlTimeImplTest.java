@@ -12,8 +12,8 @@ import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
-import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
-import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.INCLUSIVE;
+import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE; // NOPMD
+import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.INCLUSIVE; // NOPMD
 import static com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.after.IsAfterJavaSqlTimeImpl.SUPPLIED_COMPARE_TYPE_MUST_NOT_BE_NULL;
 import static com.github.nhojpatrick.hamcrest.datetime.java.sql.internal.after.IsAfterJavaSqlTimeImpl.SUPPLIED_EXPECTED_MUST_NOT_BE_NULL;
 import static org.hamcrest.MatcherAssert.assertThat;

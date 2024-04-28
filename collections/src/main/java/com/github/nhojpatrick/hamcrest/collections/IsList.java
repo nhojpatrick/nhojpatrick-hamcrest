@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.CONTAINS;
-import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.EMPTY;
-import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN;
-import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN_OR_EQUAL_TO;
-import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN;
-import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN_OR_EQUAL_TO;
-import static org.hamcrest.core.AnyOf.anyOf;
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.CONTAINS; // NOPMD
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.EMPTY; // NOPMD
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN; // NOPMD
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.GREATER_THAN_OR_EQUAL_TO; // NOPMD
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN; // NOPMD
+import static com.github.nhojpatrick.hamcrest.collections.internal.IsCollectionsFlag.LESS_THAN_OR_EQUAL_TO; // NOPMD
+import static org.hamcrest.core.AnyOf.anyOf; // NOPMD
 import static org.hamcrest.core.IsNull.nullValue;
 
 public class IsList<T extends List>

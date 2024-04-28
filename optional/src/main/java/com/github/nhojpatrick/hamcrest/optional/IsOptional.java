@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.github.nhojpatrick.hamcrest.optional.internal.IsOptionalFlag.CONTAINS;
-import static com.github.nhojpatrick.hamcrest.optional.internal.IsOptionalFlag.EMPTY;
-import static com.github.nhojpatrick.hamcrest.optional.internal.IsOptionalFlag.PRESENT;
+import static com.github.nhojpatrick.hamcrest.optional.internal.IsOptionalFlag.CONTAINS; // NOPMD
+import static com.github.nhojpatrick.hamcrest.optional.internal.IsOptionalFlag.EMPTY; // NOPMD
+import static com.github.nhojpatrick.hamcrest.optional.internal.IsOptionalFlag.PRESENT; // NOPMD
 
 public class IsOptional<T extends Optional<?>>
         extends TypeSafeMatcher<T> {

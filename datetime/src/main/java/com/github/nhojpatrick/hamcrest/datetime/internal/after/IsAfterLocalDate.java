@@ -4,7 +4,7 @@ import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 
 import java.time.chrono.ChronoLocalDate;
 
-import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
+import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE; // NOPMD
 
 public class IsAfterLocalDate<T extends ChronoLocalDate>
         extends AbstractIsAfter<T> {
