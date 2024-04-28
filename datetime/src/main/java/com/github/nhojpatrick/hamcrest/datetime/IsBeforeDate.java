@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 
-import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
+import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE; // NOPMD
 
 public final class IsBeforeDate {
 

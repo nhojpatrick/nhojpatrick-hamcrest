@@ -14,8 +14,8 @@ import java.time.OffsetDateTime;
 import java.time.chrono.ChronoLocalDateTime;
 import java.time.chrono.ChronoZonedDateTime;
 
-import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
-import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE;
+import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE; // NOPMD
+import static com.github.nhojpatrick.hamcrest.datetime.flags.RoundingType.NONE; // NOPMD
 
 public final class IsBeforeDateTime {
 

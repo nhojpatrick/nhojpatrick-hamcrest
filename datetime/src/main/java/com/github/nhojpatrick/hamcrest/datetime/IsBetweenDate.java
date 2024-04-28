@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 
-import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE;
+import static com.github.nhojpatrick.hamcrest.datetime.flags.CompareType.EXCLUSIVE; // NOPMD
 import static org.hamcrest.core.CombinableMatcher.both;
 
 public final class IsBetweenDate {
