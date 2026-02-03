@@ -1,6 +1,5 @@
 package com.github.nhojpatrick.hamcrest.testing.internal;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
@@ -12,8 +11,6 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_THROWABLE",
-        justification = "SpotBugs #2040 too many false positives")
 public abstract class AbstractMatcherTester<S, T> {
 
     public void assertValid(final S actual,

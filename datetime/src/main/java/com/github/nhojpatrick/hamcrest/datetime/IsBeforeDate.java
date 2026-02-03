@@ -2,7 +2,6 @@ package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.flags.CompareType;
 import com.github.nhojpatrick.hamcrest.datetime.internal.before.IsBeforeLocalDate;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,14 +25,11 @@ public final class IsBeforeDate {
         return doBeforeLocalDate(before, compareType);
     }
 
-    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     private static <T> Matcher<T> doBeforeLocalDate(final LocalDate before,
                                                     final CompareType compareType) {
         return new IsBeforeLocalDate(before, compareType);
     }
 
-    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
-            justification = "Accepted")
     public IsBeforeDate() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }

@@ -2,7 +2,6 @@ package com.github.nhojpatrick.hamcrest.datetime;
 
 import com.github.nhojpatrick.hamcrest.datetime.internal.equals.IsLocalTime;
 import com.github.nhojpatrick.hamcrest.datetime.internal.equals.IsOffsetTime;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.hamcrest.Matcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +20,6 @@ public final class IsTime {
         return instanceOf(LocalTime.class);
     }
 
-    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     public static <T> Matcher<T> localTime(final Matcher<T> matcher) {
         LOGGER.debug("IsTime#localTime((Matcher<T>) {})", matcher);
         return new IsLocalTime(matcher);
@@ -32,14 +30,11 @@ public final class IsTime {
         return instanceOf(OffsetTime.class);
     }
 
-    @SuppressFBWarnings(value = "OCP_OVERLY_CONCRETE_PARAMETER", justification = "Accepted will look at changing")
     public static <T> Matcher<T> offsetTime(final Matcher<T> matcher) {
         LOGGER.debug("IsTime#offsetTime((Matcher<T>) {})", matcher);
         return new IsOffsetTime(matcher);
     }
 
-    @SuppressFBWarnings(value = {"CT_CONSTRUCTOR_THROW"},
-            justification = "Accepted")
     public IsTime() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
